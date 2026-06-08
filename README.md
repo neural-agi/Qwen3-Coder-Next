@@ -191,7 +191,7 @@ scripts/
 ## Installation
 
 ```powershell
-git clone <repository-url>
+git clone <https://github.com/neural-agi/Qwen3-Coder-Next>
 cd Qwen3-Coder-Next
 uv sync
 ```
