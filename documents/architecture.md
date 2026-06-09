@@ -362,6 +362,30 @@ Current Implementation:
 
 ---
 
+### Evaluation Foundation
+
+Location:
+
+```text
+src/qwen3_coder_next/evaluation
+```
+
+Purpose:
+
+Provide immutable evaluation contracts, an evaluator abstraction, and a deterministic example evaluator.
+
+Current Implementation:
+
+* EvaluationStatus
+* EvaluationScore
+* EvaluationRequest
+* EvaluationOutcome
+* EvaluationResult
+* Evaluator
+* SimpleEvaluator
+
+---
+
 ### Runtime Bootstrap
 
 Location:
@@ -420,7 +444,6 @@ Responsibilities:
 Current Limitations:
 
 * No memory persistence
-* No memory
 * No artifact generation
 
 ---

@@ -3,6 +3,13 @@
 from qwen3_coder_next.contracts.artifact import ArtifactRecord, ArtifactType
 from qwen3_coder_next.contracts.model import ModelRequest, ModelResponse
 from qwen3_coder_next.contracts.runtime import RuntimeConfig
+from qwen3_coder_next.evaluation.contracts import (
+    EvaluationOutcome,
+    EvaluationRequest,
+    EvaluationResult,
+    EvaluationScore,
+    EvaluationStatus,
+)
 from qwen3_coder_next.planning.contracts import PlanRequest, PlanResult, PlanStatus, PlanStep
 from qwen3_coder_next.contracts.state import MessageRecord, TaskState
 from qwen3_coder_next.contracts.task import TaskRequest, TaskResult, TaskStatus
@@ -14,6 +21,11 @@ __all__ = [
     "MessageRecord",
     "ModelRequest",
     "ModelResponse",
+    "EvaluationOutcome",
+    "EvaluationRequest",
+    "EvaluationResult",
+    "EvaluationScore",
+    "EvaluationStatus",
     "MemoryEntry",
     "MemoryKind",
     "PlanRequest",

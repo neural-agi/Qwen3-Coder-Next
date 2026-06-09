@@ -16,11 +16,11 @@ Part 1 Foundation
 
 Current Step:
 
-Step 14 Complete
+Step 15 Complete
 
 Next Step:
 
-Step 15 - Evaluation Foundation
+Part 2 - Agent Core
 
 Repository State:
 
@@ -32,7 +32,7 @@ All smoke tests passing
 
 Current Test Count:
 
-38 Passing
+40 Passing
 
 ---
 
@@ -472,6 +472,39 @@ tools/tool.py
 tools/registry.py
 tools/manager.py
 tools/echo_tool.py
+```
+
+Verification:
+
+* Smoke tests added
+* Full test suite passing
+
+---
+
+## Step 15 - Evaluation Foundation
+
+Status: Complete
+
+Summary:
+
+Added the foundational evaluation contracts, abstraction, and deterministic example evaluator.
+
+Implemented:
+
+* EvaluationStatus
+* EvaluationScore
+* EvaluationRequest
+* EvaluationOutcome
+* EvaluationResult
+* Evaluator abstraction
+* SimpleEvaluator
+
+Files Added:
+
+```text
+evaluation/contracts.py
+evaluation/evaluator.py
+evaluation/simple_evaluator.py
 ```
 
 Verification:
