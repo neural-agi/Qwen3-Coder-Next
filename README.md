@@ -263,3 +263,24 @@ Current result:
 ## License
 
 License to be determined.
+=======
+configs/
+docs/
+scripts/
+```
+## Project Documentation
+
+Core project documentation is located in:
+
+```text
+documents/
+```
+
+Important files:
+
+- vision.md
+- architecture.md
+- roadmap.md
+- progress.md
+- coding_standards.md
+- session_handoff.md
