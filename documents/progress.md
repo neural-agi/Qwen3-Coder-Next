@@ -16,11 +16,11 @@ Part 1 Foundation
 
 Current Step:
 
-Step 11 Complete
+Step 12 Complete
 
 Next Step:
 
-Step 12 - Prompt Infrastructure
+Step 13 - Memory Foundation
 
 Repository State:
 
@@ -32,7 +32,7 @@ All smoke tests passing
 
 Current Test Count:
 
-26 Passing
+29 Passing
 
 ---
 
@@ -380,8 +380,37 @@ Verification:
 * Smoke tests added
 * Full test suite passing
 
----
+## Step 12 - Prompt Infrastructure
 
+Status: Complete
+
+Summary:
+
+Added the prompt template, registry, and filesystem loading foundation.
+
+Implemented:
+
+* PromptFormat
+* PromptTemplate
+* PromptLoadRequest
+* PromptLoadResult
+* PromptRegistry
+* PromptLoader
+
+Files Added:
+
+```text
+prompts/contracts.py
+prompts/registry.py
+prompts/loader.py
+```
+
+Verification:
+
+* Smoke tests added
+* Full test suite passing
+
+---
 # Current Architecture Snapshot
 
 Implemented Systems:
@@ -458,5 +487,6 @@ Do not redesign completed foundation components unless required by a future road
 Preserve existing public interfaces whenever possible.
 
 All new work should include automated tests.
+
 
 

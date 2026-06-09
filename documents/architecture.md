@@ -293,6 +293,29 @@ Current Implementation:
 
 ---
 
+### Prompt Infrastructure
+
+Location:
+
+```text
+src/qwen3_coder_next/prompts
+```
+
+Purpose:
+
+Provide versioned prompt templates, a prompt registry, and deterministic filesystem loading.
+
+Current Implementation:
+
+* PromptFormat
+* PromptTemplate
+* PromptLoadRequest
+* PromptLoadResult
+* PromptRegistry
+* PromptLoader
+
+---
+
 ### Runtime Bootstrap
 
 Location:
