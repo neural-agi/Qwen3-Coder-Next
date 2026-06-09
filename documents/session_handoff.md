@@ -84,6 +84,17 @@ Implemented:
 
 ### Step 2
 
+Workspace resolution boundaries created.
+
+Implemented:
+
+* WorkspaceResolutionRequest
+* WorkspaceResolutionResult
+* WorkspaceResolver
+* StaticWorkspaceResolver
+
+### Step 2
+
 Core contract definitions created.
 
 Implemented:
@@ -349,7 +360,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 2: Agent Core
+Part 2: Filesystem + Local Tooling Step 3
 ```
 
 Before implementing:
@@ -408,7 +419,7 @@ Completed Foundation Steps:
 Test Status:
 
 ```text
-46 passing
+48 passing
 0 failing
 ```
 
@@ -416,6 +427,6 @@ Repository State:
 
 ```text
 Healthy
-Step 1 complete
-Ready for Part 2 Step 2
+Step 2 complete
+Ready for Part 2 Step 3
 ```

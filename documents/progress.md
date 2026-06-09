@@ -16,11 +16,11 @@ Part 2 Filesystem + Local Tooling
 
 Current Step:
 
-Step 1 Complete
+Step 2 Complete
 
 Next Step:
 
-Step 2 - Pending
+Step 3 - Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All smoke tests passing
 
 Current Test Count:
 
-46 Passing
+48 Passing
 
 ---
 
@@ -380,6 +380,8 @@ Verification:
 * Smoke tests added
 * Full test suite passing
 
+---
+
 ## Step 12 - Prompt Infrastructure
 
 Status: Complete
@@ -435,7 +437,7 @@ Status: Complete
 
 Summary:
 
-Added the foundational in-memory memory layer with immutable contracts and basic lifecycle operations.
+Added the foundational memory layer with immutable contracts and basic lifecycle operations.
 
 Implemented:
 
@@ -467,7 +469,7 @@ Status: Complete
 
 Summary:
 
-Added the foundational in-memory tool layer with immutable contracts, registry, manager, and deterministic example tool execution.
+Added the foundational tool layer with immutable contracts, registry, manager, and deterministic example tool execution.
 
 Implemented:
 
@@ -530,49 +532,112 @@ Verification:
 * Full test suite passing
 
 ---
+
+## Part 2 - Step 1
+
+Status: Complete
+
+Summary:
+
+Defined the policy and schema boundaries for the local tooling layer.
+
+Implemented:
+
+* RequestEnvelope
+* ResponseEnvelope
+* WorkspaceContext
+* ExecutionPolicy
+* FileResult
+* CommandResult
+* ArtifactDescriptor
+* AuditEvent
+
+Files Added:
+
+```text
+local_tooling/contracts.py
+```
+
+Verification:
+
+* Smoke tests added
+* Full test suite passing
+
+---
+
+## Part 2 - Step 2
+
+Status: Complete
+
+Summary:
+
+Added deterministic workspace resolution boundaries for the local tooling layer.
+
+Implemented:
+
+* WorkspaceResolutionRequest
+* WorkspaceResolutionResult
+* WorkspaceResolver
+* StaticWorkspaceResolver
+
+Files Added:
+
+```text
+local_tooling/resolution.py
+```
+
+Verification:
+
+* Smoke tests added
+* Full test suite passing
+
+---
+
 # Current Architecture Snapshot
 
 Implemented Systems:
 
-✅ Contracts
+✓ Contracts
 
-✅ Configuration
+✓ Configuration
 
-✅ Logging
+✓ Logging
 
-✅ State Management
+✓ State Management
 
-✅ Model Gateway
+✓ Model Gateway
 
-✅ Runtime Context
+✓ Runtime Context
 
-✅ Orchestrator
+✓ Orchestrator
 
-✅ Artifact Management
+✓ Artifact Management
 
-✅ Runtime Bootstrap
+✓ Runtime Bootstrap
 
-✅ Execution Skeleton
+✓ Execution Skeleton
 
-✅ Planning Foundation
+✓ Planning Foundation
 
-✅ Prompt Infrastructure
+✓ Prompt Infrastructure
 
-✅ Memory Foundation
+✓ Memory Foundation
 
-✅ Tool Framework
+✓ Tool Framework
 
-✅ Evaluation Foundation
+✓ Evaluation Foundation
 
-✅ Local Tooling Contracts
+✓ Local Tooling Contracts
+
+✓ Local Tooling Resolution
 
 Pending Systems:
 
-⬜ Local Tooling Implementation
+□ Local Tooling Implementation
 
-⬜ Repository Intelligence
+□ Repository Intelligence
 
-⬜ Multi-Agent Systems
+□ Multi-Agent Systems
 
 ---
 
@@ -610,9 +675,3 @@ Do not redesign completed foundation components unless required by a future road
 Preserve existing public interfaces whenever possible.
 
 All new work should include automated tests.
-
-
-
-
-
-

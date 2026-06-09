@@ -415,6 +415,39 @@ Current Implementation:
 * ArtifactDescriptor
 * AuditEvent
 
+### Local Tooling Resolution
+
+Location:
+
+```text
+src/qwen3_coder_next/local_tooling
+```
+
+Purpose:
+
+Provide a deterministic workspace resolution boundary without filesystem discovery.
+
+Current Implementation:
+
+* WorkspaceResolutionRequest
+* WorkspaceResolutionResult
+* WorkspaceResolver
+* StaticWorkspaceResolver
+
+Responsibilities:
+
+* Workspace resolution contracts
+* Deterministic workspace selection
+* Stable request/result boundary
+
+Current Limitations:
+
+* No workspace discovery
+* No path normalization
+* No filesystem traversal
+* No command execution
+* No audit routing
+
 ---
 
 ### Runtime Bootstrap

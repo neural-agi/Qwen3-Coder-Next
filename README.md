@@ -38,10 +38,11 @@ Current test status:
 Completed:
 
 * Step 1: Define policy and schema boundaries
+* Step 2: Workspace Resolution
 
 Current target:
 
-* Step 2
+* Step 3
 
 ## Project Goals
 
@@ -208,6 +209,17 @@ Current implementation:
 * ArtifactDescriptor
 * AuditEvent
 
+#### Local Tooling Resolution
+
+Deterministic workspace resolution boundary for the local tooling layer.
+
+Current implementation:
+
+* WorkspaceResolutionRequest
+* WorkspaceResolutionResult
+* WorkspaceResolver
+* StaticWorkspaceResolver
+
 #### Runtime Context
 
 Centralized service container providing:
@@ -304,7 +316,7 @@ uv run python -m unittest discover -s tests -v
 Current result:
 
 ```text
-46 tests passed
+48 tests passed
 ```
 
 ## Roadmap
@@ -331,6 +343,7 @@ Current result:
 ### Part 2: Filesystem + Local Tooling
 
 * [x] Define policy and schema boundaries
+* [x] Workspace Resolution
 
 ### Future Development
 

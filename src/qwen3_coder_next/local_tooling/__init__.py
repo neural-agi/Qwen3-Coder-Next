@@ -10,6 +10,12 @@ from qwen3_coder_next.local_tooling.contracts import (
     ResponseEnvelope,
     WorkspaceContext,
 )
+from qwen3_coder_next.local_tooling.resolution import (
+    StaticWorkspaceResolver,
+    WorkspaceResolutionRequest,
+    WorkspaceResolutionResult,
+    WorkspaceResolver,
+)
 
 __all__ = [
     "ArtifactDescriptor",
@@ -19,5 +25,9 @@ __all__ = [
     "FileResult",
     "RequestEnvelope",
     "ResponseEnvelope",
+    "StaticWorkspaceResolver",
+    "WorkspaceResolutionRequest",
+    "WorkspaceResolutionResult",
+    "WorkspaceResolver",
     "WorkspaceContext",
 ]
