@@ -1,52 +1,56 @@
-# Qwen3-Coder-Next
+# Qwen3CoderNext
 
-Qwen3-Coder-Next is a local-first coding agent framework designed to provide Codex-like project assistance while running primarily on user-controlled infrastructure.
+Qwen3CoderNext is a local first coding agent framework designed to provide Codex like project assistance while running primarily on user controlled infrastructure.
 
-The project is currently in the Foundation Phase, where the focus is on building a clean, modular, and testable architecture before introducing planning systems, memory, repository intelligence, tool execution, and autonomous coding workflows.
-Foundation persistence is filesystem-backed for state, artifacts, and memory so the runtime can reload core data after a process restart.
+The project is being built incrementally from a clean, testable foundation toward a full coding agent platform capable of repository understanding, planning, memory management, tool execution, and autonomous development workflows.
+
+---
 
 ## Current Status
 
-### Part 1: Foundation
+### Part 1: Foundation Layer ✅
 
 Completed:
 
-* Step 1: Repository Skeleton
-* Step 2: Core Contracts
-* Step 3: Configuration System
-* Step 4: Logging Infrastructure
-* Step 5: In-Memory State Management
-* Step 6: Model Gateway Abstraction
-* Step 7: Runtime Orchestration Shell
-* Step 8: Artifact Management
-* Step 9: Runtime Bootstrap Layer
-* Step 10: Execution Framework
-* Step 11: Planning Foundation
-* Step 12: Prompt Infrastructure
-* Step 13: Memory Foundation
-* Step 14: Tool Framework
-* Step 15: Evaluation Foundation
+* Repository Skeleton
+* Core Contracts
+* Configuration System
+* Logging Infrastructure
+* State Management
+* Model Gateway
+* Runtime Orchestration Shell
+* Artifact Management
+* Runtime Bootstrap
+* Execution Framework
+* Planning Foundation
+* Prompt Infrastructure
+* Memory Foundation
+* Tool Framework
+* Evaluation Foundation
 
-Current test status:
-
-```text
-46 tests passed
-```
-
-### Part 2: Filesystem + Local Tooling
+### Part 2: Filesystem + Local Tooling 🚧
 
 Completed:
 
-* Step 1: Define policy and schema boundaries
+* Step 1: Policy & Schema Boundaries
 * Step 2: Workspace Resolution
 
-Current target:
+Current Target:
 
-* Step 3
+* Step 3: Filesystem Operations Implementation
 
-## Project Goals
+### Validation Status
 
-Qwen3-Coder-Next aims to become a modular coding-agent platform capable of:
+```text
+48 tests passing
+0 failures
+```
+
+---
+
+## Vision
+
+Qwen3CoderNext aims to become a modular coding agent platform capable of:
 
 * Repository understanding
 * Planning and task decomposition
@@ -54,151 +58,38 @@ Qwen3-Coder-Next aims to become a modular coding-agent platform capable of:
 * Tool execution
 * Artifact generation
 * Autonomous coding workflows
-* Local-first operation
-* Support for multiple model backends
+* Local first operation
+* Multiple model backends
 
-The project is intentionally being built from the foundation upward to ensure maintainability, testability, and extensibility.
+The project prioritizes maintainability, testability, and architectural clarity before advanced agent behavior is introduced.
 
-## Current Architecture
+---
 
-### Foundation Layer
+## Architecture Overview
 
-#### Contracts
+### Foundation Systems
 
-Strongly typed immutable contracts used across the system.
+| Component             | Purpose                                               |
+| --------------------- | ----------------------------------------------------- |
+| Contracts             | Shared immutable system contracts                     |
+| Configuration         | Typed application settings and environment management |
+| Logging               | Structured console and file logging                   |
+| State Management      | Filesystem backed task lifecycle persistence          |
+| Artifact Management   | Filesystem backed artifact persistence                |
+| Model Gateway         | Model abstraction and routing layer                   |
+| Planning Foundation   | Deterministic planning abstractions                   |
+| Prompt Infrastructure | Prompt templates, registry, and loading               |
+| Memory Foundation     | Persistent memory storage layer                       |
+| Tool Framework        | Tool contracts, registry, and execution abstractions  |
+| Evaluation Foundation | Evaluation contracts and scoring abstractions         |
+| Runtime Context       | Centralized service container                         |
+| Orchestrator          | Runtime service coordination                          |
+| Runtime Bootstrap     | Startup and shutdown lifecycle                        |
+| Executor              | Task execution workflow                               |
 
-Examples:
-
-* TaskRequest
-* TaskResult
-* TaskState
-* ModelRequest
-* ModelResponse
-* ArtifactRecord
-* PlanRequest
-* PlanResult
-* PromptTemplate
-
-#### Configuration
-
-Centralized application settings with:
-
-* Environment support
-* Runtime configuration
-* Environment variable overrides
-* Typed pathlib.Path usage
-
-#### Logging
-
-Structured application logging with:
-
-* Console output
-* File logging
-* Formatter abstraction
-* Logger lifecycle management
-
-#### State Management
-
-Filesystem-backed task lifecycle tracking with JSON persistence.
-
-Supports:
-
-* Create
-* Retrieve
-* Update
-* Delete
-* List
-
-#### Artifact Management
-
-Filesystem-backed artifact tracking with JSON persistence.
-
-Supports:
-
-* Create
-* Retrieve
-* Update
-* Delete
-* List
-
-#### Model Gateway
-
-Model interaction abstraction layer.
-
-Current implementation:
-
-* StubModelAdapter
-
-Future implementations:
-
-* Qwen
-* DeepSeek
-* OpenAI-compatible APIs
-* Local inference engines
-
-#### Planning Foundation
-
-Minimal prompt-free planning layer for deterministic preparation work.
-
-Current implementation:
-
-* PlanRequest
-* PlanResult
-* PlanStep
-* SimplePlanner
-
-#### Prompt Infrastructure
-
-Versioned prompt templates with in-memory registry and filesystem loading.
-
-Current implementation:
-
-* PromptTemplate
-* PromptRegistry
-* PromptLoader
-
-#### Memory Foundation
-
-Filesystem-backed memory layer with immutable contracts and basic lifecycle operations.
-
-Current implementation:
-
-* MemoryEntry
-* MemoryStore
-* MemoryManager
-
-#### Tool Framework
-
-Foundational in-memory tool layer with immutable contracts, registry, manager, and deterministic example execution.
-
-Current implementation:
-
-* ToolDefinition
-* ToolRequest
-* ToolResult
-* ToolRegistry
-* ToolManager
-* EchoTool
-
-#### Evaluation Foundation
-
-Foundational evaluation layer with immutable contracts, abstraction, and deterministic example evaluation.
-
-Current implementation:
-
-* EvaluationStatus
-* EvaluationScore
-* EvaluationRequest
-* EvaluationOutcome
-* EvaluationResult
-* Evaluator
-* SimpleEvaluator
+### Local Tooling Foundations
 
 #### Local Tooling Contracts
-
-Foundational immutable contracts for the local tooling boundary.
-
-Current implementation:
 
 * RequestEnvelope
 * ResponseEnvelope
@@ -209,46 +100,14 @@ Current implementation:
 * ArtifactDescriptor
 * AuditEvent
 
-#### Local Tooling Resolution
-
-Deterministic workspace resolution boundary for the local tooling layer.
-
-Current implementation:
+#### Workspace Resolution
 
 * WorkspaceResolutionRequest
 * WorkspaceResolutionResult
 * WorkspaceResolver
 * StaticWorkspaceResolver
 
-#### Runtime Context
-
-Centralized service container providing:
-
-* Configuration
-* Logging
-* State Management
-* Artifact Management
-* Memory Management
-* Model Gateway
-
-#### Orchestrator
-
-Foundation orchestration shell for coordinating runtime services.
-
-#### Runtime Bootstrap
-
-Application startup and shutdown management.
-
-#### Executor
-
-Minimal execution framework that:
-
-* Accepts task requests
-* Tracks lifecycle state
-* Routes requests through the model gateway
-* Returns execution results
-
-No planning or autonomous behavior is implemented yet.
+---
 
 ## Repository Layout
 
@@ -260,12 +119,16 @@ src/
     ├── bootstrap/
     ├── config/
     ├── contracts/
+    ├── evaluation/
     ├── execution/
+    ├── local_tooling/
     ├── logging/
+    ├── memory/
     ├── planning/
     ├── prompts/
     ├── runtime/
     ├── state/
+    ├── tools/
     └── utils/
 
 tests/
@@ -274,59 +137,62 @@ tests/
 └── integration/
 
 configs/
-docs/
+documents/
 scripts/
 ```
+
+---
 
 ## Requirements
 
 * Python 3.13+
 * uv
 
+---
+
 ## Installation
 
-```powershell
-git clone <https://github.com/neural-agi/Qwen3-Coder-Next>
-cd Qwen3-Coder-Next
+```bash
+git clone https://github.com/neuralagi/Qwen3CoderNext.git
+cd Qwen3CoderNext
 uv sync
 ```
 
-## Run
+---
 
-```powershell
+## Running
+
+```bash
 uv run python -m qwen3_coder_next
 ```
 
-Example output:
-
-```text
-2026-06-08 13:52:14 | INFO | qwen3_coder_next.bootstrap.runtime | Qwen3-Coder-Next Foundation Runtime Starting
-2026-06-08 13:52:14 | INFO | qwen3_coder_next.bootstrap.runtime | Repository Skeleton Loaded
-2026-06-08 13:52:14 | INFO | qwen3_coder_next.bootstrap.runtime | Shutdown Complete
-```
+---
 
 ## Testing
 
-Run the complete test suite:
+Run the full test suite:
 
-```powershell
+```bash
 uv run python -m unittest discover -s tests -v
 ```
 
 Current result:
 
 ```text
-48 tests passed
+48 tests passing
+0 failures
 ```
+
+---
 
 ## Roadmap
 
-### Foundation Phase
+### Part 1: Foundation Layer ✅
 
 * [x] Repository Skeleton
-* [x] Contracts
-* [x] Configuration
-* [x] Logging
+* [x] Core Contracts
+* [x] Configuration System
+* [x] Logging Infrastructure
 * [x] State Management
 * [x] Model Gateway
 * [x] Runtime Context
@@ -340,19 +206,25 @@ Current result:
 * [x] Tool Framework
 * [x] Evaluation Foundation
 
-### Part 2: Filesystem + Local Tooling
+### Part 2: Filesystem + Local Tooling 🚧
 
-* [x] Define policy and schema boundaries
+* [x] Policy & Schema Boundaries
 * [x] Workspace Resolution
+* [ ] Filesystem Operations
+* [ ] Command Execution
+* [ ] Repository Intelligence Foundations
 
 ### Future Development
 
 * [ ] Repository Intelligence
-* [ ] Planning Engine
+* [ ] Advanced Planning Engine
 * [ ] Agent Workflow Runtime
 * [ ] Code Generation Pipelines
-* [ ] Multi-Model Support
+* [ ] MultiModel Support
 * [ ] Autonomous Coding Workflows
+* [ ] MultiAgent Coordination
+
+---
 
 ## License
 
