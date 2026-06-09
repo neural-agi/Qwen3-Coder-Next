@@ -4,6 +4,12 @@ Qwen3CoderNext is a local first coding agent framework designed to provide Codex
 
 The project is being built incrementally from a clean, testable foundation toward a full coding agent platform capable of repository understanding, planning, memory management, tool execution, and autonomous development workflows.
 
+> 🚧 Active Development
+>
+> Qwen3CoderNext is currently in early development.
+> The foundation layer is complete and Part 2 (Filesystem + Local Tooling) is in progress.
+> The project is not yet a fully functional coding agent.
+
 ---
 
 ## Current Status
