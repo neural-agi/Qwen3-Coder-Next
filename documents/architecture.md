@@ -270,6 +270,29 @@ Future Responsibilities:
 
 ---
 
+### Planning Foundation
+
+Location:
+
+```text
+src/qwen3_coder_next/planning
+```
+
+Purpose:
+
+Provide the initial planning contracts and a deterministic planner abstraction for preparation work.
+
+Current Implementation:
+
+* PlanRequest
+* PlanResult
+* PlanStep
+* PlanStatus
+* Planner abstraction
+* SimplePlanner
+
+---
+
 ### Runtime Bootstrap
 
 Location:
@@ -327,7 +350,6 @@ Responsibilities:
 
 Current Limitations:
 
-* No planning
 * No memory
 * No tools
 * No artifact generation

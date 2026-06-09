@@ -16,11 +16,11 @@ Part 1 Foundation
 
 Current Step:
 
-Step 10 Complete
+Step 11 Complete
 
 Next Step:
 
-Step 11 - Planning Foundation
+Step 12 - Prompt Infrastructure
 
 Repository State:
 
@@ -32,7 +32,7 @@ All smoke tests passing
 
 Current Test Count:
 
-24 Passing
+26 Passing
 
 ---
 
@@ -350,6 +350,38 @@ All verified.
 
 ---
 
+## Step 11 - Planning Foundation
+
+Status: Complete
+
+Summary:
+
+Added the initial planning contracts and planner abstraction.
+
+Implemented:
+
+* PlanRequest
+* PlanResult
+* PlanStep
+* PlanStatus
+* Planner abstraction
+* SimplePlanner
+
+Files Added:
+
+```text
+planning/contracts.py
+planning/planner.py
+planning/simple_planner.py
+```
+
+Verification:
+
+* Smoke tests added
+* Full test suite passing
+
+---
+
 # Current Architecture Snapshot
 
 Implemented Systems:
@@ -374,9 +406,9 @@ Implemented Systems:
 
 ✅ Execution Skeleton
 
-Pending Systems:
+✅ Planning Foundation
 
-⬜ Planning
+Pending Systems:
 
 ⬜ Prompt Infrastructure
 
@@ -426,3 +458,5 @@ Do not redesign completed foundation components unless required by a future road
 Preserve existing public interfaces whenever possible.
 
 All new work should include automated tests.
+
+
