@@ -59,7 +59,7 @@ Rules that must be followed:
 
 ## Current Phase
 
-Part 1: Foundation Layer
+Part 2: Filesystem + Local Tooling
 
 Status: In Progress
 
@@ -69,7 +69,18 @@ Status: In Progress
 
 ### Step 1
 
-Repository skeleton created.
+Define policy and schema boundaries.
+
+Implemented:
+
+* RequestEnvelope
+* ResponseEnvelope
+* WorkspaceContext
+* ExecutionPolicy
+* FileResult
+* CommandResult
+* ArtifactDescriptor
+* AuditEvent
 
 ### Step 2
 
@@ -215,6 +226,12 @@ adapters/
 runtime/
 artifacts/
 execution/
+planning/
+prompts/
+memory/
+tools/
+evaluation/
+local_tooling/
 ```
 
 Core flow:
@@ -391,7 +408,7 @@ Completed Foundation Steps:
 Test Status:
 
 ```text
-44 passing
+46 passing
 0 failing
 ```
 
@@ -399,7 +416,6 @@ Repository State:
 
 ```text
 Healthy
-Step 15 complete
-Persistence and restartability verified
-Ready for Part 2
+Step 1 complete
+Ready for Part 2 Step 2
 ```

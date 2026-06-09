@@ -3,7 +3,7 @@
 Qwen3-Coder-Next is a local-first coding agent framework designed to provide Codex-like project assistance while running primarily on user-controlled infrastructure.
 
 The project is currently in the Foundation Phase, where the focus is on building a clean, modular, and testable architecture before introducing planning systems, memory, repository intelligence, tool execution, and autonomous coding workflows.
-Foundation persistence is now filesystem-backed for state, artifacts, and memory so the runtime can reload core data after a process restart.
+Foundation persistence is filesystem-backed for state, artifacts, and memory so the runtime can reload core data after a process restart.
 
 ## Current Status
 
@@ -30,8 +30,18 @@ Completed:
 Current test status:
 
 ```text
-44 tests passed
+46 tests passed
 ```
+
+### Part 2: Filesystem + Local Tooling
+
+Completed:
+
+* Step 1: Define policy and schema boundaries
+
+Current target:
+
+* Step 2
 
 ## Project Goals
 
@@ -183,6 +193,21 @@ Current implementation:
 * Evaluator
 * SimpleEvaluator
 
+#### Local Tooling Contracts
+
+Foundational immutable contracts for the local tooling boundary.
+
+Current implementation:
+
+* RequestEnvelope
+* ResponseEnvelope
+* WorkspaceContext
+* ExecutionPolicy
+* FileResult
+* CommandResult
+* ArtifactDescriptor
+* AuditEvent
+
 #### Runtime Context
 
 Centralized service container providing:
@@ -279,7 +304,7 @@ uv run python -m unittest discover -s tests -v
 Current result:
 
 ```text
-44 tests passed
+46 tests passed
 ```
 
 ## Roadmap
@@ -302,6 +327,10 @@ Current result:
 * [x] Memory Foundation
 * [x] Tool Framework
 * [x] Evaluation Foundation
+
+### Part 2: Filesystem + Local Tooling
+
+* [x] Define policy and schema boundaries
 
 ### Future Development
 

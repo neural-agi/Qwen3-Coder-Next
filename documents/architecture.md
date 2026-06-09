@@ -392,6 +392,31 @@ Current Implementation:
 
 ---
 
+### Local Tooling Contracts
+
+Location:
+
+```text
+src/qwen3_coder_next/local_tooling
+```
+
+Purpose:
+
+Define the policy and schema boundaries for the filesystem-adjacent local tooling layer.
+
+Current Implementation:
+
+* RequestEnvelope
+* ResponseEnvelope
+* WorkspaceContext
+* ExecutionPolicy
+* FileResult
+* CommandResult
+* ArtifactDescriptor
+* AuditEvent
+
+---
+
 ### Runtime Bootstrap
 
 Location:
