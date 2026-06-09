@@ -337,6 +337,31 @@ Current Implementation:
 
 ---
 
+### Tool Framework
+
+Location:
+
+```text
+src/qwen3_coder_next/tools
+```
+
+Purpose:
+
+Provide immutable tool contracts, a registry, a manager, and a deterministic example tool.
+
+Current Implementation:
+
+* ToolStatus
+* ToolDefinition
+* ToolRequest
+* ToolResult
+* Tool abstraction
+* ToolRegistry
+* ToolManager
+* EchoTool
+
+---
+
 ### Runtime Bootstrap
 
 Location:
@@ -396,7 +421,6 @@ Current Limitations:
 
 * No memory persistence
 * No memory
-* No tools
 * No artifact generation
 
 ---

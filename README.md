@@ -23,11 +23,12 @@ Completed:
 * Step 11: Planning Foundation
 * Step 12: Prompt Infrastructure
 * Step 13: Memory Foundation
+* Step 14: Tool Framework
 
 Current test status:
 
 ```text
-29 tests passed
+38 tests passed
 ```
 
 ## Project Goals
@@ -153,6 +154,19 @@ Current implementation:
 * MemoryStore
 * MemoryManager
 
+#### Tool Framework
+
+Foundational in-memory tool layer with immutable contracts, registry, manager, and deterministic example execution.
+
+Current implementation:
+
+* ToolDefinition
+* ToolRequest
+* ToolResult
+* ToolRegistry
+* ToolManager
+* EchoTool
+
 #### Runtime Context
 
 Centralized service container providing:
@@ -272,6 +286,7 @@ Current result:
 
 * [ ] Tool Registry
 * [x] Memory Layer
+* [x] Tool Registry
 * [ ] Repository Intelligence
 * [ ] Planning Engine
 * [ ] Agent Workflow Runtime

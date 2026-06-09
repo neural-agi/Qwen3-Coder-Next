@@ -16,11 +16,11 @@ Part 1 Foundation
 
 Current Step:
 
-Step 13 Complete
+Step 14 Complete
 
 Next Step:
 
-Step 14 - Tool Framework
+Step 15 - Evaluation Foundation
 
 Repository State:
 
@@ -32,7 +32,7 @@ All smoke tests passing
 
 Current Test Count:
 
-33 Passing
+38 Passing
 
 ---
 
@@ -435,6 +435,43 @@ memory/contracts.py
 memory/exceptions.py
 memory/store.py
 memory/manager.py
+```
+
+Verification:
+
+* Smoke tests added
+* Full test suite passing
+
+---
+
+## Step 14 - Tool Framework
+
+Status: Complete
+
+Summary:
+
+Added the foundational in-memory tool layer with immutable contracts, registry, manager, and deterministic example tool execution.
+
+Implemented:
+
+* ToolStatus
+* ToolDefinition
+* ToolRequest
+* ToolResult
+* Tool abstraction
+* ToolRegistry
+* ToolManager
+* EchoTool
+
+Files Added:
+
+```text
+tools/contracts.py
+tools/exceptions.py
+tools/tool.py
+tools/registry.py
+tools/manager.py
+tools/echo_tool.py
 ```
 
 Verification:
