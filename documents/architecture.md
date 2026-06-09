@@ -316,6 +316,27 @@ Current Implementation:
 
 ---
 
+### Memory Foundation
+
+Location:
+
+```text
+src/qwen3_coder_next/memory
+```
+
+Purpose:
+
+Provide immutable memory contracts and a deterministic in-memory store for basic lifecycle operations.
+
+Current Implementation:
+
+* MemoryKind
+* MemoryEntry
+* MemoryStore
+* MemoryManager
+
+---
+
 ### Runtime Bootstrap
 
 Location:
@@ -373,6 +394,7 @@ Responsibilities:
 
 Current Limitations:
 
+* No memory persistence
 * No memory
 * No tools
 * No artifact generation

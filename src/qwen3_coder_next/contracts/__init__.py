@@ -6,6 +6,7 @@ from qwen3_coder_next.contracts.runtime import RuntimeConfig
 from qwen3_coder_next.planning.contracts import PlanRequest, PlanResult, PlanStatus, PlanStep
 from qwen3_coder_next.contracts.state import MessageRecord, TaskState
 from qwen3_coder_next.contracts.task import TaskRequest, TaskResult, TaskStatus
+from qwen3_coder_next.memory.contracts import MemoryEntry, MemoryKind
 
 __all__ = [
     "ArtifactRecord",
@@ -13,6 +14,8 @@ __all__ = [
     "MessageRecord",
     "ModelRequest",
     "ModelResponse",
+    "MemoryEntry",
+    "MemoryKind",
     "PlanRequest",
     "PlanResult",
     "PlanStatus",
