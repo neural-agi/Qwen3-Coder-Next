@@ -148,7 +148,8 @@ Responsibilities:
 
 Current Implementation:
 
-* In-memory store
+* Filesystem-backed store
+* JSON persistence
 
 Future Possibilities:
 
@@ -178,7 +179,8 @@ Responsibilities:
 
 Current Implementation:
 
-* In-memory store
+* Filesystem-backed store
+* JSON persistence
 
 Future Possibilities:
 
@@ -238,6 +240,8 @@ Contains:
 
 * Settings
 * State Manager
+* Artifact Manager
+* Memory Manager
 * Model Gateway
 * Logger
 
@@ -326,7 +330,7 @@ src/qwen3_coder_next/memory
 
 Purpose:
 
-Provide immutable memory contracts and a deterministic in-memory store for basic lifecycle operations.
+Provide immutable memory contracts and a deterministic filesystem-backed store for basic lifecycle operations.
 
 Current Implementation:
 
@@ -334,6 +338,8 @@ Current Implementation:
 * MemoryEntry
 * MemoryStore
 * MemoryManager
+* Filesystem-backed store
+* JSON persistence
 
 ---
 
@@ -443,7 +449,6 @@ Responsibilities:
 
 Current Limitations:
 
-* No memory persistence
 * No artifact generation
 
 ---

@@ -1,6 +1,8 @@
 """Smoke tests for the memory foundation."""
 
 import unittest
+from tempfile import TemporaryDirectory
+from pathlib import Path
 
 from qwen3_coder_next.memory import (
     DuplicateMemoryError,
@@ -97,3 +99,19 @@ class MemoryFoundationSmokeTest(unittest.TestCase):
         manager.create_memory(memory)
         self.assertEqual(manager.get_memory("memory-004"), memory)
         self.assertEqual(manager.list_memories(), [memory])
+
+    def test_memory_survives_restart(self) -> None:
+        """Persist memories to disk and reload them in a fresh store."""
+
+        with TemporaryDirectory() as temp_dir:
+            storage_path = Path(temp_dir) / "memory.json"
+            store = MemoryStore(storage_path)
+            memory = MemoryEntry(
+                memory_id="memory-persisted",
+                kind=MemoryKind.EPISODIC,
+                content="Persisted memory.",
+            )
+
+            store.create_memory(memory)
+            reloaded_store = MemoryStore(storage_path)
+            self.assertEqual(reloaded_store.get_memory("memory-persisted"), memory)

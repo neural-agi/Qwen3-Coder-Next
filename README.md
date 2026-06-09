@@ -3,6 +3,7 @@
 Qwen3-Coder-Next is a local-first coding agent framework designed to provide Codex-like project assistance while running primarily on user-controlled infrastructure.
 
 The project is currently in the Foundation Phase, where the focus is on building a clean, modular, and testable architecture before introducing planning systems, memory, repository intelligence, tool execution, and autonomous coding workflows.
+Foundation persistence is now filesystem-backed for state, artifacts, and memory so the runtime can reload core data after a process restart.
 
 ## Current Status
 
@@ -29,7 +30,7 @@ Completed:
 Current test status:
 
 ```text
-40 tests passed
+44 tests passed
 ```
 
 ## Project Goals
@@ -87,7 +88,7 @@ Structured application logging with:
 
 #### State Management
 
-In-memory task lifecycle tracking.
+Filesystem-backed task lifecycle tracking with JSON persistence.
 
 Supports:
 
@@ -99,7 +100,7 @@ Supports:
 
 #### Artifact Management
 
-In-memory artifact tracking.
+Filesystem-backed artifact tracking with JSON persistence.
 
 Supports:
 
@@ -147,7 +148,7 @@ Current implementation:
 
 #### Memory Foundation
 
-Foundational in-memory memory layer with immutable contracts and basic lifecycle operations.
+Filesystem-backed memory layer with immutable contracts and basic lifecycle operations.
 
 Current implementation:
 
@@ -189,6 +190,8 @@ Centralized service container providing:
 * Configuration
 * Logging
 * State Management
+* Artifact Management
+* Memory Management
 * Model Gateway
 
 #### Orchestrator
@@ -276,7 +279,7 @@ uv run python -m unittest discover -s tests -v
 Current result:
 
 ```text
-29 tests passed
+44 tests passed
 ```
 
 ## Roadmap
@@ -296,13 +299,12 @@ Current result:
 * [x] Execution Framework
 * [x] Planning Foundation
 * [x] Prompt Infrastructure
+* [x] Memory Foundation
+* [x] Tool Framework
+* [x] Evaluation Foundation
 
 ### Future Development
 
-* [ ] Tool Registry
-* [x] Memory Layer
-* [x] Tool Framework
-* [x] Evaluation Foundation
 * [ ] Repository Intelligence
 * [ ] Planning Engine
 * [ ] Agent Workflow Runtime

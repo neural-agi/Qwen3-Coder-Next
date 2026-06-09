@@ -5,8 +5,10 @@ from tempfile import TemporaryDirectory
 import unittest
 
 from qwen3_coder_next.adapters import ModelGateway, StubModelAdapter
+from qwen3_coder_next.artifacts import ArtifactManager
 from qwen3_coder_next.config import AppSettings, EnvironmentName
 from qwen3_coder_next.logging import ApplicationLogger
+from qwen3_coder_next.memory import MemoryManager
 from qwen3_coder_next.runtime import (
     RUNTIME_LOGGER_NAME,
     Orchestrator,
@@ -41,6 +43,8 @@ class OrchestrationShellSmokeTest(unittest.TestCase):
             self.assertIsInstance(context, RuntimeContext)
             self.assertIs(context.settings, settings)
             self.assertIsInstance(context.state_manager, StateManager)
+            self.assertIsInstance(context.artifact_manager, ArtifactManager)
+            self.assertIsInstance(context.memory_manager, MemoryManager)
             self.assertIsInstance(context.model_gateway, ModelGateway)
             self.assertEqual(context.logger.name, RUNTIME_LOGGER_NAME)
             ApplicationLogger.shutdown(RUNTIME_LOGGER_NAME)
@@ -54,6 +58,8 @@ class OrchestrationShellSmokeTest(unittest.TestCase):
             context = RuntimeContext(
                 settings=settings,
                 state_manager=StateManager(),
+                artifact_manager=ArtifactManager(),
+                memory_manager=MemoryManager(),
                 model_gateway=ModelGateway(StubModelAdapter()),
                 logger=logger,
             )

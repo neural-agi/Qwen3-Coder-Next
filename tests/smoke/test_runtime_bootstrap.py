@@ -3,9 +3,12 @@
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
+from datetime import UTC, datetime
 
 from qwen3_coder_next.bootstrap import BOOTSTRAP_LOGGER_NAME, RuntimeBootstrap
 from qwen3_coder_next.config import AppSettings, EnvironmentName
+from qwen3_coder_next.contracts import ArtifactRecord, ArtifactType, TaskState, TaskStatus
+from qwen3_coder_next.memory import MemoryEntry, MemoryKind
 from qwen3_coder_next.runtime import Orchestrator, RuntimeContext
 
 
@@ -54,6 +57,59 @@ class RuntimeBootstrapSmokeTest(unittest.TestCase):
             self.assertIn("Repository Skeleton Loaded", log_content)
             self.assertIn("Shutdown Complete", log_content)
             self.assertIn(BOOTSTRAP_LOGGER_NAME, log_content)
+
+    def test_restartable_persistence_across_bootstrap_cycles(self) -> None:
+        """Persist state, artifact, and memory data across bootstrap restarts."""
+
+        with TemporaryDirectory() as temp_dir:
+            settings = self._build_settings(Path(temp_dir))
+            bootstrap = RuntimeBootstrap.initialize(settings)
+
+            now = datetime.now(UTC)
+            bootstrap.context.state_manager.create_state(
+                TaskState(
+                    task_id="task-persisted",
+                    status=TaskStatus.PENDING,
+                    created_at=now,
+                    updated_at=now,
+                )
+            )
+            bootstrap.context.artifact_manager.create_artifact(
+                ArtifactRecord(
+                    artifact_id="artifact-persisted",
+                    artifact_type=ArtifactType.FILE,
+                    path="artifacts/file.txt",
+                    created_at=now,
+                )
+            )
+            bootstrap.context.memory_manager.create_memory(
+                MemoryEntry(
+                    memory_id="memory-persisted",
+                    kind=MemoryKind.WORKING,
+                    content="Persisted memory.",
+                )
+            )
+
+            bootstrap.shutdown()
+
+            reloaded_bootstrap = RuntimeBootstrap.initialize(settings)
+            self.assertEqual(
+                reloaded_bootstrap.context.state_manager.get_state("task-persisted").status,
+                TaskStatus.PENDING,
+            )
+            self.assertEqual(
+                reloaded_bootstrap.context.artifact_manager.get_artifact("artifact-persisted").path,
+                "artifacts/file.txt",
+            )
+            self.assertEqual(
+                reloaded_bootstrap.context.memory_manager.get_memory("memory-persisted"),
+                MemoryEntry(
+                    memory_id="memory-persisted",
+                    kind=MemoryKind.WORKING,
+                    content="Persisted memory.",
+                ),
+            )
+            reloaded_bootstrap.shutdown()
 
 
 if __name__ == "__main__":

@@ -9,6 +9,7 @@ from qwen3_coder_next.config import AppSettings, EnvironmentName
 from qwen3_coder_next.contracts import TaskState, TaskStatus
 from qwen3_coder_next.logging import ApplicationLogger
 from qwen3_coder_next.state import DuplicateStateError, StateManager, StateNotFoundError
+from qwen3_coder_next.state import StateStore
 
 
 class StateStoreSmokeTest(unittest.TestCase):
@@ -86,6 +87,18 @@ class StateStoreSmokeTest(unittest.TestCase):
 
         with self.assertRaises(StateNotFoundError):
             manager.delete_state("task-missing")
+
+    def test_state_survives_restart(self) -> None:
+        """Persist state to disk and reload it in a fresh store instance."""
+
+        with TemporaryDirectory() as temp_dir:
+            storage_path = Path(temp_dir) / "state.json"
+            store = StateStore(storage_path)
+            state = self._build_state("task-persisted", TaskStatus.PENDING)
+            store.create_state(state)
+
+            reloaded_store = StateStore(storage_path)
+            self.assertEqual(reloaded_store.get_state("task-persisted"), state)
 
 
 if __name__ == "__main__":

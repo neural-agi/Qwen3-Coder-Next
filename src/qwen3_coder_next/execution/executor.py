@@ -21,7 +21,7 @@ class Executor:
         """Initialize the executor with foundational services."""
 
         self._orchestrator = orchestrator
-        self._artifact_manager = artifact_manager or ArtifactManager()
+        self._artifact_manager = artifact_manager or orchestrator.context.artifact_manager
         self._state_manager = orchestrator.context.state_manager
         self._model_gateway = orchestrator.context.model_gateway
         self._logger = orchestrator.context.logger

@@ -9,6 +9,7 @@ from qwen3_coder_next.artifacts import (
     ArtifactManager,
     ArtifactNotFoundError,
     DuplicateArtifactError,
+    ArtifactStore,
 )
 from qwen3_coder_next.config import AppSettings, EnvironmentName
 from qwen3_coder_next.contracts import ArtifactRecord, ArtifactType
@@ -92,6 +93,19 @@ class ArtifactManagerSmokeTest(unittest.TestCase):
 
         with self.assertRaises(ArtifactNotFoundError):
             manager.delete_artifact("artifact-missing")
+
+    def test_artifact_survives_restart(self) -> None:
+        """Persist artifacts to disk and reload them in a fresh manager."""
+
+        with TemporaryDirectory() as temp_dir:
+            workspace_root = Path(temp_dir)
+            storage_path = workspace_root / "artifacts.json"
+            manager = ArtifactManager(ArtifactStore(storage_path))
+            artifact = self._build_artifact("artifact-persisted", "artifacts/file.txt")
+            manager.create_artifact(artifact)
+
+            reloaded_manager = ArtifactManager(ArtifactStore(storage_path))
+            self.assertEqual(reloaded_manager.get_artifact("artifact-persisted"), artifact)
 
 
 if __name__ == "__main__":
