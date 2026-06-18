@@ -16,6 +16,13 @@ from qwen3_coder_next.local_tooling.filesystem import (
     FileSystemOperationResult,
     FileSystemService,
 )
+from qwen3_coder_next.local_tooling.operations import (
+    DeterministicFileSystemOperator,
+    FileSystemOperation,
+    FileSystemOperationOutcome,
+    FileSystemOperationType,
+    FileSystemOperator,
+)
 from qwen3_coder_next.local_tooling.resolution import (
     StaticWorkspaceResolver,
     WorkspaceResolutionRequest,
@@ -28,9 +35,14 @@ __all__ = [
     "AuditEvent",
     "CommandResult",
     "DeterministicFileSystemService",
+    "DeterministicFileSystemOperator",
+    "FileSystemOperation",
     "FileSystemOperationRequest",
     "FileSystemOperationResult",
+    "FileSystemOperationOutcome",
+    "FileSystemOperationType",
     "FileSystemService",
+    "FileSystemOperator",
     "ExecutionPolicy",
     "FileResult",
     "RequestEnvelope",

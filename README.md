@@ -1,10 +1,10 @@
 # Qwen3CoderNext
 
-Qwen3CoderNext is a local first coding agent framework designed to provide Codex like project assistance while running primarily on user controlled infrastructure.
+Qwen3CoderNext is a local-first coding agent framework designed to provide Codex-like project assistance while running primarily on user-controlled infrastructure.
 
 The project is being built incrementally from a clean, testable foundation toward a full coding agent platform capable of repository understanding, planning, memory management, tool execution, and autonomous development workflows.
 
-> 🚧 Active Development
+> Active Development
 >
 > Qwen3CoderNext is currently in early development.
 > The foundation layer is complete and Part 2 (Filesystem + Local Tooling) is in progress.
@@ -14,7 +14,7 @@ The project is being built incrementally from a clean, testable foundation towar
 
 ## Current Status
 
-### Part 1: Foundation Layer ✅
+### Part 1: Foundation Layer
 
 Completed:
 
@@ -34,24 +34,23 @@ Completed:
 * Tool Framework
 * Evaluation Foundation
 
-### Part 2: Filesystem + Local Tooling 🚧
+### Part 2: Filesystem + Local Tooling
 
 Completed:
 
-* Step 1: Policy & Schema Boundaries
+* Step 1: Policy and Schema Boundaries
 * Step 2: Workspace Resolution
 * Step 3: Filesystem Service Abstraction
+* Step 4: Filesystem Operations
 
-Current Target:
+Current target:
 
-* Step 3: Filesystem Operations Implementation
-* Step 4
-(feat(local_tooling): add filesystem service abstraction)
+* Part 3: Agent Core
 
 ### Validation Status
 
 ```text
-48 tests passing
+52 tests passed
 0 failures
 ```
 
@@ -67,7 +66,7 @@ Qwen3CoderNext aims to become a modular coding agent platform capable of:
 * Tool execution
 * Artifact generation
 * Autonomous coding workflows
-* Local first operation
+* Local-first operation
 * Multiple model backends
 
 The project prioritizes maintainability, testability, and architectural clarity before advanced agent behavior is introduced.
@@ -83,8 +82,8 @@ The project prioritizes maintainability, testability, and architectural clarity 
 | Contracts             | Shared immutable system contracts                     |
 | Configuration         | Typed application settings and environment management |
 | Logging               | Structured console and file logging                   |
-| State Management      | Filesystem backed task lifecycle persistence          |
-| Artifact Management   | Filesystem backed artifact persistence                |
+| State Management      | Filesystem-backed task lifecycle persistence          |
+| Artifact Management   | Filesystem-backed artifact persistence                |
 | Model Gateway         | Model abstraction and routing layer                   |
 | Planning Foundation   | Deterministic planning abstractions                   |
 | Prompt Infrastructure | Prompt templates, registry, and loading               |
@@ -116,9 +115,6 @@ The project prioritizes maintainability, testability, and architectural clarity 
 * WorkspaceResolver
 * StaticWorkspaceResolver
 
-<<<<<<< HEAD
----
-=======
 #### Filesystem Service Abstraction
 
 Deterministic filesystem service boundary for local tooling.
@@ -129,6 +125,18 @@ Current implementation:
 * FileSystemOperationResult
 * FileSystemService
 * DeterministicFileSystemService
+
+#### Filesystem Operations
+
+Deterministic filesystem operation boundary for local tooling.
+
+Current implementation:
+
+* FileSystemOperationType
+* FileSystemOperation
+* FileSystemOperationOutcome
+* FileSystemOperator
+* DeterministicFileSystemOperator
 
 #### Runtime Context
 
@@ -159,7 +167,8 @@ Minimal execution framework that:
 * Returns execution results
 
 No planning or autonomous behavior is implemented yet.
->>>>>>> e308a1a (feat(local_tooling): add filesystem service abstraction)
+
+---
 
 ## Repository Layout
 
@@ -180,8 +189,7 @@ src/
     ├── prompts/
     ├── runtime/
     ├── state/
-    ├── tools/
-    └── utils/
+    └── tools/
 
 tests/
 ├── smoke/
@@ -231,19 +239,15 @@ uv run python -m unittest discover -s tests -v
 Current result:
 
 ```text
-<<<<<<< HEAD
-48 tests passing
+52 tests passed
 0 failures
-=======
-50 tests passed
->>>>>>> e308a1a (feat(local_tooling): add filesystem service abstraction)
 ```
 
 ---
 
 ## Roadmap
 
-### Part 1: Foundation Layer ✅
+### Part 1: Foundation Layer
 
 * [x] Repository Skeleton
 * [x] Core Contracts
@@ -262,27 +266,21 @@ Current result:
 * [x] Tool Framework
 * [x] Evaluation Foundation
 
-### Part 2: Filesystem + Local Tooling 🚧
+### Part 2: Filesystem + Local Tooling
 
-* [x] Policy & Schema Boundaries
+* [x] Policy and Schema Boundaries
 * [x] Workspace Resolution
-<<<<<<< HEAD
-* [ ] Filesystem Operations
-* [ ] Command Execution
-* [ ] Repository Intelligence Foundations
-=======
 * [x] Filesystem Service Abstraction
->>>>>>> e308a1a (feat(local_tooling): add filesystem service abstraction)
+* [x] Filesystem Operations
 
 ### Future Development
 
+* [ ] Agent Core
+* [ ] Memory Systems
+* [ ] Tool Ecosystem
 * [ ] Repository Intelligence
-* [ ] Advanced Planning Engine
-* [ ] Agent Workflow Runtime
-* [ ] Code Generation Pipelines
-* [ ] MultiModel Support
-* [ ] Autonomous Coding Workflows
-* [ ] MultiAgent Coordination
+* [ ] Autonomous Development
+* [ ] Multi-Agent Architecture
 
 ---
 

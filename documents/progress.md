@@ -16,11 +16,11 @@ Part 2 Filesystem + Local Tooling
 
 Current Step:
 
-Step 3 Complete
+Step 4 Complete
 
 Next Step:
 
-Step 4 - Pending
+Part 3 Agent Core Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All smoke tests passing
 
 Current Test Count:
 
-50 Passing
+52 Passing
 
 ---
 
@@ -621,6 +621,35 @@ Verification:
 
 ---
 
+## Part 2 - Step 4
+
+Status: Complete
+
+Summary:
+
+Added the foundational filesystem operations layer with immutable contracts, a deterministic operator abstraction, and in-memory execution.
+
+Implemented:
+
+* FileSystemOperationType
+* FileSystemOperation
+* FileSystemOperationOutcome
+* FileSystemOperator
+* DeterministicFileSystemOperator
+
+Files Added:
+
+```text
+local_tooling/operations.py
+```
+
+Verification:
+
+* Smoke tests added
+* Full test suite passing
+
+---
+
 # Current Architecture Snapshot
 
 Implemented Systems:
@@ -660,6 +689,8 @@ Implemented Systems:
 ✓ Local Tooling Resolution
 
 ✓ Filesystem Service Abstraction
+
+✓ Filesystem Operations
 
 Pending Systems:
 
