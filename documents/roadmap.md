@@ -171,7 +171,7 @@ Objectives:
 
 Planning Foundation
 
-Status: Pending
+Status: Complete
 
 Objectives:
 
@@ -193,7 +193,7 @@ Expected Deliverables:
 
 Prompt Infrastructure
 
-Status: Pending
+Status: Complete
 
 Objectives:
 
@@ -208,7 +208,7 @@ Objectives:
 
 Memory Foundation
 
-Status: Pending
+Status: Complete
 
 Objectives:
 
@@ -223,7 +223,7 @@ Objectives:
 
 Tool Framework
 
-Status: Pending
+Status: Complete
 
 Objectives:
 
@@ -238,7 +238,7 @@ Objectives:
 
 Evaluation Foundation
 
-Status: Pending
+Status: Complete
 
 Objectives:
 
@@ -248,7 +248,70 @@ Objectives:
 
 ---
 
-# Part 2: Agent Core
+# Part 2: Filesystem + Local Tooling
+
+Goal:
+
+Provide the foundational local tooling surface for filesystem-adjacent workflows.
+
+## Step 1
+
+Policy and Schema Boundaries
+
+Status: Complete
+
+Objectives:
+
+* Request and response envelopes
+* Workspace context contracts
+* Execution policy contracts
+* File, command, artifact, and audit schemas
+
+---
+
+## Step 2
+
+Workspace Resolution
+
+Status: Complete
+
+Objectives:
+
+* Workspace resolution request and result
+* Workspace resolver abstraction
+* Deterministic workspace resolution
+
+---
+
+## Step 3
+
+Filesystem Service Abstraction
+
+Status: Complete
+
+Objectives:
+
+* Filesystem service abstraction
+* Deterministic filesystem service
+* Request and result contracts
+
+---
+
+## Step 4
+
+Filesystem Operations
+
+Status: Pending
+
+Objectives:
+
+* Minimal filesystem operation boundary
+* Deterministic operation contracts
+* No real filesystem execution
+
+---
+
+# Part 3: Agent Core
 
 Goal:
 
@@ -266,7 +329,7 @@ Status: Not Started
 
 ---
 
-# Part 3: Memory Systems
+# Part 4: Memory Systems
 
 Goal:
 
@@ -283,7 +346,7 @@ Status: Not Started
 
 ---
 
-# Part 4: Tool Ecosystem
+# Part 5: Tool Ecosystem
 
 Goal:
 
@@ -301,7 +364,7 @@ Status: Not Started
 
 ---
 
-# Part 5: Repository Intelligence
+# Part 6: Repository Intelligence
 
 Goal:
 
@@ -318,7 +381,7 @@ Status: Not Started
 
 ---
 
-# Part 6: Autonomous Development
+# Part 7: Autonomous Development
 
 Goal:
 
@@ -336,7 +399,7 @@ Status: Not Started
 
 ---
 
-# Part 7: Multi-Agent Architecture
+# Part 8: Multi-Agent Architecture
 
 Goal:
 
@@ -367,31 +430,3 @@ Qwen3-Coder-Next should evolve into a highly capable software engineering platfo
 
 The system should remain modular, testable, and maintainable throughout its evolution.
 
----
-
-# Current Progress
-
-Current Phase:
-
-Part 1 Foundation
-
-Completed Steps:
-
-* Step 1
-* Step 2
-* Step 3
-* Step 4
-* Step 5
-* Step 6
-* Step 7
-* Step 8
-* Step 9
-* Step 10
-
-Current Status:
-
-24 tests passing
-
-Next Target:
-
-Step 11 - Planning Foundation
