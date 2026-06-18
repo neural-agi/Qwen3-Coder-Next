@@ -448,6 +448,39 @@ Current Limitations:
 * No command execution
 * No audit routing
 
+### Filesystem Service Abstraction
+
+Location:
+
+```text
+src/qwen3_coder_next/local_tooling
+```
+
+Purpose:
+
+Provide a deterministic filesystem service boundary without introducing real filesystem operations.
+
+Current Implementation:
+
+* FileSystemOperationRequest
+* FileSystemOperationResult
+* FileSystemService
+* DeterministicFileSystemService
+
+Responsibilities:
+
+* Filesystem service contracts
+* Deterministic read/write/existence behavior
+* Stable request/result boundary
+
+Current Limitations:
+
+* No real filesystem access
+* No workspace discovery
+* No path normalization
+* No command execution
+* No routing or adapters
+
 ---
 
 ### Runtime Bootstrap

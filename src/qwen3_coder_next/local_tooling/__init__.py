@@ -10,6 +10,12 @@ from qwen3_coder_next.local_tooling.contracts import (
     ResponseEnvelope,
     WorkspaceContext,
 )
+from qwen3_coder_next.local_tooling.filesystem import (
+    DeterministicFileSystemService,
+    FileSystemOperationRequest,
+    FileSystemOperationResult,
+    FileSystemService,
+)
 from qwen3_coder_next.local_tooling.resolution import (
     StaticWorkspaceResolver,
     WorkspaceResolutionRequest,
@@ -21,6 +27,10 @@ __all__ = [
     "ArtifactDescriptor",
     "AuditEvent",
     "CommandResult",
+    "DeterministicFileSystemService",
+    "FileSystemOperationRequest",
+    "FileSystemOperationResult",
+    "FileSystemService",
     "ExecutionPolicy",
     "FileResult",
     "RequestEnvelope",

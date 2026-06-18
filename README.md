@@ -40,10 +40,13 @@ Completed:
 
 * Step 1: Policy & Schema Boundaries
 * Step 2: Workspace Resolution
+* Step 3: Filesystem Service Abstraction
 
 Current Target:
 
 * Step 3: Filesystem Operations Implementation
+* Step 4
+(feat(local_tooling): add filesystem service abstraction)
 
 ### Validation Status
 
@@ -113,7 +116,50 @@ The project prioritizes maintainability, testability, and architectural clarity 
 * WorkspaceResolver
 * StaticWorkspaceResolver
 
+<<<<<<< HEAD
 ---
+=======
+#### Filesystem Service Abstraction
+
+Deterministic filesystem service boundary for local tooling.
+
+Current implementation:
+
+* FileSystemOperationRequest
+* FileSystemOperationResult
+* FileSystemService
+* DeterministicFileSystemService
+
+#### Runtime Context
+
+Centralized service container providing:
+
+* Configuration
+* Logging
+* State Management
+* Artifact Management
+* Memory Management
+* Model Gateway
+
+#### Orchestrator
+
+Foundation orchestration shell for coordinating runtime services.
+
+#### Runtime Bootstrap
+
+Application startup and shutdown management.
+
+#### Executor
+
+Minimal execution framework that:
+
+* Accepts task requests
+* Tracks lifecycle state
+* Routes requests through the model gateway
+* Returns execution results
+
+No planning or autonomous behavior is implemented yet.
+>>>>>>> e308a1a (feat(local_tooling): add filesystem service abstraction)
 
 ## Repository Layout
 
@@ -185,8 +231,12 @@ uv run python -m unittest discover -s tests -v
 Current result:
 
 ```text
+<<<<<<< HEAD
 48 tests passing
 0 failures
+=======
+50 tests passed
+>>>>>>> e308a1a (feat(local_tooling): add filesystem service abstraction)
 ```
 
 ---
@@ -216,9 +266,13 @@ Current result:
 
 * [x] Policy & Schema Boundaries
 * [x] Workspace Resolution
+<<<<<<< HEAD
 * [ ] Filesystem Operations
 * [ ] Command Execution
 * [ ] Repository Intelligence Foundations
+=======
+* [x] Filesystem Service Abstraction
+>>>>>>> e308a1a (feat(local_tooling): add filesystem service abstraction)
 
 ### Future Development
 
