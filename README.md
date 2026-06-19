@@ -43,6 +43,7 @@ Completed:
 * Step 3: Filesystem Service Abstraction
 * Step 4: Filesystem Operations
 * Step 5: Diff Generation
+* Step 3 (PDF): Safe File Reads
 
 Current target:
 
@@ -51,7 +52,7 @@ Current target:
 ### Validation Status
 
 ```text
-53 tests passed
+55 tests passed
 0 failures
 ```
 
@@ -126,6 +127,18 @@ Current implementation:
 * FileSystemOperationResult
 * FileSystemService
 * DeterministicFileSystemService
+
+#### Safe File Reads
+
+Deterministic read-only file access with preview and digest support.
+
+Current implementation:
+
+* FileReadErrorCode
+* FileReadRequest
+* FileReadResult
+* FileReadService
+* DeterministicFileReadService
 
 #### Filesystem Operations
 

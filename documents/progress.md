@@ -32,7 +32,7 @@ All smoke tests passing
 
 Current Test Count:
 
-53 Passing
+55 Passing
 
 ---
 
@@ -599,23 +599,25 @@ Status: Complete
 
 Summary:
 
-Added a deterministic filesystem service abstraction for the local tooling layer.
+Added safe file reads with structured errors, preview support, and digest support.
 
 Implemented:
 
-* FileSystemOperationRequest
-* FileSystemOperationResult
-* FileSystemService
-* DeterministicFileSystemService
+* FileReadErrorCode
+* FileReadRequest
+* FileReadResult
+* FileReadService
+* DeterministicFileReadService
 
 Files Added:
 
 ```text
-local_tooling/filesystem.py
+local_tooling/reads.py
 ```
 
 Verification:
 
+* Unit tests added
 * Smoke tests added
 * Full test suite passing
 
@@ -716,6 +718,8 @@ Implemented Systems:
 ✓ Local Tooling Contracts
 
 ✓ Local Tooling Resolution
+
+✓ Safe File Reads
 
 ✓ Filesystem Service Abstraction
 

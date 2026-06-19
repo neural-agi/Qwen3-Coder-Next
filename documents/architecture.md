@@ -481,6 +481,42 @@ Current Limitations:
 * No command execution
 * No routing or adapters
 
+### Safe File Reads
+
+Location:
+
+```text
+src/qwen3_coder_next/local_tooling
+```
+
+Purpose:
+
+Provide deterministic read-only file access with structured errors, previews, and digests.
+
+Current Implementation:
+
+* FileReadErrorCode
+* FileReadRequest
+* FileReadResult
+* FileReadService
+* DeterministicFileReadService
+
+Responsibilities:
+
+* Read-only file access semantics
+* Preview generation
+* Digest generation
+* Structured error handling
+
+Current Limitations:
+
+* No write operations
+* No patch operations
+* No command execution
+* No artifact registry
+* No audit logging
+* No tool adapter
+
 ### Filesystem Operations
 
 Location:

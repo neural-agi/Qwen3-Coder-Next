@@ -29,6 +29,13 @@ from qwen3_coder_next.local_tooling.operations import (
     FileSystemOperationType,
     FileSystemOperator,
 )
+from qwen3_coder_next.local_tooling.reads import (
+    DeterministicFileReadService,
+    FileReadErrorCode,
+    FileReadRequest,
+    FileReadResult,
+    FileReadService,
+)
 from qwen3_coder_next.local_tooling.resolution import (
     RepositoryWorkspaceResolver,
     StaticWorkspaceResolver,
@@ -44,6 +51,7 @@ __all__ = [
     "DeterministicFileSystemService",
     "DeterministicDiffService",
     "DeterministicFileSystemOperator",
+    "DeterministicFileReadService",
     "DiffRequest",
     "DiffResult",
     "DiffService",
@@ -54,6 +62,10 @@ __all__ = [
     "FileSystemOperationType",
     "FileSystemService",
     "FileSystemOperator",
+    "FileReadErrorCode",
+    "FileReadRequest",
+    "FileReadResult",
+    "FileReadService",
     "ExecutionPolicy",
     "FileResult",
     "RequestEnvelope",
