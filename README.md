@@ -7,7 +7,9 @@ The project is being built incrementally from a clean, testable foundation towar
 > Active Development
 >
 > Qwen3CoderNext is currently in early development.
-> The foundation layer is complete and Part 2 (Filesystem + Local Tooling) is in progress.
+> Part 1 (Foundation Layer) is complete.
+> Part 2 (Filesystem + Local Tooling) is complete through Step 7 (Artifact Registry and Audit Logging).
+> Development is preparing to transition into the next architectural phase.
 > The project is not yet a fully functional coding agent.
 
 ---
@@ -47,14 +49,18 @@ Completed:
 * Step 3 (PDF): Safe File Reads
 * Step 4 (PDF): Safe Writes and Patches
 
-Current target:
+Completed:
 
-* Part 2 Step 7: Artifact Registry and Audit Logging
+* Step 7: Artifact Registry and Audit Logging
+
+Next Target:
+
+* Part 3: Agent Core Foundations
 
 ### Validation Status
 
 ```text
-57 tests passed
+61 tests passed
 0 failures
 ```
 
@@ -98,6 +104,7 @@ The project prioritizes maintainability, testability, and architectural clarity 
 | Orchestrator          | Runtime service coordination                          |
 | Runtime Bootstrap     | Startup and shutdown lifecycle                        |
 | Executor              | Task execution workflow                               |
+| Local Tooling Registry| Durable artifact manifests and audit history          |
 
 ### Local Tooling Foundations
 
@@ -111,7 +118,9 @@ The project prioritizes maintainability, testability, and architectural clarity 
 * CommandResult
 * ArtifactDescriptor
 * AuditEvent
-
+* ArtifactProvenance
+* ArtifactManifest
+* AuditRecord
 #### Workspace Resolution
 
 * WorkspaceResolutionRequest
@@ -183,6 +192,40 @@ Current implementation:
 * CommandRunner
 * DeterministicCommandRunner
 
+#### Artifact Registry and Audit Logging
+
+Durable artifact and audit persistence layer providing provenance,
+integrity validation, immutable history semantics, and replay support.
+
+Current implementation:
+
+Artifact Registry
+
+* ArtifactRegistryErrorCode
+* ArtifactRegistryRequest
+* ArtifactRegistryResult
+* ArtifactRegistry
+* DeterministicArtifactRegistry
+
+Audit Logging
+
+* AuditLoggerErrorCode
+* AuditLoggerRequest
+* AuditLoggerResult
+* AuditLogger
+* DeterministicAuditLogger
+
+Capabilities
+
+* Immutable artifact manifests
+* Artifact provenance tracking
+* Registry-computed checksums
+* Manifest supersede/archive history
+* Append-only audit records
+* Sequence-numbered event ordering
+* Persistent local storage
+* Deterministic reload and replay support
+
 #### Runtime Context
 
 Centralized service container providing:
@@ -212,6 +255,23 @@ Minimal execution framework that:
 * Returns execution results
 
 No planning or autonomous behavior is implemented yet.
+
+## Step 7: Durability Layer
+
+Step 7 introduces durable local persistence for artifact lineage and audit history.
+
+Key guarantees:
+
+* Immutable artifact manifests
+* Provenance tracking through request identifiers
+* Registry-computed content checksums
+* Supersede and archive lifecycle semantics
+* Append-only audit records
+* Monotonic sequence-number ordering
+* Persistent reload and replay support
+* Deterministic behavior suitable for evaluation and benchmarking
+
+The durability layer is implemented within the local_tooling subsystem and remains separate from the runtime artifact management subsystem introduced in Part 1.
 
 ---
 
@@ -318,6 +378,10 @@ Current result:
 * [x] Filesystem Service Abstraction
 * [x] Filesystem Operations
 * [x] Diff Generation
+* [x] Command Runner
+* [x] Safe File Reads
+* [x] Safe Writes and Patches
+* [x] Artifact Registry and Audit Logging
 
 ### Future Development
 
