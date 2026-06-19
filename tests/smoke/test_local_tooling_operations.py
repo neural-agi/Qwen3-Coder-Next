@@ -1,14 +1,20 @@
 """Smoke tests for the local tooling filesystem operations layer."""
 
+import tempfile
 from pathlib import Path
 from unittest import TestCase
 
 from qwen3_coder_next.local_tooling import (
     DeterministicFileSystemOperator,
+    DeterministicFileMutationService,
     FileSystemOperation,
     FileSystemOperationOutcome,
     FileSystemOperationType,
+    FileMutationRequest,
+    FileMutationType,
     FileSystemOperator,
+    RepositoryWorkspaceResolver,
+    WorkspaceResolutionRequest,
 )
 
 
@@ -76,3 +82,30 @@ class LocalToolingOperationsSmokeTest(TestCase):
         )
         self.assertTrue(exists_outcome.success)
         self.assertTrue(exists_outcome.exists)
+
+    def test_safe_mutation_boundary_executes(self) -> None:
+        """Apply a safe atomic write through the public boundary."""
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            (root / ".git").mkdir()
+            workspace = RepositoryWorkspaceResolver(start_path=root).resolve(
+                WorkspaceResolutionRequest(
+                    request_id="workspace-smoke",
+                    workspace_id="workspace-smoke",
+                )
+            ).workspace
+
+            service = DeterministicFileMutationService()
+            result = service.apply(
+                FileMutationRequest(
+                    request_id="mut-smoke-001",
+                    workspace=workspace,
+                    path="README.md",
+                    mutation_type=FileMutationType.ATOMIC_WRITE,
+                    content="hello\n",
+                )
+            )
+
+            self.assertTrue(result.success)
+            self.assertEqual(result.content, "hello\n")

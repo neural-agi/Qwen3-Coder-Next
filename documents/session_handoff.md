@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 2: Filesystem + Local Tooling
 
-Status: Complete
+Status: In progress
 
 ---
 
@@ -107,7 +107,7 @@ Implemented:
 
 ### Step 4
 
-Filesystem operations boundary created.
+Filesystem operations boundary and safe mutation support created.
 
 Implemented:
 
@@ -116,6 +116,12 @@ Implemented:
 * FileSystemOperationOutcome
 * FileSystemOperator
 * DeterministicFileSystemOperator
+* FileMutationType
+* FileMutationRequest
+* FileMutationPreflightResult
+* FileMutationResult
+* FileMutationService
+* DeterministicFileMutationService
 
 ### Step 5
 
@@ -127,6 +133,18 @@ Implemented:
 * DiffResult
 * DiffService
 * DeterministicDiffService
+
+### Step 6
+
+Command runner boundary created.
+
+Implemented:
+
+* CommandRunErrorCode
+* CommandRequest
+* CommandRunResult
+* CommandRunner
+* DeterministicCommandRunner
 
 ### Step 2
 
@@ -314,7 +332,7 @@ uv run python -m unittest discover -s tests -v
 Result:
 
 ```text
-55 passing
+57 passing
 0 failing
 ```
 
@@ -322,8 +340,7 @@ Repository State:
 
 ```text
 Healthy
-Step 3 complete
-Ready for Part 3 Agent Core
+Step 6 complete
 ```
 
 ---
@@ -400,7 +417,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 3: Agent Core
+Part 2 Step 7: Artifact Registry and Audit Logging
 ```
 
 Before implementing:
@@ -459,7 +476,7 @@ Completed Foundation Steps:
 Test Status:
 
 ```text
-55 passing
+57 passing
 0 failing
 ```
 
@@ -467,6 +484,5 @@ Repository State:
 
 ```text
 Healthy
-Step 3 complete
-Ready for Part 3 Agent Core
+Step 6 complete
 ```

@@ -91,3 +91,47 @@ class AuditEvent:
     action: str
     subject: str
     details: dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass(frozen=True, slots=True)
+class ArtifactProvenance:
+    """Immutable provenance record for a local tooling artifact manifest."""
+
+    request_id: str
+    operation: str
+    source: str
+    timestamp: datetime
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass(frozen=True, slots=True)
+class ArtifactManifest:
+    """Immutable manifest for a local tooling artifact."""
+
+    manifest_id: str
+    artifact_id: str
+    name: str
+    location: Path
+    artifact_type: str
+    content_checksum: str
+    checksum_algorithm: str
+    provenance: ArtifactProvenance
+    created_at: datetime
+    supersedes_manifest_id: str | None = None
+    archived: bool = False
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass(frozen=True, slots=True)
+class AuditRecord:
+    """Immutable append-only audit record for local tooling."""
+
+    event_id: str
+    sequence_number: int
+    request_id: str
+    timestamp: datetime
+    action: str
+    subject: str
+    status: str
+    details: dict[str, Any] = field(default_factory=dict)
+    metadata: dict[str, Any] = field(default_factory=dict)

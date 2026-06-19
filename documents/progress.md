@@ -16,11 +16,11 @@ Part 2 Filesystem + Local Tooling
 
 Current Step:
 
-Step 5 Complete
+Step 6 Complete
 
 Next Step:
 
-Part 3 Agent Core Pending
+Part 2 Step 7 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All smoke tests passing
 
 Current Test Count:
 
-55 Passing
+57 Passing
 
 ---
 
@@ -629,7 +629,7 @@ Status: Complete
 
 Summary:
 
-Added the foundational filesystem operations layer with immutable contracts, a deterministic operator abstraction, and in-memory execution.
+Added the foundational filesystem operations layer with immutable contracts, a deterministic operator abstraction, in-memory execution, and safe mutation support.
 
 Implemented:
 
@@ -638,6 +638,12 @@ Implemented:
 * FileSystemOperationOutcome
 * FileSystemOperator
 * DeterministicFileSystemOperator
+* FileMutationType
+* FileMutationRequest
+* FileMutationPreflightResult
+* FileMutationResult
+* FileMutationService
+* DeterministicFileMutationService
 
 Files Added:
 
@@ -647,6 +653,7 @@ local_tooling/operations.py
 
 Verification:
 
+* Unit tests added
 * Smoke tests added
 * Full test suite passing
 
@@ -671,6 +678,36 @@ Files Added:
 
 ```text
 local_tooling/diff.py
+```
+
+Verification:
+
+* Unit tests added
+* Smoke tests added
+* Full test suite passing
+
+---
+
+## Part 2 - Step 6
+
+Status: Complete
+
+Summary:
+
+Added the foundational command runner layer with immutable contracts, an allowlisted deterministic runner, and explicit workspace-relative working-directory control.
+
+Implemented:
+
+* CommandRunErrorCode
+* CommandRequest
+* CommandRunResult
+* CommandRunner
+* DeterministicCommandRunner
+
+Files Added:
+
+```text
+local_tooling/commands.py
 ```
 
 Verification:

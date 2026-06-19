@@ -43,16 +43,18 @@ Completed:
 * Step 3: Filesystem Service Abstraction
 * Step 4: Filesystem Operations
 * Step 5: Diff Generation
+* Step 6: Command Runner
 * Step 3 (PDF): Safe File Reads
+* Step 4 (PDF): Safe Writes and Patches
 
 Current target:
 
-* Part 3: Agent Core
+* Part 2 Step 7: Artifact Registry and Audit Logging
 
 ### Validation Status
 
 ```text
-55 tests passed
+57 tests passed
 0 failures
 ```
 
@@ -151,6 +153,12 @@ Current implementation:
 * FileSystemOperationOutcome
 * FileSystemOperator
 * DeterministicFileSystemOperator
+* FileMutationType
+* FileMutationRequest
+* FileMutationPreflightResult
+* FileMutationResult
+* FileMutationService
+* DeterministicFileMutationService
 
 #### Diff Generation
 
@@ -162,6 +170,18 @@ Current implementation:
 * DiffResult
 * DiffService
 * DeterministicDiffService
+
+#### Command Runner
+
+Deterministic command runner boundary for local tooling.
+
+Current implementation:
+
+* CommandRunErrorCode
+* CommandRequest
+* CommandRunResult
+* CommandRunner
+* DeterministicCommandRunner
 
 #### Runtime Context
 

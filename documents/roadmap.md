@@ -301,13 +301,68 @@ Objectives:
 
 Filesystem Operations
 
-Status: Pending
+Status: Complete
 
 Objectives:
 
 * Minimal filesystem operation boundary
 * Deterministic operation contracts
 * No real filesystem execution
+
+---
+
+## Step 5
+
+Diff Generation
+
+Status: Complete
+
+Objectives:
+
+* Diff request contract
+* Diff result contract
+* Diff service abstraction
+* Deterministic diff generation
+
+---
+
+## Step 6
+
+Command Runner
+
+Status: Complete
+
+Objectives:
+
+* Allowlisted local command execution
+* Explicit working-directory control
+* Output capture
+
+---
+
+## Step 7
+
+Artifact Registry and Audit Logging
+
+Status: Pending
+
+Objectives:
+
+* Persist outputs and references
+* Record event traces
+
+---
+
+## Step 8
+
+Tool Adapter and Integration Tests
+
+Status: Pending
+
+Objectives:
+
+* Expose internal services through a consistent tool interface
+* Prove end-to-end flow
 
 ---
 
@@ -429,4 +484,3 @@ Qwen3-Coder-Next should evolve into a highly capable software engineering platfo
 * Coordinating multiple specialized agents
 
 The system should remain modular, testable, and maintainable throughout its evolution.
-

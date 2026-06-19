@@ -527,7 +527,7 @@ src/qwen3_coder_next/local_tooling
 
 Purpose:
 
-Provide a deterministic filesystem operation boundary built on top of the filesystem service abstraction.
+Provide deterministic filesystem operations and safe mutation support built on top of the filesystem service abstraction.
 
 Current Implementation:
 
@@ -536,11 +536,19 @@ Current Implementation:
 * FileSystemOperationOutcome
 * FileSystemOperator
 * DeterministicFileSystemOperator
+* FileMutationType
+* FileMutationRequest
+* FileMutationPreflightResult
+* FileMutationResult
+* FileMutationService
+* DeterministicFileMutationService
 
 Responsibilities:
 
 * Filesystem operation contracts
 * Deterministic read/write/existence execution
+* Atomic write, append, and patch support
+* Preflight validation for safe mutations
 * Stable request/result boundary
 
 Current Limitations:
@@ -549,6 +557,8 @@ Current Limitations:
 * No workspace discovery
 * No path normalization
 * No command execution
+* No artifact registry
+* No audit logging
 * No routing or adapters
 
 ### Diff Generation
@@ -579,6 +589,41 @@ Responsibilities:
 Current Limitations:
 
 * No command execution
+* No artifact registry
+* No audit logging
+* No tool adapter
+
+### Command Runner
+
+Location:
+
+```text
+src/qwen3_coder_next/local_tooling
+```
+
+Purpose:
+
+Provide deterministic local command execution with allowlist control and explicit working-directory handling.
+
+Current Implementation:
+
+* CommandRunErrorCode
+* CommandRequest
+* CommandRunResult
+* CommandRunner
+* DeterministicCommandRunner
+
+Responsibilities:
+
+* Command request and result contracts
+* Allowlisted command execution
+* Workspace-relative working-directory control
+* Output capture
+
+Current Limitations:
+
+* No shell execution
+* No network access
 * No artifact registry
 * No audit logging
 * No tool adapter

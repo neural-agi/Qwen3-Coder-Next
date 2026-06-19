@@ -2,13 +2,37 @@
 
 from qwen3_coder_next.local_tooling.contracts import (
     ArtifactDescriptor,
+    ArtifactManifest,
+    ArtifactProvenance,
     AuditEvent,
+    AuditRecord,
     CommandResult,
     ExecutionPolicy,
     FileResult,
     RequestEnvelope,
     ResponseEnvelope,
     WorkspaceContext,
+)
+from qwen3_coder_next.local_tooling.artifact_registry import (
+    ArtifactRegistry,
+    ArtifactRegistryErrorCode,
+    ArtifactRegistryRequest,
+    ArtifactRegistryResult,
+    DeterministicArtifactRegistry,
+)
+from qwen3_coder_next.local_tooling.audit import (
+    AuditLogger,
+    AuditLoggerErrorCode,
+    AuditLoggerRequest,
+    AuditLoggerResult,
+    DeterministicAuditLogger,
+)
+from qwen3_coder_next.local_tooling.commands import (
+    CommandRequest,
+    CommandRunErrorCode,
+    CommandRunResult,
+    CommandRunner,
+    DeterministicCommandRunner,
 )
 from qwen3_coder_next.local_tooling.filesystem import (
     DeterministicFileSystemService,
@@ -24,10 +48,16 @@ from qwen3_coder_next.local_tooling.diff import (
 )
 from qwen3_coder_next.local_tooling.operations import (
     DeterministicFileSystemOperator,
+    DeterministicFileMutationService,
     FileSystemOperation,
     FileSystemOperationOutcome,
     FileSystemOperationType,
     FileSystemOperator,
+    FileMutationPreflightResult,
+    FileMutationRequest,
+    FileMutationResult,
+    FileMutationService,
+    FileMutationType,
 )
 from qwen3_coder_next.local_tooling.reads import (
     DeterministicFileReadService,
@@ -46,11 +76,30 @@ from qwen3_coder_next.local_tooling.resolution import (
 
 __all__ = [
     "ArtifactDescriptor",
+    "ArtifactManifest",
+    "ArtifactProvenance",
+    "ArtifactRegistry",
+    "ArtifactRegistryErrorCode",
+    "ArtifactRegistryRequest",
+    "ArtifactRegistryResult",
+    "AuditLogger",
+    "AuditLoggerErrorCode",
+    "AuditLoggerRequest",
+    "AuditLoggerResult",
     "AuditEvent",
+    "AuditRecord",
     "CommandResult",
+    "CommandRequest",
+    "CommandRunErrorCode",
+    "CommandRunResult",
+    "CommandRunner",
+    "DeterministicCommandRunner",
+    "DeterministicArtifactRegistry",
+    "DeterministicAuditLogger",
     "DeterministicFileSystemService",
     "DeterministicDiffService",
     "DeterministicFileSystemOperator",
+    "DeterministicFileMutationService",
     "DeterministicFileReadService",
     "DiffRequest",
     "DiffResult",
@@ -62,6 +111,11 @@ __all__ = [
     "FileSystemOperationType",
     "FileSystemService",
     "FileSystemOperator",
+    "FileMutationPreflightResult",
+    "FileMutationRequest",
+    "FileMutationResult",
+    "FileMutationService",
+    "FileMutationType",
     "FileReadErrorCode",
     "FileReadRequest",
     "FileReadResult",
