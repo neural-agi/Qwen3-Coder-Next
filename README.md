@@ -42,6 +42,7 @@ Completed:
 * Step 2: Workspace Resolution
 * Step 3: Filesystem Service Abstraction
 * Step 4: Filesystem Operations
+* Step 5: Diff Generation
 
 Current target:
 
@@ -50,7 +51,7 @@ Current target:
 ### Validation Status
 
 ```text
-52 tests passed
+53 tests passed
 0 failures
 ```
 
@@ -137,6 +138,17 @@ Current implementation:
 * FileSystemOperationOutcome
 * FileSystemOperator
 * DeterministicFileSystemOperator
+
+#### Diff Generation
+
+Deterministic diff boundary for local tooling.
+
+Current implementation:
+
+* DiffRequest
+* DiffResult
+* DiffService
+* DeterministicDiffService
 
 #### Runtime Context
 
@@ -272,6 +284,7 @@ Current result:
 * [x] Workspace Resolution
 * [x] Filesystem Service Abstraction
 * [x] Filesystem Operations
+* [x] Diff Generation
 
 ### Future Development
 

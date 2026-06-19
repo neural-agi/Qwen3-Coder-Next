@@ -515,6 +515,38 @@ Current Limitations:
 * No command execution
 * No routing or adapters
 
+### Diff Generation
+
+Location:
+
+```text
+src/qwen3_coder_next/local_tooling
+```
+
+Purpose:
+
+Expose file diffs as first-class deterministic outputs for review and evaluation stages.
+
+Current Implementation:
+
+* DiffRequest
+* DiffResult
+* DiffService
+* DeterministicDiffService
+
+Responsibilities:
+
+* Diff request and result contracts
+* Deterministic diff generation
+* Stable review-facing change representation
+
+Current Limitations:
+
+* No command execution
+* No artifact registry
+* No audit logging
+* No tool adapter
+
 ---
 
 ### Runtime Bootstrap

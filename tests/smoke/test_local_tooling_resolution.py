@@ -1,9 +1,11 @@
 """Smoke tests for local tooling workspace resolution."""
 
+import tempfile
 from pathlib import Path
 import unittest
 
 from qwen3_coder_next.local_tooling import (
+    RepositoryWorkspaceResolver,
     StaticWorkspaceResolver,
     WorkspaceContext,
     WorkspaceResolutionRequest,
@@ -55,3 +57,23 @@ class LocalToolingResolutionSmokeTest(unittest.TestCase):
         self.assertIsInstance(resolver, WorkspaceResolver)
         self.assertEqual(result.workspace, workspace)
         self.assertTrue(result.resolved)
+
+    def test_repository_workspace_resolver_discovers_root(self) -> None:
+        """Resolve a workspace from a repository-like directory layout."""
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            (root / ".git").mkdir()
+            nested = root / "src" / "pkg"
+            nested.mkdir(parents=True)
+
+            resolver = RepositoryWorkspaceResolver(start_path=nested)
+            result = resolver.resolve(
+                WorkspaceResolutionRequest(
+                    request_id="resolve-003",
+                    workspace_id="workspace-003",
+                )
+            )
+
+            self.assertTrue(result.resolved)
+            self.assertEqual(result.workspace.root_path, root)

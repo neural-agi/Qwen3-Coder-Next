@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 2: Filesystem + Local Tooling
 
-Status: In Progress
+Status: Complete
 
 ---
 
@@ -115,6 +115,17 @@ Implemented:
 * FileSystemOperationOutcome
 * FileSystemOperator
 * DeterministicFileSystemOperator
+
+### Step 5
+
+Diff generation boundary created.
+
+Implemented:
+
+* DiffRequest
+* DiffResult
+* DiffService
+* DeterministicDiffService
 
 ### Step 2
 
@@ -302,7 +313,7 @@ uv run python -m unittest discover -s tests -v
 Result:
 
 ```text
-52 passing
+53 passing
 0 failing
 ```
 
@@ -310,7 +321,7 @@ Repository State:
 
 ```text
 Healthy
-Step 4 complete
+Step 5 complete
 Ready for Part 3 Agent Core
 ```
 
@@ -427,7 +438,7 @@ Qwen3-Coder-Next/
 
 ## Last Known Healthy State
 
-Date: 2026-06-18
+Date: 2026-06-19
 
 Completed Foundation Steps:
 
@@ -447,7 +458,7 @@ Completed Foundation Steps:
 Test Status:
 
 ```text
-52 passing
+53 passing
 0 failing
 ```
 
@@ -455,6 +466,6 @@ Repository State:
 
 ```text
 Healthy
-Step 4 complete
+Step 5 complete
 Ready for Part 3 Agent Core
 ```

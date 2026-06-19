@@ -16,6 +16,12 @@ from qwen3_coder_next.local_tooling.filesystem import (
     FileSystemOperationResult,
     FileSystemService,
 )
+from qwen3_coder_next.local_tooling.diff import (
+    DeterministicDiffService,
+    DiffRequest,
+    DiffResult,
+    DiffService,
+)
 from qwen3_coder_next.local_tooling.operations import (
     DeterministicFileSystemOperator,
     FileSystemOperation,
@@ -24,6 +30,7 @@ from qwen3_coder_next.local_tooling.operations import (
     FileSystemOperator,
 )
 from qwen3_coder_next.local_tooling.resolution import (
+    RepositoryWorkspaceResolver,
     StaticWorkspaceResolver,
     WorkspaceResolutionRequest,
     WorkspaceResolutionResult,
@@ -35,7 +42,11 @@ __all__ = [
     "AuditEvent",
     "CommandResult",
     "DeterministicFileSystemService",
+    "DeterministicDiffService",
     "DeterministicFileSystemOperator",
+    "DiffRequest",
+    "DiffResult",
+    "DiffService",
     "FileSystemOperation",
     "FileSystemOperationRequest",
     "FileSystemOperationResult",
@@ -47,6 +58,7 @@ __all__ = [
     "FileResult",
     "RequestEnvelope",
     "ResponseEnvelope",
+    "RepositoryWorkspaceResolver",
     "StaticWorkspaceResolver",
     "WorkspaceResolutionRequest",
     "WorkspaceResolutionResult",

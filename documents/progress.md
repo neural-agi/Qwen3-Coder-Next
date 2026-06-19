@@ -16,7 +16,7 @@ Part 2 Filesystem + Local Tooling
 
 Current Step:
 
-Step 4 Complete
+Step 5 Complete
 
 Next Step:
 
@@ -32,7 +32,7 @@ All smoke tests passing
 
 Current Test Count:
 
-52 Passing
+53 Passing
 
 ---
 
@@ -650,6 +650,35 @@ Verification:
 
 ---
 
+## Part 2 - Step 5
+
+Status: Complete
+
+Summary:
+
+Added deterministic diff generation as a first-class local tooling output for review and evaluation stages.
+
+Implemented:
+
+* DiffRequest
+* DiffResult
+* DiffService
+* DeterministicDiffService
+
+Files Added:
+
+```text
+local_tooling/diff.py
+```
+
+Verification:
+
+* Unit tests added
+* Smoke tests added
+* Full test suite passing
+
+---
+
 # Current Architecture Snapshot
 
 Implemented Systems:
@@ -691,6 +720,8 @@ Implemented Systems:
 ✓ Filesystem Service Abstraction
 
 ✓ Filesystem Operations
+
+✓ Diff Generation
 
 Pending Systems:
 
