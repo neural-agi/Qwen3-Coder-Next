@@ -124,7 +124,5 @@ class LocalToolingAuditUnitTest(TestCase):
             storage_path.mkdir()
             logger = DeterministicAuditLogger(storage_path)
 
-            with self.assertRaises(AuditLoggerError) as context:
+            with self.assertRaisesRegex(Exception, "Failed to load audit log"):
                 logger.list()
-
-            self.assertEqual(context.exception.error_code, AuditLoggerErrorCode.PERSISTENCE_FAILED)

@@ -20,6 +20,11 @@ from qwen3_coder_next.local_tooling.artifact_registry import (
     ArtifactRegistryResult,
     DeterministicArtifactRegistry,
 )
+from qwen3_coder_next.local_tooling.adapter import (
+    DeterministicToolAdapter,
+    ToolAdapter,
+    ToolAdapterOperation,
+)
 from qwen3_coder_next.local_tooling.audit import (
     AuditLogger,
     AuditLoggerErrorCode,
@@ -96,6 +101,7 @@ __all__ = [
     "DeterministicCommandRunner",
     "DeterministicArtifactRegistry",
     "DeterministicAuditLogger",
+    "DeterministicToolAdapter",
     "DeterministicFileSystemService",
     "DeterministicDiffService",
     "DeterministicFileSystemOperator",
@@ -104,6 +110,8 @@ __all__ = [
     "DiffRequest",
     "DiffResult",
     "DiffService",
+    "ToolAdapter",
+    "ToolAdapterOperation",
     "FileSystemOperation",
     "FileSystemOperationRequest",
     "FileSystemOperationResult",

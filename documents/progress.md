@@ -12,15 +12,15 @@ It serves as the primary reference for determining the current state of developm
 
 Phase:
 
-Part 2 Filesystem + Local Tooling
+Part 3 Agent Core
 
 Current Step:
 
-Step 6 Complete
+Not Started
 
 Next Step:
 
-Part 2 Step 7 Pending
+Part 3 Step 1 Pending
 
 Repository State:
 
@@ -28,11 +28,11 @@ Working
 
 Latest Validation:
 
-All smoke tests passing
+All tests passing
 
 Current Test Count:
 
-57 Passing
+104 Passing
 
 ---
 
@@ -206,6 +206,62 @@ Verification:
 * Stub response generation
 
 All verified.
+
+---
+
+## Step 7 - Artifact Registry and Audit Logging
+
+Status: Complete
+
+Summary:
+
+Implemented deterministic local tooling artifact capture and audit logging.
+
+Implemented:
+
+* Artifact registry contracts
+* Audit logger contracts
+* Deterministic registry
+* Deterministic audit logger
+* Persistence and reload behavior
+* Provenance tracking
+* Request traceability
+* Integration tests
+
+Verification:
+
+* Registry operations verified
+* Audit operations verified
+* Full test suite passing
+
+---
+
+## Step 8 - Tool Adapter and Integration Tests
+
+Status: Complete
+
+Summary:
+
+Implemented a stable local tooling adapter that routes normalized requests to existing services and returns normalized responses.
+
+Implemented:
+
+* Tool adapter abstraction
+* Deterministic adapter implementation
+* Request normalization
+* Response normalization
+* Service routing
+* End-to-end integration tests
+
+Verification:
+
+* File read routing verified
+* Filesystem operation routing verified
+* Diff routing verified
+* Command routing verified
+* Artifact registry routing verified
+* Audit logger routing verified
+* Full test suite passing
 
 ---
 

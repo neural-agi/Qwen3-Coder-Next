@@ -344,7 +344,7 @@ Objectives:
 
 Artifact Registry and Audit Logging
 
-Status: Pending
+Status: Complete
 
 Objectives:
 
@@ -357,7 +357,7 @@ Objectives:
 
 Tool Adapter and Integration Tests
 
-Status: Pending
+Status: Complete
 
 Objectives:
 

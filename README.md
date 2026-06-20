@@ -10,6 +10,8 @@ The project is being built incrementally from a clean, testable foundation towar
 > Part 1 (Foundation Layer) is complete.
 > Part 2 (Filesystem + Local Tooling) is complete through Step 7 (Artifact Registry and Audit Logging).
 > Development is preparing to transition into the next architectural phase.
+> The foundation layer and Part 2 (Filesystem + Local Tooling) are complete.
+>>>>>>> 84d44e5 (feat(local-tooling): complete Part 2 Step 8 tool adapter and integration tests)
 > The project is not yet a fully functional coding agent.
 
 ---
@@ -46,21 +48,31 @@ Completed:
 * Step 4: Filesystem Operations
 * Step 5: Diff Generation
 * Step 6: Command Runner
+* Step 7: Artifact Registry and Audit Logging
+* Step 8: Tool Adapter and Integration Tests
 * Step 3 (PDF): Safe File Reads
 * Step 4 (PDF): Safe Writes and Patches
 
 Completed:
 
+<<<<<<< HEAD
 * Step 7: Artifact Registry and Audit Logging
 
 Next Target:
 
 * Part 3: Agent Core Foundations
+=======
+* Part 3 Step 1: Agent Core Planning
+>>>>>>> 84d44e5 (feat(local-tooling): complete Part 2 Step 8 tool adapter and integration tests)
 
 ### Validation Status
 
 ```text
+<<<<<<< HEAD
 61 tests passed
+=======
+104 tests passed
+>>>>>>> 84d44e5 (feat(local-tooling): complete Part 2 Step 8 tool adapter and integration tests)
 0 failures
 ```
 
@@ -192,6 +204,7 @@ Current implementation:
 * CommandRunner
 * DeterministicCommandRunner
 
+<<<<<<< HEAD
 #### Artifact Registry and Audit Logging
 
 Durable artifact and audit persistence layer providing provenance,
@@ -225,6 +238,17 @@ Capabilities
 * Sequence-numbered event ordering
 * Persistent local storage
 * Deterministic reload and replay support
+=======
+#### Tool Adapter
+
+Deterministic adapter layer that routes normalized requests to existing local tooling services and returns normalized responses.
+
+Current implementation:
+
+* ToolAdapter
+* ToolAdapterOperation
+* DeterministicToolAdapter
+>>>>>>> 84d44e5 (feat(local-tooling): complete Part 2 Step 8 tool adapter and integration tests)
 
 #### Runtime Context
 

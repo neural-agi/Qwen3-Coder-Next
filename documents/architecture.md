@@ -624,9 +624,43 @@ Current Limitations:
 
 * No shell execution
 * No network access
-* No artifact registry
-* No audit logging
 * No tool adapter
+
+---
+
+### Tool Adapter
+
+Location:
+
+```text
+src/qwen3_coder_next/local_tooling
+```
+
+Purpose:
+
+Normalize local tooling requests and responses while routing to the deterministic local services.
+
+Current Implementation:
+
+* ToolAdapter
+* ToolAdapterOperation
+* DeterministicToolAdapter
+
+Responsibilities:
+
+* Request normalization
+* Response normalization
+* Workspace resolution
+* Service routing
+* Artifact capture
+* Audit logging
+
+Current Limitations:
+
+* No autonomous behavior
+* No repository intelligence
+* No MCP integration
+* No agent workflows
 
 ---
 

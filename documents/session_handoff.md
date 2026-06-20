@@ -59,7 +59,7 @@ Rules that must be followed:
 
 ## Current Phase
 
-Part 2: Filesystem + Local Tooling
+Part 3: Agent Core
 
 Status: In progress
 
@@ -145,6 +145,33 @@ Implemented:
 * CommandRunResult
 * CommandRunner
 * DeterministicCommandRunner
+
+### Step 7
+
+Artifact registry and audit logging created.
+
+Implemented:
+
+* Artifact registry contracts
+* Audit logger contracts
+* Deterministic artifact registry
+* Deterministic audit logger
+* Persistence and reload behavior
+* Provenance tracking
+* Request traceability
+
+### Step 8
+
+Tool adapter and integration tests created.
+
+Implemented:
+
+* Tool adapter abstraction
+* Deterministic adapter implementation
+* Request normalization
+* Response normalization
+* Service routing
+* End-to-end integration tests
 
 ### Step 2
 
