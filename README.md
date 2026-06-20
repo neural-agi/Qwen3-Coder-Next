@@ -8,10 +8,8 @@ The project is being built incrementally from a clean, testable foundation towar
 >
 > Qwen3CoderNext is currently in early development.
 > Part 1 (Foundation Layer) is complete.
-> Part 2 (Filesystem + Local Tooling) is complete through Step 7 (Artifact Registry and Audit Logging).
-> Development is preparing to transition into the next architectural phase.
-> The foundation layer and Part 2 (Filesystem + Local Tooling) are complete.
->>>>>>> 84d44e5 (feat(local-tooling): complete Part 2 Step 8 tool adapter and integration tests)
+> Part 2 (Filesystem + Local Tooling) is complete.
+> Development is preparing to transition into Part 3 (Agent Core).
 > The project is not yet a fully functional coding agent.
 
 ---
@@ -28,7 +26,8 @@ Completed:
 * Logging Infrastructure
 * State Management
 * Model Gateway
-* Runtime Orchestration Shell
+* Runtime Context
+* Orchestrator
 * Artifact Management
 * Runtime Bootstrap
 * Execution Framework
@@ -42,37 +41,25 @@ Completed:
 
 Completed:
 
-* Step 1: Policy and Schema Boundaries
-* Step 2: Workspace Resolution
-* Step 3: Filesystem Service Abstraction
-* Step 4: Filesystem Operations
-* Step 5: Diff Generation
-* Step 6: Command Runner
-* Step 7: Artifact Registry and Audit Logging
-* Step 8: Tool Adapter and Integration Tests
-* Step 3 (PDF): Safe File Reads
-* Step 4 (PDF): Safe Writes and Patches
+* Policy and Schema Boundaries
+* Workspace Resolution
+* Filesystem Service Abstraction
+* Safe File Reads
+* Filesystem Operations
+* Safe Writes and Patches
+* Diff Generation
+* Command Runner
+* Artifact Registry and Audit Logging
+* Tool Adapter and Integration Tests
 
-Completed:
+### Next Target
 
-<<<<<<< HEAD
-* Step 7: Artifact Registry and Audit Logging
-
-Next Target:
-
-* Part 3: Agent Core Foundations
-=======
 * Part 3 Step 1: Agent Core Planning
->>>>>>> 84d44e5 (feat(local-tooling): complete Part 2 Step 8 tool adapter and integration tests)
 
 ### Validation Status
 
 ```text
-<<<<<<< HEAD
-61 tests passed
-=======
 104 tests passed
->>>>>>> 84d44e5 (feat(local-tooling): complete Part 2 Step 8 tool adapter and integration tests)
 0 failures
 ```
 
@@ -99,24 +86,24 @@ The project prioritizes maintainability, testability, and architectural clarity 
 
 ### Foundation Systems
 
-| Component             | Purpose                                               |
-| --------------------- | ----------------------------------------------------- |
-| Contracts             | Shared immutable system contracts                     |
-| Configuration         | Typed application settings and environment management |
-| Logging               | Structured console and file logging                   |
-| State Management      | Filesystem-backed task lifecycle persistence          |
-| Artifact Management   | Filesystem-backed artifact persistence                |
-| Model Gateway         | Model abstraction and routing layer                   |
-| Planning Foundation   | Deterministic planning abstractions                   |
-| Prompt Infrastructure | Prompt templates, registry, and loading               |
-| Memory Foundation     | Persistent memory storage layer                       |
-| Tool Framework        | Tool contracts, registry, and execution abstractions  |
-| Evaluation Foundation | Evaluation contracts and scoring abstractions         |
-| Runtime Context       | Centralized service container                         |
-| Orchestrator          | Runtime service coordination                          |
-| Runtime Bootstrap     | Startup and shutdown lifecycle                        |
-| Executor              | Task execution workflow                               |
-| Local Tooling Registry| Durable artifact manifests and audit history          |
+| Component             | Purpose                                                    |
+| --------------------- | ---------------------------------------------------------- |
+| Contracts             | Shared immutable system contracts                          |
+| Configuration         | Typed application settings and environment management      |
+| Logging               | Structured console and file logging                        |
+| State Management      | Filesystem-backed task lifecycle persistence               |
+| Artifact Management   | Filesystem-backed artifact persistence                     |
+| Model Gateway         | Model abstraction and routing layer                        |
+| Planning Foundation   | Deterministic planning abstractions                        |
+| Prompt Infrastructure | Prompt templates, registry, and loading                    |
+| Memory Foundation     | Persistent memory storage layer                            |
+| Tool Framework        | Tool contracts, registry, and execution abstractions       |
+| Evaluation Foundation | Evaluation contracts and scoring abstractions              |
+| Runtime Context       | Centralized service container                              |
+| Orchestrator          | Runtime service coordination                               |
+| Runtime Bootstrap     | Startup and shutdown lifecycle                             |
+| Executor              | Task execution workflow                                    |
+| Local Tooling Layer   | Filesystem, command, artifact, audit, and adapter services |
 
 ### Local Tooling Foundations
 
@@ -133,6 +120,7 @@ The project prioritizes maintainability, testability, and architectural clarity 
 * ArtifactProvenance
 * ArtifactManifest
 * AuditRecord
+
 #### Workspace Resolution
 
 * WorkspaceResolutionRequest
@@ -141,8 +129,6 @@ The project prioritizes maintainability, testability, and architectural clarity 
 * StaticWorkspaceResolver
 
 #### Filesystem Service Abstraction
-
-Deterministic filesystem service boundary for local tooling.
 
 Current implementation:
 
@@ -153,8 +139,6 @@ Current implementation:
 
 #### Safe File Reads
 
-Deterministic read-only file access with preview and digest support.
-
 Current implementation:
 
 * FileReadErrorCode
@@ -164,8 +148,6 @@ Current implementation:
 * DeterministicFileReadService
 
 #### Filesystem Operations
-
-Deterministic filesystem operation boundary for local tooling.
 
 Current implementation:
 
@@ -183,8 +165,6 @@ Current implementation:
 
 #### Diff Generation
 
-Deterministic diff boundary for local tooling.
-
 Current implementation:
 
 * DiffRequest
@@ -194,8 +174,6 @@ Current implementation:
 
 #### Command Runner
 
-Deterministic command runner boundary for local tooling.
-
 Current implementation:
 
 * CommandRunErrorCode
@@ -204,11 +182,7 @@ Current implementation:
 * CommandRunner
 * DeterministicCommandRunner
 
-<<<<<<< HEAD
 #### Artifact Registry and Audit Logging
-
-Durable artifact and audit persistence layer providing provenance,
-integrity validation, immutable history semantics, and replay support.
 
 Current implementation:
 
@@ -228,7 +202,7 @@ Audit Logging
 * AuditLogger
 * DeterministicAuditLogger
 
-Capabilities
+Capabilities:
 
 * Immutable artifact manifests
 * Artifact provenance tracking
@@ -238,122 +212,14 @@ Capabilities
 * Sequence-numbered event ordering
 * Persistent local storage
 * Deterministic reload and replay support
-=======
-#### Tool Adapter
 
-Deterministic adapter layer that routes normalized requests to existing local tooling services and returns normalized responses.
+#### Tool Adapter
 
 Current implementation:
 
 * ToolAdapter
 * ToolAdapterOperation
 * DeterministicToolAdapter
->>>>>>> 84d44e5 (feat(local-tooling): complete Part 2 Step 8 tool adapter and integration tests)
-
-#### Runtime Context
-
-Centralized service container providing:
-
-* Configuration
-* Logging
-* State Management
-* Artifact Management
-* Memory Management
-* Model Gateway
-
-#### Orchestrator
-
-Foundation orchestration shell for coordinating runtime services.
-
-#### Runtime Bootstrap
-
-Application startup and shutdown management.
-
-#### Executor
-
-Minimal execution framework that:
-
-* Accepts task requests
-* Tracks lifecycle state
-* Routes requests through the model gateway
-* Returns execution results
-
-No planning or autonomous behavior is implemented yet.
-
-## Step 7: Durability Layer
-
-Step 7 introduces durable local persistence for artifact lineage and audit history.
-
-Key guarantees:
-
-* Immutable artifact manifests
-* Provenance tracking through request identifiers
-* Registry-computed content checksums
-* Supersede and archive lifecycle semantics
-* Append-only audit records
-* Monotonic sequence-number ordering
-* Persistent reload and replay support
-* Deterministic behavior suitable for evaluation and benchmarking
-
-The durability layer is implemented within the local_tooling subsystem and remains separate from the runtime artifact management subsystem introduced in Part 1.
-
----
-
-## Repository Layout
-
-```text
-src/
-└── qwen3_coder_next/
-    ├── adapters/
-    ├── artifacts/
-    ├── bootstrap/
-    ├── config/
-    ├── contracts/
-    ├── evaluation/
-    ├── execution/
-    ├── local_tooling/
-    ├── logging/
-    ├── memory/
-    ├── planning/
-    ├── prompts/
-    ├── runtime/
-    ├── state/
-    └── tools/
-
-tests/
-├── smoke/
-├── unit/
-└── integration/
-
-configs/
-documents/
-scripts/
-```
-
----
-
-## Requirements
-
-* Python 3.13+
-* uv
-
----
-
-## Installation
-
-```bash
-git clone https://github.com/neuralagi/Qwen3CoderNext.git
-cd Qwen3CoderNext
-uv sync
-```
-
----
-
-## Running
-
-```bash
-uv run python -m qwen3_coder_next
-```
 
 ---
 
@@ -368,7 +234,7 @@ uv run python -m unittest discover -s tests -v
 Current result:
 
 ```text
-52 tests passed
+104 tests passed
 0 failures
 ```
 
@@ -400,21 +266,22 @@ Current result:
 * [x] Policy and Schema Boundaries
 * [x] Workspace Resolution
 * [x] Filesystem Service Abstraction
+* [x] Safe File Reads
 * [x] Filesystem Operations
+* [x] Safe Writes and Patches
 * [x] Diff Generation
 * [x] Command Runner
-* [x] Safe File Reads
-* [x] Safe Writes and Patches
 * [x] Artifact Registry and Audit Logging
+* [x] Tool Adapter and Integration Tests
 
 ### Future Development
 
-* [ ] Agent Core
-* [ ] Memory Systems
-* [ ] Tool Ecosystem
-* [ ] Repository Intelligence
-* [ ] Autonomous Development
-* [ ] Multi-Agent Architecture
+* [ ] Part 3: Agent Core
+* [ ] Part 4: Memory Systems
+* [ ] Part 5: Tool Ecosystem
+* [ ] Part 6: Repository Intelligence
+* [ ] Part 7: Autonomous Development
+* [ ] Part 8: Multi-Agent Architecture
 
 ---
 
