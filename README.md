@@ -51,8 +51,6 @@ Qwen3CoderNext exists because "autonomous" and "auditable" shouldn't be opposite
 flowchart TD
     U[User / CLI] --> O[Orchestrator]
     O --> MG[Model Gateway]
-    O --> PL[Planner]
-    O --> MEM[Memory]
     O --> TF[Tool Framework]
     TF --> FS[Filesystem Service]
     TF --> CMD[Command Execution]
@@ -60,15 +58,19 @@ flowchart TD
     FS --> AL[Audit Log]
     CMD --> AL
     AR --> AL
+    O -.->|foundation exists, not wired in yet| PL[Planner]
+    O -.->|foundation exists, not wired in yet| MEM[Memory]
 ```
 
-- **Orchestrator** — coordinates planning, memory, and tool execution for each task.
+*Solid lines = built and working today. Dashed lines = the contracts exist (Planning Foundation, Memory Foundation) but aren't actually driving execution yet — that's what Agent Core is building.*
+
+- **Orchestrator** — coordinates tool execution for each task today; will route through the planner and memory once Agent Core lands.
 - **Model Gateway** — routes requests to any supported model provider.
-- **Planner** — breaks tasks into executable steps (foundation in place; advanced planning is on the roadmap).
 - **Tool Framework** — the contract layer every tool implements (filesystem, command execution, artifacts).
 - **Filesystem Service** — enforces workspace boundaries and handles safe reads, writes, and patches.
 - **Artifact Registry** — tracks every generated file with checksums and provenance.
 - **Audit Log** — append-only, sequence-numbered record of everything the agent did.
+- **Planner / Memory** — foundational contracts exist; not yet wired into execution. Tracked under Agent Core in the roadmap.
 
 ## Example Workflow
 
@@ -94,20 +96,17 @@ That's the test suite — 104 passing, 0 failing, as of today. Agent CLI entrypo
 
 ## Repository Structure
 
-> Illustrative — mirrors the components described above.
+> Real top-level layout. Marked `...` where I don't have the rest — paste your actual tree and I'll fill it in instead of guessing.
 
 ```
-qwen3codernext/
-├── src/
-│   ├── core/          # Contracts, config, logging, state
-│   ├── runtime/        # Bootstrap, orchestrator, runtime context
-│   ├── tools/           # Tool framework + adapters
-│   ├── fs/                # Workspace resolution, safe reads/writes, patching
-│   ├── artifacts/    # Artifact registry, provenance, checksums
-│   ├── audit/           # Append-only audit logging
-│   ├── memory/        # Memory foundation
-│   └── planning/      # Planning foundation
-└── tests/                 # 104 tests, full suite
+src/qwen3_coder_next/
+├── contracts/
+├── config/
+├── logging/
+├── state/
+├── local_tooling/
+├── planning/
+└── ...
 ```
 
 ## Roadmap
