@@ -1,22 +1,65 @@
 # Qwen3CoderNext
 
-Qwen3CoderNext is a local-first coding agent framework designed to provide Codex-like project assistance while running primarily on user-controlled infrastructure.
+Local-first coding agent framework built for developers who want Codex-style repository assistance without surrendering control of their codebase.
 
-The project is being built incrementally from a clean, testable foundation toward a full coding agent platform capable of repository understanding, planning, memory management, tool execution, and autonomous development workflows.
+Qwen3CoderNext is an open architecture for building autonomous coding agents that can understand repositories, plan work, manage memory, execute tools, and perform development workflows while running primarily on user-controlled infrastructure.
 
-> Active Development
+The project is being developed incrementally from a clean, testable foundation toward a fully capable coding agent platform.
+
+> **Status**
 >
-> Qwen3CoderNext is currently in early development.
-> Part 1 (Foundation Layer) is complete.
-> Part 2 (Filesystem + Local Tooling) is complete.
-> Development is preparing to transition into Part 3 (Agent Core).
-> The project is not yet a fully functional coding agent.
+> Early Development
+>
+> Foundation Layer Complete
+>
+> Local Tooling Layer Complete
+>
+> Agent Core Development Starting
 
 ---
 
-## Current Status
+# Why Qwen3CoderNext?
 
-### Part 1: Foundation Layer
+Most coding agents today are tightly coupled to specific providers, opaque execution environments, or rapidly growing codebases that become difficult to maintain.
+
+Qwen3CoderNext takes a different approach.
+
+The project prioritizes:
+
+* Local-first operation
+* Clean architecture
+* Deterministic behavior
+* Strong testing discipline
+* Modular components
+* Provider independence
+* Long-term maintainability
+
+The goal is not to create another chatbot.
+
+The goal is to create a reusable foundation for building serious coding agents.
+
+---
+
+# Long-Term Vision
+
+Qwen3CoderNext is being designed to support:
+
+* Repository understanding
+* Planning and task decomposition
+* Persistent memory
+* Tool execution
+* Artifact generation
+* Autonomous coding workflows
+* Multi-model support
+* Multi-agent collaboration
+
+Future releases aim to evolve the framework from a deterministic execution platform into a fully autonomous development system.
+
+---
+
+# Current Progress
+
+## Part 1: Foundation Layer
 
 Completed:
 
@@ -37,254 +80,148 @@ Completed:
 * Tool Framework
 * Evaluation Foundation
 
-### Part 2: Filesystem + Local Tooling
+## Part 2: Local Tooling Layer
 
 Completed:
 
-* Policy and Schema Boundaries
 * Workspace Resolution
 * Filesystem Service Abstraction
 * Safe File Reads
 * Filesystem Operations
 * Safe Writes and Patches
 * Diff Generation
-* Command Runner
-* Artifact Registry and Audit Logging
-* Tool Adapter and Integration Tests
+* Command Execution
+* Artifact Registry
+* Audit Logging
+* Tool Adapter Integration
 
-### Next Target
+---
 
-* Part 3 Step 1: Agent Core Planning
+# What Works Today
 
-### Validation Status
+Current capabilities include:
+
+### Workspace Management
+
+* Workspace resolution
+* Repository boundary enforcement
+* Execution policy support
+
+### Filesystem Operations
+
+* Safe file reads
+* Controlled file mutations
+* Patch application
+* Deterministic execution
+
+### Command Execution
+
+* Local command runner
+* Structured command results
+* Error handling and policy enforcement
+
+### Artifact Management
+
+* Artifact registry
+* Provenance tracking
+* Immutable manifests
+* Checksum verification
+* Supersede history
+
+### Audit Infrastructure
+
+* Append-only audit records
+* Sequence-numbered event tracking
+* Persistent local storage
+* Deterministic replay support
+
+---
+
+# Architecture Principles
+
+Qwen3CoderNext follows several guiding principles:
+
+### Deterministic First
+
+Core infrastructure should be predictable, testable, and reproducible.
+
+### Local First
+
+User data and repositories remain under user control whenever possible.
+
+### Modular by Design
+
+Components are isolated behind contracts and can evolve independently.
+
+### Testability Matters
+
+Every major subsystem is developed alongside automated validation.
+
+### Foundation Before Intelligence
+
+The project intentionally builds infrastructure before advanced agent behavior.
+
+---
+
+# Validation
+
+Current test status:
 
 ```text
 104 tests passed
 0 failures
 ```
 
----
-
-## Vision
-
-Qwen3CoderNext aims to become a modular coding agent platform capable of:
-
-* Repository understanding
-* Planning and task decomposition
-* Memory and context management
-* Tool execution
-* Artifact generation
-* Autonomous coding workflows
-* Local-first operation
-* Multiple model backends
-
-The project prioritizes maintainability, testability, and architectural clarity before advanced agent behavior is introduced.
-
----
-
-## Architecture Overview
-
-### Foundation Systems
-
-| Component             | Purpose                                                    |
-| --------------------- | ---------------------------------------------------------- |
-| Contracts             | Shared immutable system contracts                          |
-| Configuration         | Typed application settings and environment management      |
-| Logging               | Structured console and file logging                        |
-| State Management      | Filesystem-backed task lifecycle persistence               |
-| Artifact Management   | Filesystem-backed artifact persistence                     |
-| Model Gateway         | Model abstraction and routing layer                        |
-| Planning Foundation   | Deterministic planning abstractions                        |
-| Prompt Infrastructure | Prompt templates, registry, and loading                    |
-| Memory Foundation     | Persistent memory storage layer                            |
-| Tool Framework        | Tool contracts, registry, and execution abstractions       |
-| Evaluation Foundation | Evaluation contracts and scoring abstractions              |
-| Runtime Context       | Centralized service container                              |
-| Orchestrator          | Runtime service coordination                               |
-| Runtime Bootstrap     | Startup and shutdown lifecycle                             |
-| Executor              | Task execution workflow                                    |
-| Local Tooling Layer   | Filesystem, command, artifact, audit, and adapter services |
-
-### Local Tooling Foundations
-
-#### Local Tooling Contracts
-
-* RequestEnvelope
-* ResponseEnvelope
-* WorkspaceContext
-* ExecutionPolicy
-* FileResult
-* CommandResult
-* ArtifactDescriptor
-* AuditEvent
-* ArtifactProvenance
-* ArtifactManifest
-* AuditRecord
-
-#### Workspace Resolution
-
-* WorkspaceResolutionRequest
-* WorkspaceResolutionResult
-* WorkspaceResolver
-* StaticWorkspaceResolver
-
-#### Filesystem Service Abstraction
-
-Current implementation:
-
-* FileSystemOperationRequest
-* FileSystemOperationResult
-* FileSystemService
-* DeterministicFileSystemService
-
-#### Safe File Reads
-
-Current implementation:
-
-* FileReadErrorCode
-* FileReadRequest
-* FileReadResult
-* FileReadService
-* DeterministicFileReadService
-
-#### Filesystem Operations
-
-Current implementation:
-
-* FileSystemOperationType
-* FileSystemOperation
-* FileSystemOperationOutcome
-* FileSystemOperator
-* DeterministicFileSystemOperator
-* FileMutationType
-* FileMutationRequest
-* FileMutationPreflightResult
-* FileMutationResult
-* FileMutationService
-* DeterministicFileMutationService
-
-#### Diff Generation
-
-Current implementation:
-
-* DiffRequest
-* DiffResult
-* DiffService
-* DeterministicDiffService
-
-#### Command Runner
-
-Current implementation:
-
-* CommandRunErrorCode
-* CommandRequest
-* CommandRunResult
-* CommandRunner
-* DeterministicCommandRunner
-
-#### Artifact Registry and Audit Logging
-
-Current implementation:
-
-Artifact Registry
-
-* ArtifactRegistryErrorCode
-* ArtifactRegistryRequest
-* ArtifactRegistryResult
-* ArtifactRegistry
-* DeterministicArtifactRegistry
-
-Audit Logging
-
-* AuditLoggerErrorCode
-* AuditLoggerRequest
-* AuditLoggerResult
-* AuditLogger
-* DeterministicAuditLogger
-
-Capabilities:
-
-* Immutable artifact manifests
-* Artifact provenance tracking
-* Registry-computed checksums
-* Manifest supersede/archive history
-* Append-only audit records
-* Sequence-numbered event ordering
-* Persistent local storage
-* Deterministic reload and replay support
-
-#### Tool Adapter
-
-Current implementation:
-
-* ToolAdapter
-* ToolAdapterOperation
-* DeterministicToolAdapter
-
----
-
-## Testing
-
-Run the full test suite:
+Run the full suite:
 
 ```bash
 uv run python -m unittest discover -s tests -v
 ```
 
-Current result:
+---
 
-```text
-104 tests passed
-0 failures
-```
+# Roadmap
+
+## Completed
+
+* Foundation Layer
+* Local Tooling Layer
+
+## In Progress
+
+* Agent Core
+
+## Planned
+
+* Advanced Planning
+* Memory Systems
+* Tool Ecosystem
+* Repository Intelligence
+* Autonomous Development Workflows
+* Multi-Agent Architecture
 
 ---
 
-## Roadmap
+# Project Philosophy
 
-### Part 1: Foundation Layer
+Many agent projects begin with autonomous behavior and attempt to add reliability later.
 
-* [x] Repository Skeleton
-* [x] Core Contracts
-* [x] Configuration System
-* [x] Logging Infrastructure
-* [x] State Management
-* [x] Model Gateway
-* [x] Runtime Context
-* [x] Orchestrator
-* [x] Artifact Management
-* [x] Runtime Bootstrap
-* [x] Execution Framework
-* [x] Planning Foundation
-* [x] Prompt Infrastructure
-* [x] Memory Foundation
-* [x] Tool Framework
-* [x] Evaluation Foundation
+Qwen3CoderNext takes the opposite path.
 
-### Part 2: Filesystem + Local Tooling
+The framework is being built from deterministic, testable infrastructure upward, with each layer validated before introducing additional intelligence.
 
-* [x] Policy and Schema Boundaries
-* [x] Workspace Resolution
-* [x] Filesystem Service Abstraction
-* [x] Safe File Reads
-* [x] Filesystem Operations
-* [x] Safe Writes and Patches
-* [x] Diff Generation
-* [x] Command Runner
-* [x] Artifact Registry and Audit Logging
-* [x] Tool Adapter and Integration Tests
-
-### Future Development
-
-* [ ] Part 3: Agent Core
-* [ ] Part 4: Memory Systems
-* [ ] Part 5: Tool Ecosystem
-* [ ] Part 6: Repository Intelligence
-* [ ] Part 7: Autonomous Development
-* [ ] Part 8: Multi-Agent Architecture
+The objective is to create a coding agent platform that remains understandable, maintainable, and extensible as complexity grows.
 
 ---
 
-## License
+# Contributing
+
+Contribution guidelines will be published as the project matures.
+
+For now, feedback, architectural discussion, and issue reports are welcome.
+
+---
+
+# License
 
 License to be determined.
