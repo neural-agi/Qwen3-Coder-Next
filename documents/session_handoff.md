@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 3: Agent Core
 
-Status: Step 3 complete; Step 4 pending
+Status: Step 4 complete; Step 5 pending
 
 ---
 
@@ -104,6 +104,28 @@ Verification:
 * Subgoal generation
 * Planner state integration
 * Malformed request handling
+
+---
+
+## Part 3 Step 4
+
+Implemented:
+
+* DependencyResolver
+* PlanningDependencyError
+* MalformedPlanDraftError
+* PlanGraph generation
+* Stable topological ordering
+
+Verification:
+
+* Dependency graph creation
+* Deterministic graph generation
+* Edge generation
+* Topological ordering
+* Planner state integration
+* Malformed draft handling
+* Serialization compatibility
 
 ---
 
@@ -486,7 +508,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 3 Step 4: Dependency Resolution
+Part 3 Step 5: Validation
 ```
 
 Before implementing:

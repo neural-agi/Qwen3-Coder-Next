@@ -6,6 +6,11 @@ from qwen3_coder_next.planning.decomposition import (
     MalformedDecompositionRequestError,
     PlanningDecompositionError,
 )
+from qwen3_coder_next.planning.dependency import (
+    DependencyResolver,
+    MalformedPlanDraftError,
+    PlanningDependencyError,
+)
 from qwen3_coder_next.planning.normalization import (
     MalformedPlannerRequestError,
     PlannerNormalizationResult,
@@ -33,6 +38,7 @@ from qwen3_coder_next.planning.state import PlannerRevision, PlannerState
 __all__ = [
     "CoverageMetrics",
     "DecompositionEngine",
+    "DependencyResolver",
     "PLANNER_SCHEMA_VERSION",
     "PlanDraft",
     "PlanArtifact",
@@ -50,7 +56,9 @@ __all__ = [
     "PlannerNormalizationResult",
     "PlannerRequestNormalizer",
     "MalformedDecompositionRequestError",
+    "MalformedPlanDraftError",
     "SimplePlanner",
+    "PlanningDependencyError",
     "PlanningDecompositionError",
     "MalformedPlannerRequestError",
     "PlanningNormalizationError",

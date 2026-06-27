@@ -16,11 +16,11 @@ Part 3 Agent Core
 
 Current Step:
 
-Part 3 Step 3 Complete
+Part 3 Step 4 Complete
 
 Next Step:
 
-Part 3 Step 4 Pending
+Part 3 Step 5 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-115 Passing
+121 Passing
 
 ---
 
@@ -89,6 +89,36 @@ Verification:
 * Subgoal generation
 * Planner state integration
 * Malformed request handling
+
+All verified.
+
+---
+
+## Part 3 Step 4 - Dependency Resolution
+
+Status: Complete
+
+Summary:
+
+Defined deterministic dependency resolution for planner drafts.
+
+Implemented:
+
+* DependencyResolver
+* PlanningDependencyError
+* MalformedPlanDraftError
+* PlanGraph generation
+* Stable topological ordering
+
+Verification:
+
+* Dependency graph creation
+* Deterministic graph generation
+* Edge generation
+* Topological ordering
+* Planner state integration
+* Malformed draft handling
+* Serialization compatibility
 
 All verified.
 
