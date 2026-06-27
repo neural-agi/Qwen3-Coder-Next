@@ -274,7 +274,7 @@ Future Responsibilities:
 
 ---
 
-### Planning Foundation
+### Planning Schemas, State, and Normalization
 
 Location:
 
@@ -284,16 +284,31 @@ src/qwen3_coder_next/planning
 
 Purpose:
 
-Provide the initial planning contracts and a deterministic planner abstraction for preparation work.
+Provide the initial planning schema, state, and deterministic request normalization foundation for later decomposition and validation work.
 
 Current Implementation:
 
-* PlanRequest
-* PlanResult
+* PlannerRequest
 * PlanStep
-* PlanStatus
-* Planner abstraction
-* SimplePlanner
+* PlanGraph
+* PlanArtifact
+* ValidationReport
+* PlannerState
+* PlannerRevision
+* PlannerRequestNormalizer
+* PlannerNormalizationResult
+
+Current Limitations:
+
+* No request decomposition
+* No dependency resolution
+* No validation logic beyond schema/state shape
+* No artifact generation logic
+* No planner execution logic
+
+Legacy compatibility:
+
+* Existing planner smoke tests still pass against the legacy planning contracts and simple planner
 
 ---
 
