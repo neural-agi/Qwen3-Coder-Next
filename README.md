@@ -15,7 +15,7 @@
 [![Status](https://img.shields.io/badge/status-early%20development-yellow?style=for-the-badge)](https://github.com/neural-agi/qwen3codernext)
 [![Tests](https://img.shields.io/badge/tests-104%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/qwen3codernext/tree/main/tests)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![License](https://img.shields.io/badge/license-TBD-lightgrey?style=for-the-badge)](https://github.com/neural-agi/qwen3codernext/issues)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![uv](https://img.shields.io/badge/package%20manager-uv-purple?style=for-the-badge)](https://github.com/astral-sh/uv)
 
 <!-- TODO: Add CI badge once GitHub Actions is configured -->
@@ -322,7 +322,12 @@ That's the beginning, not the end.
 
 ## 📄 License
 
-License to be determined. If license clarity matters for your use case, [watch the repository](https://github.com/neural-agi/qwen3codernext) or [open an issue](https://github.com/neural-agi/qwen3codernext/issues).
+Qwen3CoderNext is licensed under the **MIT License**.
+
+You're free to use, modify, distribute, and build upon this project in accordance with the terms of the license.
+
+See the [LICENSE](LICENSE) file for the full license text.
+
 
 ---
 
