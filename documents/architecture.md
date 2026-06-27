@@ -302,7 +302,6 @@ Current Implementation:
 * DecompositionEngine
 * DependencyResolver
 * PlanValidator
-* ValidationReport
 
 Current Limitations:
 

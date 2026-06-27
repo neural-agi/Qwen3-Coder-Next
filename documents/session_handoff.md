@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 3: Agent Core
 
-Status: Step 5 complete; Step 6 pending
+Status: Step 6 complete; Step 7 pending
 
 ---
 
@@ -149,6 +149,27 @@ Verification:
 * Malformed graphs
 * Deterministic validation
 * ValidationReport serialization
+
+---
+
+## Part 3 Step 6
+
+Implemented:
+
+* PlanningArtifactSerializer
+* PlanningSerializationError
+* MalformedPlanningSerializedDataError
+* Canonical JSON serialization helpers
+
+Verification:
+
+* Serialization
+* Deserialization
+* Deterministic output
+* Round-trip equality
+* Schema version compatibility
+* Malformed serialized input
+* Backward compatibility
 
 ---
 
@@ -531,7 +552,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 3 Step 6: Artifact Serialization
+Part 3 Step 7: Runtime Integration
 ```
 
 Before implementing:
