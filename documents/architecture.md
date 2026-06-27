@@ -318,6 +318,39 @@ Legacy compatibility:
 
 ---
 
+### Research Layer
+
+Location:
+
+```text
+src/qwen3_coder_next/research
+```
+
+Purpose:
+
+Provide the read-only research request, evidence, packet, policy, and session state foundation used between planning and execution.
+
+Current Implementation:
+
+* ResearchRequest
+* SourceHandle
+* EvidenceItem
+* ResearchPacket
+* SourcePolicy
+* ResearchState
+
+Current Limitations:
+
+* No source scanning
+* No document fetching
+* No evidence ranking
+* No synthesis / packet building logic
+* No cache lookup or persistence
+* No observability plumbing
+* No source policy execution
+
+---
+
 ### Prompt Infrastructure
 
 Location:

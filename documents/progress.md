@@ -12,15 +12,15 @@ It serves as the primary reference for determining the current state of developm
 
 Phase:
 
-Part 3 Agent Core
+Part 4 Research Layer
 
 Current Step:
 
-Part 3 Step 9 Complete
+Part 4 Step 1 Complete
 
 Next Step:
 
-Part 4 Step 1 Pending
+Part 4 Step 2 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-147 Passing
+151 Passing
 
 ---
 
@@ -208,6 +208,35 @@ Verification:
 * Deterministic integration behavior
 * Existing runtime behavior remains unchanged
 * Backward compatibility
+
+All verified.
+
+---
+
+## Part 4 Step 1 - Research Schemas and State
+
+Status: Complete
+
+Summary:
+
+Defined the foundational research-layer schemas and revisioned session state.
+
+Implemented:
+
+* ResearchRequest
+* SourceHandle
+* EvidenceItem
+* ResearchPacket
+* SourcePolicy
+* ResearchState
+
+Verification:
+
+* Schema creation
+* Serialization and round-tripping
+* State creation
+* State update behavior
+* Stable identifiers and versioned state behavior
 
 All verified.
 

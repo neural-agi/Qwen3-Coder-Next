@@ -59,9 +59,30 @@ Rules that must be followed:
 
 ## Current Phase
 
-Part 3: Agent Core
+Part 4: Research Layer
 
-Status: Step 9 complete; Part 4 pending
+Status: Step 1 complete; Step 2 pending
+
+---
+
+## Part 4 Step 1
+
+Implemented:
+
+* ResearchRequest
+* SourceHandle
+* EvidenceItem
+* ResearchPacket
+* SourcePolicy
+* ResearchState
+
+Verification:
+
+* Schema creation
+* Serialization and round-tripping
+* State creation
+* State update behavior
+* Stable identifiers and versioned state behavior
 
 ---
 
@@ -488,7 +509,7 @@ uv run python -m unittest discover -s tests -v
 Result:
 
 ```text
-147 passing
+151 passing
 0 failing
 ```
 
@@ -496,7 +517,7 @@ Repository State:
 
 ```text
 Healthy
-Step 8 complete
+Part 4 Step 1 complete
 ```
 
 ---
@@ -573,7 +594,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 4 Step 1: Pending
+Part 4 Step 2: Pending
 ```
 
 ---
@@ -601,7 +622,7 @@ Qwen3-Coder-Next/
 
 ## Last Known Healthy State
 
-Date: 2026-06-19
+Date: 2026-06-27
 
 Completed Foundation Steps:
 
@@ -621,7 +642,7 @@ Completed Foundation Steps:
 Test Status:
 
 ```text
-57 passing
+151 passing
 0 failing
 ```
 
@@ -629,5 +650,5 @@ Repository State:
 
 ```text
 Healthy
-Step 6 complete
+Part 4 Step 1 complete
 ```
