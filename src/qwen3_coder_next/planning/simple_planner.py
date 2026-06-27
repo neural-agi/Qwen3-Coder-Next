@@ -19,14 +19,21 @@ class SimplePlanner(Planner):
             PlanStep(
                 step_id=f"{request.request_id}-step-1",
                 title="Clarify objective",
-                description=request.objective,
-                metadata={"source": "simple-planner"},
+                objective=request.objective,
+                inputs=("planning request",),
+                outputs=("clarified objective",),
+                acceptance_criteria=("objective is captured",),
+                owner_hint="simple-planner",
             ),
             PlanStep(
                 step_id=f"{request.request_id}-step-2",
                 title="Prepare execution",
-                description="Convert the objective into a ready-to-execute task.",
-                metadata={"source": "simple-planner"},
+                objective="Convert the objective into a ready-to-execute task.",
+                inputs=("clarified objective",),
+                outputs=("execution preparation",),
+                dependencies=(f"{request.request_id}-step-1",),
+                acceptance_criteria=("execution preparation is described",),
+                owner_hint="simple-planner",
             ),
         )
         return PlanResult(

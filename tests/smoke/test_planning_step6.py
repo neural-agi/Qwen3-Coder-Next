@@ -48,8 +48,23 @@ class PlanningStep6SmokeTest(unittest.TestCase):
             request=request,
             subgoals=(),
             steps=(
-                PlanStep(step_id="step-1", title="Root"),
-                PlanStep(step_id="step-2", title="Child", dependencies=("step-1",)),
+                PlanStep(
+                    step_id="step-1",
+                    title="Root",
+                    objective="Prepare serialization root",
+                    inputs=("request",),
+                    outputs=("root output",),
+                    acceptance_criteria=("root output exists",),
+                ),
+                PlanStep(
+                    step_id="step-2",
+                    title="Child",
+                    objective="Prepare serialization child",
+                    inputs=("root output",),
+                    outputs=("child output",),
+                    dependencies=("step-1",),
+                    acceptance_criteria=("child output exists",),
+                ),
             ),
         )
         graph = self.resolver.resolve(draft)

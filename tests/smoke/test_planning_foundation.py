@@ -10,6 +10,7 @@ from qwen3_coder_next.planning import (
     Planner,
     SimplePlanner,
 )
+from qwen3_coder_next.planning.schemas import PlanStep as SchemaPlanStep
 
 
 class PlanningFoundationSmokeTest(unittest.TestCase):
@@ -28,6 +29,7 @@ class PlanningFoundationSmokeTest(unittest.TestCase):
         )
 
         self.assertEqual(step.title, "Review repository")
+        self.assertIs(PlanStep, SchemaPlanStep)
         self.assertEqual(request.objective, "Add planning support")
         self.assertEqual(result.status, PlanStatus.READY)
 
@@ -48,3 +50,5 @@ class PlanningFoundationSmokeTest(unittest.TestCase):
         self.assertEqual(len(result.steps), 2)
         self.assertEqual(result.steps[0].title, "Clarify objective")
         self.assertEqual(result.steps[1].title, "Prepare execution")
+        self.assertEqual(result.steps[0].objective, "Prepare the next roadmap step")
+        self.assertEqual(result.steps[1].dependencies, ("plan-2-step-1",))

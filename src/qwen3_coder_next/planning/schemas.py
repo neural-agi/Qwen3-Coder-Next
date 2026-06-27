@@ -102,7 +102,7 @@ class PlanStep:
         return cls(
             step_id=str(payload["step_id"]),
             title=str(payload["title"]),
-            objective=str(payload["objective"]),
+            objective=str(payload.get("objective", payload.get("description", ""))),
             inputs=tuple(payload.get("inputs", ())),
             outputs=tuple(payload.get("outputs", ())),
             dependencies=tuple(payload.get("dependencies", ())),

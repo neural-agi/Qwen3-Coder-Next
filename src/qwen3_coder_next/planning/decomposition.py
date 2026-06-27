@@ -46,6 +46,7 @@ class DecompositionEngine:
                 objective=request.user_goal,
                 inputs=("normalized request",),
                 outputs=("task scope",),
+                acceptance_criteria=("task scope is explicit",),
                 owner_hint="planner",
             )
         ]
@@ -66,6 +67,7 @@ class DecompositionEngine:
                     objective="Translate request constraints into explicit planning boundaries.",
                     inputs=("constraints",),
                     outputs=("constraint boundary list",),
+                    acceptance_criteria=("constraints are represented explicitly",),
                     owner_hint="planner",
                 )
             )
@@ -86,6 +88,7 @@ class DecompositionEngine:
                     objective="Represent contextual inputs that later planner stages may rely on.",
                     inputs=("source context",),
                     outputs=("context summary",),
+                    acceptance_criteria=("source context is preserved",),
                     owner_hint="planner",
                 )
             )
@@ -97,6 +100,7 @@ class DecompositionEngine:
                 objective="Organize the normalized request into candidate work items for later ordering.",
                 inputs=("task scope", "constraints", "source context"),
                 outputs=("candidate step draft",),
+                acceptance_criteria=("candidate work items are organized",),
                 owner_hint="planner",
             )
         )

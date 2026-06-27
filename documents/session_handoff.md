@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 3: Agent Core
 
-Status: Step 8 complete; Step 9 pending
+Status: Step 9 complete; Part 4 pending
 
 ---
 
@@ -573,7 +573,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 3 Step 9: Pending
+Part 4 Step 1: Pending
 ```
 
 ---

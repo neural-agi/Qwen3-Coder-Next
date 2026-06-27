@@ -31,8 +31,23 @@ class PlanningStep5SmokeTest(unittest.TestCase):
             request=request,
             subgoals=(),
             steps=(
-                PlanStep(step_id="step-1", title="Root"),
-                PlanStep(step_id="step-2", title="Child", dependencies=("step-1",)),
+                PlanStep(
+                    step_id="step-1",
+                    title="Root",
+                    objective="Validate the root step",
+                    inputs=("request",),
+                    outputs=("root output",),
+                    acceptance_criteria=("root step is complete",),
+                ),
+                PlanStep(
+                    step_id="step-2",
+                    title="Child",
+                    objective="Validate the child step",
+                    inputs=("root output",),
+                    outputs=("child output",),
+                    dependencies=("step-1",),
+                    acceptance_criteria=("child step is complete",),
+                ),
             ),
         )
         return PlanGraph(
@@ -61,6 +76,25 @@ class PlanningStep5SmokeTest(unittest.TestCase):
 
         self.assertEqual(report.status, ValidationStatus.INVALID)
         self.assertIn("Topological order must not be empty.", report.blocking_errors)
+
+    def test_missing_required_planning_fields(self) -> None:
+        """Reject steps that omit roadmap-required planning fields."""
+
+        graph = PlanGraph(
+            nodes=(PlanStep(step_id="step-1", title="Incomplete"),),
+            edges=(),
+            topological_order=("step-1",),
+            critical_path=("step-1",),
+        )
+
+        report = self.validator.validate(graph)
+
+        self.assertEqual(report.status, ValidationStatus.INVALID)
+        self.assertIn(
+            "Node at index 0 is missing required planning fields: "
+            "objective, inputs, outputs, acceptance_criteria.",
+            report.blocking_errors,
+        )
 
     def test_duplicate_identifiers(self) -> None:
         """Reject duplicate node identifiers."""
@@ -105,9 +139,30 @@ class PlanningStep5SmokeTest(unittest.TestCase):
 
         graph = PlanGraph(
             nodes=(
-                PlanStep(step_id="step-1", title="One"),
-                PlanStep(step_id="step-2", title="Two"),
-                PlanStep(step_id="step-3", title="Three"),
+                PlanStep(
+                    step_id="step-1",
+                    title="One",
+                    objective="Prepare one",
+                    inputs=("request",),
+                    outputs=("one",),
+                    acceptance_criteria=("one exists",),
+                ),
+                PlanStep(
+                    step_id="step-2",
+                    title="Two",
+                    objective="Prepare two",
+                    inputs=("one",),
+                    outputs=("two",),
+                    acceptance_criteria=("two exists",),
+                ),
+                PlanStep(
+                    step_id="step-3",
+                    title="Three",
+                    objective="Prepare three",
+                    inputs=("request",),
+                    outputs=("three",),
+                    acceptance_criteria=("three exists",),
+                ),
             ),
             edges=(PlanEdge(source_step_id="step-1", target_step_id="step-2"),),
             topological_order=("step-1", "step-2", "step-3"),

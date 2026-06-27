@@ -93,6 +93,13 @@ class PlanValidator:
                 continue
             if not node.step_id or not node.title:
                 blocking_errors.append(f"Node at index {index} is missing required fields.")
+            missing_fields = self._missing_step_fields(node)
+            if missing_fields:
+                blocking_errors.append(
+                    f"Node at index {index} is missing required planning fields: "
+                    + ", ".join(missing_fields)
+                    + "."
+                )
             node_ids.append(node.step_id)
 
         duplicates = self._duplicates(node_ids)
@@ -219,6 +226,18 @@ class PlanValidator:
                 duplicates.append(value)
             seen.add(value)
         return tuple(sorted(duplicates))
+
+    def _missing_step_fields(self, node: PlanStep) -> tuple[str, ...]:
+        missing: list[str] = []
+        if not node.objective:
+            missing.append("objective")
+        if not node.inputs:
+            missing.append("inputs")
+        if not node.outputs:
+            missing.append("outputs")
+        if not node.acceptance_criteria:
+            missing.append("acceptance_criteria")
+        return tuple(missing)
 
 
 def validate_plan_graph(plan_graph: PlanGraph) -> ValidationReport:

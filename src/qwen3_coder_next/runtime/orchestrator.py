@@ -12,7 +12,12 @@ class PlanningRuntimeResult:
     """Structured planning output surfaced through the runtime shell."""
 
     pipeline: PlanningPipelineResult
-    serialized_plan_graph: str
+
+    @property
+    def serialized_plan_graph(self) -> str:
+        """Compatibility alias for the pipeline's canonical serialized graph."""
+
+        return self.pipeline.serialized_graph
 
 
 class Orchestrator:
@@ -46,10 +51,8 @@ class Orchestrator:
         """Run the deterministic planning pipeline through the runtime."""
 
         pipeline = self._context.plan_request(request)
-        serialized_plan_graph = self._context.planning_serializer.serialize(pipeline.graph)
         self._last_planning_result = PlanningRuntimeResult(
             pipeline=pipeline,
-            serialized_plan_graph=serialized_plan_graph,
         )
         return self._last_planning_result
 

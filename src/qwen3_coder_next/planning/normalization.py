@@ -1,5 +1,6 @@
 """Deterministic request normalization for the planning layer."""
 
+import json
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from hashlib import sha256
@@ -154,7 +155,13 @@ class PlannerRequestNormalizer:
             "source_context": list(source_context),
             "environment": environment,
         }
-        digest = sha256(repr(canonical_source).encode("utf-8")).hexdigest()
+        canonical_json = json.dumps(
+            canonical_source,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=True,
+        )
+        digest = sha256(canonical_json.encode("utf-8")).hexdigest()
         return f"task-{uuid5(NAMESPACE_URL, digest)}"
 
     def _normalize_text(self, value: Any) -> str:

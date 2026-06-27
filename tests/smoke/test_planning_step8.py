@@ -41,8 +41,23 @@ class PlanningStep8SmokeTest(unittest.TestCase):
             request=request,
             subgoals=(),
             steps=(
-                PlanStep(step_id="step-1", title="One"),
-                PlanStep(step_id="step-2", title="Two", dependencies=("step-1",)),
+                PlanStep(
+                    step_id="step-1",
+                    title="One",
+                    objective="Build the first artifact step",
+                    inputs=("request",),
+                    outputs=("first output",),
+                    acceptance_criteria=("first output exists",),
+                ),
+                PlanStep(
+                    step_id="step-2",
+                    title="Two",
+                    objective="Build the second artifact step",
+                    inputs=("first output",),
+                    outputs=("second output",),
+                    dependencies=("step-1",),
+                    acceptance_criteria=("second output exists",),
+                ),
             ),
         )
         graph = self.resolver.resolve(draft)
@@ -134,7 +149,14 @@ class PlanningStep8SmokeTest(unittest.TestCase):
             request=request,
             subgoals=(),
             steps=(
-                PlanStep(step_id="step-only", title="Only"),
+                PlanStep(
+                    step_id="step-only",
+                    title="Only",
+                    objective="Build the only artifact step",
+                    inputs=("request",),
+                    outputs=("only output",),
+                    acceptance_criteria=("only output exists",),
+                ),
             ),
         ))
         empty_report = self.validator.validate(empty_graph)

@@ -1,7 +1,8 @@
 """Runtime context for foundational service references."""
 
 import logging
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
+from datetime import UTC, datetime
 from typing import Any
 
 from qwen3_coder_next.adapters import ModelGateway, StubModelAdapter
@@ -9,7 +10,6 @@ from qwen3_coder_next.artifacts import ArtifactManager, ArtifactStore
 from qwen3_coder_next.config import AppSettings, get_settings
 from qwen3_coder_next.logging import ApplicationLogger
 from qwen3_coder_next.memory import MemoryManager, MemoryStore
-from datetime import UTC, datetime
 
 from qwen3_coder_next.planning import (
     PlanArtifact,
@@ -79,13 +79,27 @@ class RuntimeContext:
         serialized_graph = serialize_plan_graph(graph)
         serialized_report = serialize_validation_report(report)
         serialized_artifact = self.planning_serializer.serialize(artifact)
-        planner_state = PlannerState(
+        deterministic_timestamp = datetime.fromtimestamp(0, UTC)
+        planner_state = (
+            PlannerState(
+                state_id=f"{normalized.task_id}-planner-state",
+                created_at=deterministic_timestamp,
+                updated_at=deterministic_timestamp,
+            )
+            .with_current_request(normalized)
+            .with_plan_draft(draft)
+            .with_plan_draft(graph)
+            .with_validated_plan(artifact)
+        )
+        planner_state = replace(
+            planner_state,
             state_id=f"{normalized.task_id}-planner-state",
-            current_request=normalized,
-            plan_draft=graph,
-            validated_plan=artifact,
-            created_at=datetime.fromtimestamp(0, UTC),
-            updated_at=datetime.fromtimestamp(0, UTC),
+            created_at=deterministic_timestamp,
+            updated_at=deterministic_timestamp,
+            revision_history=tuple(
+                replace(revision, created_at=deterministic_timestamp)
+                for revision in planner_state.revision_history
+            ),
         )
         return PlanningPipelineResult(
             request=normalized,

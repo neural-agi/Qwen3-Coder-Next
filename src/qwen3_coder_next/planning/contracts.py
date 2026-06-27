@@ -4,6 +4,8 @@ from dataclasses import dataclass, field
 from enum import StrEnum
 from typing import Any
 
+from qwen3_coder_next.planning.schemas import PlanStep
+
 
 class PlanStatus(StrEnum):
     """Supported planning lifecycle states."""
@@ -11,16 +13,6 @@ class PlanStatus(StrEnum):
     DRAFT = "draft"
     READY = "ready"
     FAILED = "failed"
-
-
-@dataclass(frozen=True, slots=True)
-class PlanStep:
-    """Single step in a plan."""
-
-    step_id: str
-    title: str
-    description: str = ""
-    metadata: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass(frozen=True, slots=True)
