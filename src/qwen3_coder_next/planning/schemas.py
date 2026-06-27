@@ -178,6 +178,82 @@ class PlanGraph:
 
 
 @dataclass(frozen=True, slots=True)
+class PlanSubgoal:
+    """Structured subgoal used during draft decomposition."""
+
+    subgoal_id: str
+    title: str
+    objective: str
+    notes: tuple[str, ...] = ()
+    schema_version: int = PLANNER_SCHEMA_VERSION
+
+    def to_dict(self) -> dict[str, Any]:
+        """Serialize the subgoal into a deterministic mapping."""
+
+        return {
+            "subgoal_id": self.subgoal_id,
+            "title": self.title,
+            "objective": self.objective,
+            "notes": list(self.notes),
+            "schema_version": self.schema_version,
+        }
+
+    @classmethod
+    def from_dict(cls, payload: dict[str, Any]) -> "PlanSubgoal":
+        """Rehydrate a subgoal from a serialized mapping."""
+
+        return cls(
+            subgoal_id=str(payload["subgoal_id"]),
+            title=str(payload["title"]),
+            objective=str(payload["objective"]),
+            notes=tuple(payload.get("notes", ())),
+            schema_version=int(payload.get("schema_version", PLANNER_SCHEMA_VERSION)),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class PlanDraft:
+    """Draft plan produced by deterministic decomposition."""
+
+    task_id: str
+    request: PlannerRequest
+    subgoals: tuple[PlanSubgoal, ...]
+    steps: tuple[PlanStep, ...]
+    notes: tuple[str, ...] = ()
+    draft_version: int = 1
+    schema_version: int = PLANNER_SCHEMA_VERSION
+
+    def to_dict(self) -> dict[str, Any]:
+        """Serialize the draft into a deterministic mapping."""
+
+        return {
+            "task_id": self.task_id,
+            "request": self.request.to_dict(),
+            "subgoals": [subgoal.to_dict() for subgoal in self.subgoals],
+            "steps": [step.to_dict() for step in self.steps],
+            "notes": list(self.notes),
+            "draft_version": self.draft_version,
+            "schema_version": self.schema_version,
+        }
+
+    @classmethod
+    def from_dict(cls, payload: dict[str, Any]) -> "PlanDraft":
+        """Rehydrate a draft from a serialized mapping."""
+
+        return cls(
+            task_id=str(payload["task_id"]),
+            request=PlannerRequest.from_dict(dict(payload["request"])),
+            subgoals=tuple(
+                PlanSubgoal.from_dict(item) for item in payload.get("subgoals", ())
+            ),
+            steps=tuple(PlanStep.from_dict(item) for item in payload.get("steps", ())),
+            notes=tuple(payload.get("notes", ())),
+            draft_version=int(payload.get("draft_version", 1)),
+            schema_version=int(payload.get("schema_version", PLANNER_SCHEMA_VERSION)),
+        )
+
+
+@dataclass(frozen=True, slots=True)
 class PlanArtifact:
     """Stable handoff artifact produced from a validated plan."""
 

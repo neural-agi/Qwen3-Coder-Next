@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 3: Agent Core
 
-Status: Step 2 complete; Step 3 pending
+Status: Step 3 complete; Step 4 pending
 
 ---
 
@@ -82,6 +82,28 @@ Verification:
 * Constraint normalization
 * Malformed request handling
 * Serialization compatibility
+
+---
+
+## Part 3 Step 3
+
+Implemented:
+
+* DecompositionEngine
+* PlanningDecompositionError
+* MalformedDecompositionRequestError
+* PlanDraft
+* PlanSubgoal
+
+Verification:
+
+* Successful decomposition
+* Deterministic output
+* Structured draft generation
+* Plan step generation
+* Subgoal generation
+* Planner state integration
+* Malformed request handling
 
 ---
 
@@ -464,7 +486,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 3 Step 3: Decomposition
+Part 3 Step 4: Dependency Resolution
 ```
 
 Before implementing:

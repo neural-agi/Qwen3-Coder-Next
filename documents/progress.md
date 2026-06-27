@@ -16,11 +16,11 @@ Part 3 Agent Core
 
 Current Step:
 
-Part 3 Step 2 Complete
+Part 3 Step 3 Complete
 
 Next Step:
 
-Part 3 Step 3 Pending
+Part 3 Step 4 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-110 Passing
+115 Passing
 
 ---
 
@@ -59,6 +59,36 @@ Verification:
 * Constraint normalization
 * Malformed request handling
 * Serialization compatibility
+
+All verified.
+
+---
+
+## Part 3 Step 3 - Decomposition Engine
+
+Status: Complete
+
+Summary:
+
+Defined deterministic decomposition for normalized planner requests.
+
+Implemented:
+
+* DecompositionEngine
+* PlanningDecompositionError
+* MalformedDecompositionRequestError
+* PlanDraft
+* PlanSubgoal
+
+Verification:
+
+* Successful decomposition
+* Deterministic output
+* Structured PlanDraft generation
+* PlanStep generation
+* Subgoal generation
+* Planner state integration
+* Malformed request handling
 
 All verified.
 

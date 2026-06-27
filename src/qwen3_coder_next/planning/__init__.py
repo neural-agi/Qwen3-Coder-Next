@@ -1,6 +1,11 @@
 """Planning foundation for the runtime."""
 
 from qwen3_coder_next.planning.contracts import PlanRequest, PlanResult, PlanStatus
+from qwen3_coder_next.planning.decomposition import (
+    DecompositionEngine,
+    MalformedDecompositionRequestError,
+    PlanningDecompositionError,
+)
 from qwen3_coder_next.planning.normalization import (
     MalformedPlannerRequestError,
     PlannerNormalizationResult,
@@ -13,9 +18,11 @@ from qwen3_coder_next.planning.schemas import (
     CoverageMetrics,
     PLANNER_SCHEMA_VERSION,
     PlanArtifact,
+    PlanDraft,
     PlanEdge,
     PlanGraph,
     PlanStep,
+    PlanSubgoal,
     PlannerRequest,
     ValidationReport,
     ValidationStatus,
@@ -25,7 +32,9 @@ from qwen3_coder_next.planning.state import PlannerRevision, PlannerState
 
 __all__ = [
     "CoverageMetrics",
+    "DecompositionEngine",
     "PLANNER_SCHEMA_VERSION",
+    "PlanDraft",
     "PlanArtifact",
     "PlanEdge",
     "PlanGraph",
@@ -33,13 +42,16 @@ __all__ = [
     "PlanResult",
     "PlanStatus",
     "PlanStep",
+    "PlanSubgoal",
     "Planner",
     "PlannerRequest",
     "PlannerRevision",
     "PlannerState",
     "PlannerNormalizationResult",
     "PlannerRequestNormalizer",
+    "MalformedDecompositionRequestError",
     "SimplePlanner",
+    "PlanningDecompositionError",
     "MalformedPlannerRequestError",
     "PlanningNormalizationError",
     "ValidationReport",

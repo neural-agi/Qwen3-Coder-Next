@@ -7,6 +7,7 @@ from typing import Any
 from qwen3_coder_next.planning.schemas import (
     PLANNER_SCHEMA_VERSION,
     PlanArtifact,
+    PlanDraft,
     PlanGraph,
     PlannerRequest,
 )
@@ -53,7 +54,7 @@ class PlannerState:
     state_id: str
     state_version: int = 1
     current_request: PlannerRequest | None = None
-    plan_draft: PlanGraph | None = None
+    plan_draft: PlanDraft | PlanGraph | None = None
     validated_plan: PlanArtifact | None = None
     assumptions: tuple[str, ...] = ()
     revision_history: tuple[PlannerRevision, ...] = ()
@@ -86,7 +87,7 @@ class PlannerState:
             state_id=str(payload["state_id"]),
             state_version=int(payload.get("state_version", 1)),
             current_request=PlannerRequest.from_dict(current_request) if current_request else None,
-            plan_draft=PlanGraph.from_dict(plan_draft) if plan_draft else None,
+            plan_draft=cls._load_plan_draft(plan_draft) if plan_draft else None,
             validated_plan=PlanArtifact.from_dict(validated_plan) if validated_plan else None,
             assumptions=tuple(payload.get("assumptions", ())),
             revision_history=tuple(
@@ -117,7 +118,7 @@ class PlannerState:
 
         return self._bump("current request updated")._replace_current_request(request)
 
-    def with_plan_draft(self, plan_draft: PlanGraph) -> "PlannerState":
+    def with_plan_draft(self, plan_draft: PlanDraft | PlanGraph) -> "PlannerState":
         """Return a new planner state with the plan draft set."""
 
         return self._bump("plan draft updated")._replace_plan_draft(plan_draft)
@@ -140,7 +141,7 @@ class PlannerState:
     def _replace_current_request(self, request: PlannerRequest | None) -> "PlannerState":
         return replace(self, current_request=request)
 
-    def _replace_plan_draft(self, plan_draft: PlanGraph | None) -> "PlannerState":
+    def _replace_plan_draft(self, plan_draft: PlanDraft | PlanGraph | None) -> "PlannerState":
         return replace(self, plan_draft=plan_draft)
 
     def _replace_validated_plan(self, validated_plan: PlanArtifact | None) -> "PlannerState":
@@ -148,4 +149,10 @@ class PlannerState:
 
     def _replace_assumptions(self, assumptions: tuple[str, ...]) -> "PlannerState":
         return replace(self, assumptions=assumptions)
+
+    @staticmethod
+    def _load_plan_draft(payload: dict[str, Any]) -> PlanDraft | PlanGraph:
+        if "request" in payload and "subgoals" in payload and "steps" in payload:
+            return PlanDraft.from_dict(payload)
+        return PlanGraph.from_dict(payload)
 
