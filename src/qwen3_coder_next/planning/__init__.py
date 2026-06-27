@@ -34,6 +34,12 @@ from qwen3_coder_next.planning.schemas import (
 )
 from qwen3_coder_next.planning.simple_planner import SimplePlanner
 from qwen3_coder_next.planning.state import PlannerRevision, PlannerState
+from qwen3_coder_next.planning.validation import (
+    MalformedPlanGraphError,
+    PlanValidator,
+    PlanningValidationError,
+    validate_plan_graph,
+)
 
 __all__ = [
     "CoverageMetrics",
@@ -57,12 +63,16 @@ __all__ = [
     "PlannerRequestNormalizer",
     "MalformedDecompositionRequestError",
     "MalformedPlanDraftError",
+    "MalformedPlanGraphError",
     "SimplePlanner",
+    "PlanValidator",
     "PlanningDependencyError",
     "PlanningDecompositionError",
     "MalformedPlannerRequestError",
     "PlanningNormalizationError",
+    "PlanningValidationError",
     "ValidationReport",
     "ValidationStatus",
     "normalize_planner_request",
+    "validate_plan_graph",
 ]

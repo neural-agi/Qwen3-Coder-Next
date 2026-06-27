@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 3: Agent Core
 
-Status: Step 4 complete; Step 5 pending
+Status: Step 5 complete; Step 6 pending
 
 ---
 
@@ -126,6 +126,29 @@ Verification:
 * Planner state integration
 * Malformed draft handling
 * Serialization compatibility
+
+---
+
+## Part 3 Step 5
+
+Implemented:
+
+* PlanValidator
+* PlanningValidationError
+* MalformedPlanGraphError
+* ValidationReport generation
+* Structural integrity checks
+
+Verification:
+
+* Valid graph
+* Empty graph
+* Duplicate identifiers
+* Invalid dependency references
+* Unreachable nodes
+* Malformed graphs
+* Deterministic validation
+* ValidationReport serialization
 
 ---
 
@@ -508,7 +531,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 3 Step 5: Validation
+Part 3 Step 6: Artifact Serialization
 ```
 
 Before implementing:

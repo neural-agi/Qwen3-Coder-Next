@@ -16,11 +16,11 @@ Part 3 Agent Core
 
 Current Step:
 
-Part 3 Step 4 Complete
+Part 3 Step 5 Complete
 
 Next Step:
 
-Part 3 Step 5 Pending
+Part 3 Step 6 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-121 Passing
+129 Passing
 
 ---
 
@@ -119,6 +119,37 @@ Verification:
 * Planner state integration
 * Malformed draft handling
 * Serialization compatibility
+
+All verified.
+
+---
+
+## Part 3 Step 5 - Plan Validation
+
+Status: Complete
+
+Summary:
+
+Defined deterministic structural validation for resolved planner graphs.
+
+Implemented:
+
+* PlanValidator
+* PlanningValidationError
+* MalformedPlanGraphError
+* ValidationReport generation
+* Structural integrity checks
+
+Verification:
+
+* Valid graph
+* Empty graph
+* Duplicate identifiers
+* Invalid dependency references
+* Unreachable nodes
+* Malformed graphs
+* Deterministic validation
+* ValidationReport serialization
 
 All verified.
 

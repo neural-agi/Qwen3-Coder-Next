@@ -274,7 +274,7 @@ Future Responsibilities:
 
 ---
 
-### Planning Schemas, State, Normalization, Decomposition, and Dependency Resolution
+### Planning Schemas, State, Normalization, Decomposition, Dependency Resolution, and Validation
 
 Location:
 
@@ -284,7 +284,7 @@ src/qwen3_coder_next/planning
 
 Purpose:
 
-Provide the planning schema, state, deterministic request normalization, deterministic decomposition, and deterministic dependency resolution foundation for later validation work.
+Provide the planning schema, state, deterministic request normalization, deterministic decomposition, deterministic dependency resolution, and deterministic validation foundation for later artifact serialization work.
 
 Current Implementation:
 
@@ -301,12 +301,14 @@ Current Implementation:
 * PlanSubgoal
 * DecompositionEngine
 * DependencyResolver
+* PlanValidator
+* ValidationReport
 
 Current Limitations:
 
-* No validation logic beyond schema/state shape
 * No artifact generation logic
 * No planner execution logic
+* No evaluation logic
 
 Legacy compatibility:
 
