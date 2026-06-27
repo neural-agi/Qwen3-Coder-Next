@@ -292,17 +292,20 @@ The full 15-part roadmap is documented in `Roadmap and Module wise expansion/`.
 
 Qwen3CoderNext is early — contributing now means shaping the foundation, not just adding to it.
 
-**Before you open a PR:**
-- **Open an issue first for large changes.** Architecture decisions must stay consistent with existing contracts; discussion first saves everyone time.
-- **Tests are not optional.** Every subsystem ships with coverage across smoke, unit, and integration tiers. PRs that reduce coverage don't merge.
-- **Read the relevant roadmap PDF** before contributing to a module. It saves significant back-and-forth.
+Read **[CONTRIBUTING.md](CONTRIBUTING.md)** for full setup instructions, coding guidelines, pull request expectations, and the project philosophy before opening anything.
+
+**The short version:**
+- Open an issue before large changes — architecture decisions need to stay consistent with existing contracts
+- Tests are not optional — every subsystem has smoke, unit, and integration coverage; PRs that reduce coverage don't merge
+- Read the relevant `documents/` spec and roadmap PDF for the module you're touching — it saves significant back-and-forth
 
 **Where to contribute right now:**
-- 🚧 **Agent Core** is the active focus — planner integration, memory wiring, orchestrator task loop, CLI entrypoint
-- 📚 Architecture docs and `CONTRIBUTING.md` are in progress — documentation contributions welcome
-- 🧪 Additional unit and integration test coverage
 
-A full `CONTRIBUTING.md` with development setup, architecture orientation, and extension guides is coming.
+| Area | What's Needed |
+|---|---|
+| 🚧 **Agent Core** | Planner integration, memory wiring, orchestrator task loop, CLI entrypoint — this is the active focus |
+| 🧪 **Test coverage** | Additional unit and integration tests across all subsystems |
+| 📚 **Documentation** | Architecture docs, setup guides, inline docstrings |
 
 ---
 
