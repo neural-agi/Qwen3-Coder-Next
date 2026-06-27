@@ -12,8 +12,8 @@
 
 <br/>
 
-[![Status](https://img.shields.io/badge/status-early%20development-yellow?style=for-the-badge)](https://github.com/neural-agi/qwen3codernext)
-[![Tests](https://img.shields.io/badge/tests-104%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/qwen3codernext/tree/main/tests)
+[![Status](https://img.shields.io/badge/status-early%20development-yellow?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next)
+[![Tests](https://img.shields.io/badge/tests-148%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![uv](https://img.shields.io/badge/package%20manager-uv-purple?style=for-the-badge)](https://github.com/astral-sh/uv)
@@ -42,6 +42,22 @@ That trade-off is unnecessary. And it's expensive:
 **Qwen3CoderNext exists because "autonomous" and "auditable" shouldn't be opposites.**
 
 It's a coding agent foundation built on infrastructure you control, where every read, write, and command is logged, checksummed, and replayable — before any autonomous behavior is layered on top.
+
+---
+
+## 📍 Current Development Status
+
+This project is under active development, built incrementally with a completed-layer-first discipline.
+
+**Completed:**
+- Foundation Layer
+- Local Tooling Layer
+- Planning Layer
+
+**Current focus:**
+- Research Layer (Step 1 complete)
+- Agent Core
+- Execution Layer
 
 ---
 
@@ -75,6 +91,9 @@ It's a coding agent foundation built on infrastructure you control, where every 
 ```mermaid
 flowchart TD
     U[User / CLI] --> O[Orchestrator]
+    O --> PL[Planning Layer]
+    PL --> RS[Research Layer]
+    RS -.->|in progress| EX[Execution]
     O --> MG[Model Gateway]
     O --> TF[Tool Framework]
     TF --> FS[Filesystem Service]
@@ -83,25 +102,25 @@ flowchart TD
     FS --> AL[Audit Log]
     CMD --> AL
     AR --> AL
-    O -.->|implemented, not yet wired in| PL[Planner]
-    O -.->|implemented, not yet wired in| MEM[Memory]
+    O -.->|not yet wired into runtime| MEM[Memory]
 ```
 
 > **Solid lines** = built, integrated, and tested today.
-> **Dashed lines** = real implementations exist (`simple_planner`, memory `manager` + `store`) but aren't driving execution yet — integration is the active work under Agent Core.
+> **Dashed lines** = implemented but not yet fully wired into runtime execution.
 
 **Component breakdown:**
 
 | Component | Role | Status |
 |---|---|---|
-| **Orchestrator** | Coordinates tool execution; will route through planner + memory post–Agent Core | ✅ |
+| **Orchestrator** | Coordinates tool execution and routes through planning | ✅ |
+| **Planning Layer** | Request normalization, task decomposition, dependency resolution, artifact generation | ✅ |
+| **Research Layer** | Schemas and state foundation — Step 1 complete | 🚧 |
 | **Model Gateway** | Routes requests to any supported provider; swap models without touching workflow | ✅ |
 | **Tool Framework** | Contract layer every tool implements; includes `echo_tool` + full registry/manager | ✅ |
 | **Filesystem Service** | Enforces workspace boundaries; safe reads, controlled writes, diffs | ✅ |
 | **Artifact Registry** | Tracks every generated file with checksums, provenance, supersede history | ✅ |
 | **Audit Log** | Append-only, sequence-numbered record of every agent action | ✅ |
-| **Planner** | `simple_planner.py` — implemented and tested; awaiting orchestrator integration | 🔜 |
-| **Memory** | `manager.py` + `store.py` — implemented and tested; awaiting integration | 🔜 |
+| **Memory** | `manager.py` + `store.py` — implemented and tested; not yet wired into runtime | 🔜 |
 
 ---
 
@@ -130,14 +149,25 @@ flowchart TD
 - Audit logging
 - Tool adapter integration
 
-### ✅ Planning & Memory Foundation — Complete
+### ✅ Planning Layer — Complete
 
-- Planning contracts, planner, `simple_planner` — implemented and tested
-- Memory contracts, manager, store — implemented and tested
+- Request normalization
+- Task decomposition
+- Dependency resolution
+- Validation
+- Planner state management
+- Artifact generation
+- Deterministic serialization
+- Runtime integration
+
+### 🚧 Research Layer — In Progress
+
+- Step 1 complete: schemas and state foundation implemented
+- Active development underway
 
 ### 🚧 Agent Core — In Progress
 
-- Wiring planner and memory into the orchestrator
+- Wiring layers into the orchestrator
 - Building real task execution
 - First real CLI entrypoint
 
@@ -151,21 +181,34 @@ flowchart TD
 You: "Refactor the auth module to use the new session interface."
           │
           ▼
-  Orchestrator → Planner breaks task into steps
+    Planning Layer
+    (decomposition · dependency resolution · artifact generation)
           │
           ▼
-  Filesystem Service reads relevant files
-  (inside enforced workspace boundary ✅)
+    Research Layer
+    (codebase understanding · context gathering)
           │
           ▼
-  Patch generated → applied through controlled write pipeline
+    Execution
+    (controlled, audited, boundary-enforced)
           │
           ▼
-  Every read, write & command → Audit Log with checksums
+    Local Tooling
+    (filesystem reads · patch application · command execution)
           │
           ▼
-  You receive: reviewable diff + full provenance chain
-  → nothing touches main until you approve
+    Audit Log
+    (every action checksummed and replayable)
+          │
+          ▼
+    Artifacts
+    (provenance-tracked · versioned · never silently overwritten)
+          │
+          ▼
+    Human Approval Gate
+          │
+          ▼
+    Main Branch
 ```
 
 ---
@@ -173,8 +216,8 @@ You: "Refactor the auth module to use the new session interface."
 ## 📦 Installation
 
 ```bash
-git clone https://github.com/neural-agi/qwen3codernext.git
-cd qwen3codernext
+git clone https://github.com/neural-agi/Qwen3-coder-next.git
+cd Qwen3-coder-next
 uv sync
 ```
 
@@ -188,7 +231,7 @@ The fastest way to verify the foundation is solid while Agent Core is being buil
 uv run python -m unittest discover -s tests -v
 ```
 
-**104 tests. Zero failures.**
+**148 tests. Zero failures.**
 
 | Test Tier | Files | Coverage |
 |---|---|---|
@@ -215,8 +258,9 @@ Qwen-3-Coder-Next/
 │   │                            # filesystem, reads, operations, diff, commands,
 │   │                            # artifact_registry, audit, resolution, adapter, contracts
 │   ├── logging/                 # formatter, logger, setup
-│   ├── memory/                  # contracts, manager, store — tested, not yet wired in
-│   ├── planning/                # contracts, planner, simple_planner — tested, not yet wired in
+│   ├── memory/                  # contracts, manager, store — tested, not yet wired into runtime
+│   ├── planning/                # contracts, planner, decomposition, validation — complete
+│   ├── research/                # schemas and state foundation — Step 1 complete
 │   ├── prompts/                 # contracts, loader, registry
 │   ├── runtime/                 # orchestrator, runtime context
 │   ├── state/                   # state manager and store
@@ -263,10 +307,12 @@ Qwen-3-Coder-Next/
 |---|---|---|
 | Foundation | Contracts, config, logging, state, model gateway, orchestrator, artifacts | ✅ Complete |
 | Local Tooling | Filesystem, reads/writes, commands, audit, artifact registry | ✅ Complete |
-| Planning & Memory Foundation | Simple planner, memory manager/store — implemented and tested | ✅ Complete |
-| **Agent Core** | **Planner + memory integration, real task execution, CLI** | **🚧 Active** |
+| Planning Layer | Request normalization, task decomposition, dependency resolution, runtime integration | ✅ Complete |
+| **Research Layer** | **Codebase understanding, context gathering, symbol resolution** | **🚧 Active** |
+| **Agent Core** | **Orchestrator integration, real task execution, CLI** | **🚧 Active** |
+| Execution Layer | Controlled execution pipeline, failure recovery, replanning | 🚧 Planned |
+| Memory Layer | Persistent context, session memory, cross-task recall | 📋 Planned |
 | Advanced Planning | Multi-step decomposition, replanning, failure recovery | 📋 Planned |
-| Memory Systems | Persistent context, session memory, cross-task recall | 📋 Planned |
 | Tool Ecosystem | File tools, search tools, shell tools, extensible registry | 📋 Planned |
 | Repository Intelligence | Codebase understanding, symbol graphs, dependency mapping | 📋 Planned |
 | Autonomous Workflows | End-to-end task execution with human approval gates | 📋 Planned |
@@ -303,7 +349,8 @@ Read **[CONTRIBUTING.md](CONTRIBUTING.md)** for full setup instructions, coding 
 
 | Area | What's Needed |
 |---|---|
-| 🚧 **Agent Core** | Planner integration, memory wiring, orchestrator task loop, CLI entrypoint — this is the active focus |
+| 🚧 **Research Layer** | Step 1 is done — subsequent steps are the active focus |
+| 🚧 **Agent Core** | Planner integration, memory wiring, orchestrator task loop, CLI entrypoint |
 | 🧪 **Test coverage** | Additional unit and integration tests across all subsystems |
 | 📚 **Documentation** | Architecture docs, setup guides, inline docstrings |
 
@@ -313,13 +360,11 @@ Read **[CONTRIBUTING.md](CONTRIBUTING.md)** for full setup instructions, coding 
 
 > Most agent projects ship a capable-looking agent first and try to add reliability later. The result is an autonomous system that's hard to trust, hard to debug, and hard to extend — because the foundation wasn't built for those properties.
 
-Qwen3CoderNext takes the opposite path: **deterministic, testable infrastructure first.** Every subsystem is validated before the next layer is added. Planning and memory implementations exist and are tested before they're integrated — not because that's the fastest path to a demo, but because it's the right way to build something you can actually trust.
+Qwen3CoderNext takes the opposite path: **deterministic, testable infrastructure first.** Every subsystem is validated before the next layer is added. Every layer is completed, validated, and frozen before higher-level systems are allowed to depend on it.
 
 The long-term target is a fully autonomous, multi-agent development platform — repository understanding, persistent memory, multi-model collaboration, human approval gates — that never asks you to give up visibility into what it's doing or where your code lives.
 
-**104 tests passing. Every module covered. `application.log` already being written.**
-
-That's the beginning, not the end.
+**148 automated tests. Deterministic infrastructure. Layered architecture. Research Layer underway.**
 
 ---
 
@@ -330,7 +375,6 @@ Qwen3CoderNext is licensed under the **MIT License**.
 You're free to use, modify, distribute, and build upon this project in accordance with the terms of the license.
 
 See the [LICENSE](LICENSE) file for the full license text.
-
 
 ---
 
