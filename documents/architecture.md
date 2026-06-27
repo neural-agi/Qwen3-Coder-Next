@@ -244,6 +244,7 @@ Contains:
 * Memory Manager
 * Model Gateway
 * Logger
+* Planning pipeline services
 
 ---
 
@@ -264,6 +265,7 @@ Current Responsibilities:
 * Service composition
 * Runtime coordination
 * Execution shell behavior
+* Planning pipeline routing
 
 Future Responsibilities:
 
@@ -284,7 +286,7 @@ src/qwen3_coder_next/planning
 
 Purpose:
 
-Provide the planning schema, state, deterministic request normalization, deterministic decomposition, deterministic dependency resolution, and deterministic validation foundation for later artifact serialization work.
+Provide the planning schema, state, deterministic request normalization, deterministic decomposition, deterministic dependency resolution, deterministic validation, and deterministic artifact construction foundation.
 
 Current Implementation:
 
@@ -302,10 +304,11 @@ Current Implementation:
 * DecompositionEngine
 * DependencyResolver
 * PlanValidator
+* PlanArtifactBuilder
 
 Current Limitations:
 
-* No artifact generation logic
+* No artifact persistence logic
 * No planner execution logic
 * No evaluation logic
 

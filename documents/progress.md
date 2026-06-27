@@ -16,11 +16,11 @@ Part 3 Agent Core
 
 Current Step:
 
-Part 3 Step 6 Complete
+Part 3 Step 8 Complete
 
 Next Step:
 
-Part 3 Step 7 Pending
+Part 3 Step 9 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-134 Passing
+147 Passing
 
 ---
 
@@ -178,6 +178,35 @@ Verification:
 * Round-trip equality
 * Schema version compatibility
 * Malformed serialized input
+* Backward compatibility
+
+All verified.
+
+---
+
+## Part 3 Step 7 - Runtime Integration
+
+Status: Complete
+
+Summary:
+
+Integrated the completed planning pipeline into the runtime shell.
+
+Implemented:
+
+* Runtime planning entry point
+* PlanningPipelineResult
+* PlanningRuntimeResult
+* Orchestrator planning hook
+* Existing execution lifecycle preserved
+
+Verification:
+
+* Runtime invokes planner
+* Planning pipeline integration
+* Runtime receives planning output
+* Deterministic integration behavior
+* Existing runtime behavior remains unchanged
 * Backward compatibility
 
 All verified.
@@ -444,36 +473,37 @@ All verified.
 
 ---
 
-## Step 8 - Artifact Management
+## Step 8 - Artifact Builder
 
 Status: Complete
 
 Summary:
 
-Implemented artifact tracking infrastructure.
+Implemented deterministic planning artifact construction.
 
 Implemented:
 
-* ArtifactStore
-* ArtifactManager
-* Artifact lifecycle operations
+* PlanArtifactBuilder
+* PlanningArtifactBuildError
+* MalformedPlanningArtifactInputError
+* Deterministic PlanArtifact construction
+* Canonical artifact serialization support
 
 Files Added:
 
 ```text
-artifacts/store.py
-artifacts/manager.py
-artifacts/exceptions.py
+planning/artifact_builder.py
 ```
 
 Verification:
 
-* Create
-* Read
-* Update
-* Delete
-* Duplicate handling
-* Missing artifact handling
+* Artifact construction
+* Deterministic artifact generation
+* Identifier stability
+* Schema version preservation
+* Serialization compatibility
+* Malformed input handling
+* Backward compatibility
 
 All verified.
 

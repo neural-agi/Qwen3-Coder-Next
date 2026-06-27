@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 3: Agent Core
 
-Status: Step 6 complete; Step 7 pending
+Status: Step 8 complete; Step 9 pending
 
 ---
 
@@ -169,6 +169,27 @@ Verification:
 * Round-trip equality
 * Schema version compatibility
 * Malformed serialized input
+* Backward compatibility
+
+---
+
+## Part 3 Step 7
+
+Implemented:
+
+* PlanningPipelineResult
+* PlanningRuntimeResult
+* RuntimeContext planning entry point
+* Orchestrator planning hook
+* Existing execution lifecycle preserved
+
+Verification:
+
+* Runtime invokes planner
+* Planning pipeline integration
+* Runtime receives planning output
+* Deterministic integration behavior
+* Existing runtime behavior remains unchanged
 * Backward compatibility
 
 ---
@@ -467,7 +488,7 @@ uv run python -m unittest discover -s tests -v
 Result:
 
 ```text
-106 passing
+147 passing
 0 failing
 ```
 
@@ -475,7 +496,7 @@ Repository State:
 
 ```text
 Healthy
-Step 6 complete
+Step 8 complete
 ```
 
 ---
@@ -552,19 +573,8 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 3 Step 7: Runtime Integration
+Part 3 Step 9: Pending
 ```
-
-Before implementing:
-
-1. Read this file.
-2. Read architecture.md.
-3. Read roadmap.md.
-4. Verify all tests pass.
-5. Implement only the requested step.
-6. Run smoke tests.
-7. Update progress.md.
-8. Update this file if architecture changes.
 
 ---
 

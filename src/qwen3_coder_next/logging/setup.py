@@ -1,6 +1,8 @@
 """Logger setup utilities."""
 
+import os
 import logging
+import tempfile
 from pathlib import Path
 
 from qwen3_coder_next.config import AppSettings
@@ -53,10 +55,20 @@ def setup_logging(
     console_handler.setFormatter(formatter)
 
     settings.logs_dir.mkdir(parents=True, exist_ok=True)
-    file_handler = logging.FileHandler(
-        build_log_file_path(settings, log_filename),
-        encoding="utf-8",
-    )
+    log_file_path = build_log_file_path(settings, log_filename)
+    try:
+        file_handler = logging.FileHandler(
+            log_file_path,
+            encoding="utf-8",
+        )
+    except PermissionError:
+        fallback_dir = Path(tempfile.gettempdir()) / "qwen3-coder-next-logs"
+        fallback_dir.mkdir(parents=True, exist_ok=True)
+        fallback_name = f"{Path(log_filename).stem}-{os.getpid()}{Path(log_filename).suffix}"
+        file_handler = logging.FileHandler(
+            fallback_dir / fallback_name,
+            encoding="utf-8",
+        )
     file_handler.setLevel(logger.level)
     file_handler.setFormatter(formatter)
 

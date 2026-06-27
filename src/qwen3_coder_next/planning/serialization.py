@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from typing import Any, Callable, TypeVar
 
 from qwen3_coder_next.planning.schemas import (
+    PlanArtifact,
     PlanDraft,
     PlanGraph,
     PlannerRequest,
@@ -15,7 +16,9 @@ from qwen3_coder_next.planning.schemas import (
 from qwen3_coder_next.planning.state import PlannerState
 
 
-PlanningSerializable = PlannerRequest | PlanDraft | PlanGraph | ValidationReport | PlannerState
+PlanningSerializable = (
+    PlannerRequest | PlanDraft | PlanGraph | ValidationReport | PlanArtifact | PlannerState
+)
 TPlanningSerializable = TypeVar("TPlanningSerializable", bound=PlanningSerializable)
 
 
@@ -41,6 +44,8 @@ class PlanningArtifactSerializer:
         elif isinstance(item, PlanGraph):
             payload = item.to_dict()
         elif isinstance(item, ValidationReport):
+            payload = item.to_dict()
+        elif isinstance(item, PlanArtifact):
             payload = item.to_dict()
         elif isinstance(item, PlannerState):
             payload = item.to_dict()
@@ -74,6 +79,11 @@ class PlanningArtifactSerializer:
         """Deserialize planner state."""
 
         return self._deserialize(payload, PlannerState.from_dict)
+
+    def deserialize_artifact(self, payload: str | dict[str, Any]) -> PlanArtifact:
+        """Deserialize a plan artifact."""
+
+        return self._deserialize(payload, PlanArtifact.from_dict)
 
     def _deserialize(
         self,
@@ -133,6 +143,12 @@ def serialize_validation_report(report: ValidationReport) -> str:
     return _DEFAULT_SERIALIZER.serialize(report)
 
 
+def serialize_plan_artifact(artifact: PlanArtifact) -> str:
+    """Serialize a plan artifact into canonical JSON."""
+
+    return _DEFAULT_SERIALIZER.serialize(artifact)
+
+
 def serialize_planner_state(state: PlannerState) -> str:
     """Serialize planner state into canonical JSON."""
 
@@ -161,6 +177,12 @@ def deserialize_validation_report(payload: str | dict[str, Any]) -> ValidationRe
     """Deserialize a validation report from canonical JSON or a mapping."""
 
     return _DEFAULT_SERIALIZER.deserialize_report(payload)
+
+
+def deserialize_plan_artifact(payload: str | dict[str, Any]) -> PlanArtifact:
+    """Deserialize a plan artifact from canonical JSON or a mapping."""
+
+    return _DEFAULT_SERIALIZER.deserialize_artifact(payload)
 
 
 def deserialize_planner_state(payload: str | dict[str, Any]) -> PlannerState:
