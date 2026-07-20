@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 4: Research Layer
 
-Status: Step 1 complete; Step 2 pending
+Status: Step 2 complete; Step 3 pending
 
 ---
 
@@ -83,6 +83,27 @@ Verification:
 * State creation
 * State update behavior
 * Stable identifiers and versioned state behavior
+
+---
+
+## Part 4 Step 2
+
+Implemented:
+
+* ResearchRequestNormalizer
+* ResearchNormalizationResult
+* ResearchNormalizationError
+* MalformedResearchRequestError
+* MalformedSourcePolicyError
+
+Verification:
+
+* Successful normalization
+* Deterministic output
+* Request ID derivation
+* Source policy normalization
+* Malformed request handling
+* Serialization compatibility
 
 ---
 
@@ -509,7 +530,7 @@ uv run python -m unittest discover -s tests -v
 Result:
 
 ```text
-151 passing
+156 passing
 0 failing
 ```
 
@@ -517,7 +538,7 @@ Repository State:
 
 ```text
 Healthy
-Part 4 Step 1 complete
+Part 4 Step 2 complete
 ```
 
 ---
@@ -594,7 +615,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 4 Step 2: Pending
+Part 4 Step 3: Pending
 ```
 
 ---
@@ -622,7 +643,7 @@ Qwen3-Coder-Next/
 
 ## Last Known Healthy State
 
-Date: 2026-06-27
+Date: 2026-07-20
 
 Completed Foundation Steps:
 
@@ -642,7 +663,7 @@ Completed Foundation Steps:
 Test Status:
 
 ```text
-151 passing
+156 passing
 0 failing
 ```
 
@@ -650,5 +671,5 @@ Repository State:
 
 ```text
 Healthy
-Part 4 Step 1 complete
+Part 4 Step 2 complete
 ```

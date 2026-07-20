@@ -16,11 +16,11 @@ Part 4 Research Layer
 
 Current Step:
 
-Part 4 Step 1 Complete
+Part 4 Step 2 Complete
 
 Next Step:
 
-Part 4 Step 2 Pending
+Part 4 Step 3 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-151 Passing
+156 Passing
 
 ---
 
@@ -237,6 +237,35 @@ Verification:
 * State creation
 * State update behavior
 * Stable identifiers and versioned state behavior
+
+All verified.
+
+---
+
+## Part 4 Step 2 - Source Policy and Request Normalization
+
+Status: Complete
+
+Summary:
+
+Added deterministic research request normalization and source policy shaping.
+
+Implemented:
+
+* ResearchRequestNormalizer
+* ResearchNormalizationResult
+* ResearchNormalizationError
+* MalformedResearchRequestError
+* MalformedSourcePolicyError
+
+Verification:
+
+* Successful normalization
+* Deterministic output
+* Request ID derivation
+* Source policy normalization
+* Malformed request handling
+* Serialization compatibility
 
 All verified.
 

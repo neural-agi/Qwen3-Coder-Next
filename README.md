@@ -162,7 +162,7 @@ flowchart TD
 
 ### 🚧 Research Layer — In Progress
 
-- Step 1 complete: schemas and state foundation implemented
+- Step 2 complete: schemas, state, source policy, and request normalization implemented
 - Active development underway
 
 ### 🚧 Agent Core — In Progress
@@ -186,7 +186,7 @@ You: "Refactor the auth module to use the new session interface."
           │
           ▼
     Research Layer
-    (codebase understanding · context gathering)
+    (schemas · state · request normalization · source policy)
           │
           ▼
     Execution
@@ -231,7 +231,7 @@ The fastest way to verify the foundation is solid while Agent Core is being buil
 uv run python -m unittest discover -s tests -v
 ```
 
-**151 tests. Zero failures.**
+**156 tests. Zero failures.**
 
 | Test Tier | Files | Coverage |
 |---|---|---|
@@ -349,7 +349,7 @@ Read **[CONTRIBUTING.md](CONTRIBUTING.md)** for full setup instructions, coding 
 
 | Area | What's Needed |
 |---|---|
-| 🚧 **Research Layer** | Step 1 is done — subsequent steps are the active focus |
+| 🚧 **Research Layer** | Step 2 is done — subsequent steps are the active focus |
 | 🚧 **Agent Core** | Planner integration, memory wiring, orchestrator task loop, CLI entrypoint |
 | 🧪 **Test coverage** | Additional unit and integration tests across all subsystems |
 | 📚 **Documentation** | Architecture docs, setup guides, inline docstrings |
@@ -364,7 +364,7 @@ Qwen3CoderNext takes the opposite path: **deterministic, testable infrastructure
 
 The long-term target is a fully autonomous, multi-agent development platform — repository understanding, persistent memory, multi-model collaboration, human approval gates — that never asks you to give up visibility into what it's doing or where your code lives.
 
-**151 automated tests. Deterministic infrastructure. Layered architecture. Research Layer underway.**
+**156 automated tests. Deterministic infrastructure. Layered architecture. Research Layer underway.**
 
 ---
 

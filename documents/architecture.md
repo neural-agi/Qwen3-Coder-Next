@@ -338,6 +338,8 @@ Current Implementation:
 * ResearchPacket
 * SourcePolicy
 * ResearchState
+* ResearchRequestNormalizer
+* ResearchNormalizationResult
 
 Current Limitations:
 

@@ -355,3 +355,27 @@ class SourcePolicy:
             cache_ttl_minutes=int(payload.get("cache_ttl_minutes", 60)),
             schema_version=int(payload.get("schema_version", RESEARCH_SCHEMA_VERSION)),
         )
+
+
+def _default_source_policy() -> SourcePolicy:
+    """Return the canonical default research source policy."""
+
+    return SourcePolicy(
+        allowed_sources=(
+            SourceType.REPO_FILE,
+            SourceType.DOC,
+            SourceType.LOG,
+            SourceType.API_REF,
+        ),
+        preferred_sources=(SourceType.REPO_FILE, SourceType.DOC),
+        blocked_sources=(SourceType.ERROR_ARTIFACT,),
+        source_rank_weights={
+            "repo_file": 1.0,
+            "error_log": 0.95,
+            "api_ref": 0.85,
+            "web_doc": 0.70,
+        },
+        max_evidence_items=20,
+        max_snippet_chars=1_200,
+        cache_ttl_minutes=60,
+    )
