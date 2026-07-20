@@ -30,6 +30,14 @@ from qwen3_coder_next.research.scanner import (
     RepositoryScanResult,
     scan_local_repository,
 )
+from qwen3_coder_next.research.fetchers import (
+    DocumentFetcher,
+    ErrorFetcher,
+    LogFetcher,
+    MalformedResearchFetchRequestError,
+    ResearchFetchError,
+    ResearchFetchResult,
+)
 from qwen3_coder_next.research.state import ResearchRevision, ResearchState
 
 __all__ = [
@@ -49,9 +57,15 @@ __all__ = [
     "ResearchRequestNormalizer",
     "ResearchTaskType",
     "LocalRepositoryScanner",
+    "DocumentFetcher",
+    "LogFetcher",
+    "ErrorFetcher",
+    "ResearchFetchError",
+    "ResearchFetchResult",
     "MalformedRepositoryScanRequestError",
     "RepositoryScanError",
     "RepositoryScanResult",
+    "MalformedResearchFetchRequestError",
     "SourceHandle",
     "SourcePolicy",
     "SourceType",

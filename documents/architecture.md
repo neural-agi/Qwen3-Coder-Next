@@ -342,12 +342,13 @@ Current Implementation:
 * ResearchNormalizationResult
 * LocalRepositoryScanner
 * RepositoryScanResult
+* DocumentFetcher
+* LogFetcher
+* ErrorFetcher
+* ResearchFetchResult
 
 Current Limitations:
 
-* No document fetching
-* No log fetching
-* No error fetching
 * No evidence ranking
 * No synthesis / packet building logic
 * No cache lookup or persistence

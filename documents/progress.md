@@ -16,11 +16,11 @@ Part 4 Research Layer
 
 Current Step:
 
-Part 4 Step 3 Complete
+Part 4 Step 4 Complete
 
 Next Step:
 
-Part 4 Step 4 Pending
+Part 4 Step 5 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-159 Passing
+164 Passing
 
 ---
 
@@ -271,31 +271,33 @@ All verified.
 
 ---
 
-## Part 4 Step 3 - Local Repository Scanning
+## Part 4 Step 4 - Document, Log, and Error Fetchers
 
 Status: Complete
 
 Summary:
 
-Added deterministic read-only repository scanning for local evidence discovery.
+Added deterministic read-only document, log, and error fetching for research evidence discovery.
 
 Implemented:
 
-* LocalRepositoryScanner
-* RepositoryScanResult
-* RepositoryScanError
-* MalformedRepositoryScanRequestError
-* scan_local_repository
+* DocumentFetcher
+* LogFetcher
+* ErrorFetcher
+* ResearchFetchResult
+* ResearchFetchError
+* MalformedResearchFetchRequestError
 
 Verification:
 
-* Repository walking
-* Path filtering
-* Snippet extraction
-* File sampling
-* Read-only behavior
-* Deterministic scan output
+* Document loading
+* Log fetching
+* Error artifact fetching
+* Provenance attachment
+* Stable output ordering
+* Deterministic fetch output
 * Malformed input handling
+* Read-only behavior
 
 All verified.
 
