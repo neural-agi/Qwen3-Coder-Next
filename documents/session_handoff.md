@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 4: Research Layer
 
-Status: Step 2 complete; Step 3 pending
+Status: Step 3 complete; Step 4 pending
 
 ---
 
@@ -104,6 +104,28 @@ Verification:
 * Source policy normalization
 * Malformed request handling
 * Serialization compatibility
+
+---
+
+## Part 4 Step 3
+
+Implemented:
+
+* LocalRepositoryScanner
+* RepositoryScanResult
+* RepositoryScanError
+* MalformedRepositoryScanRequestError
+* scan_local_repository
+
+Verification:
+
+* Repository walking
+* Path filtering
+* Snippet extraction
+* File sampling
+* Read-only behavior
+* Deterministic scan output
+* Malformed input handling
 
 ---
 
@@ -530,7 +552,7 @@ uv run python -m unittest discover -s tests -v
 Result:
 
 ```text
-156 passing
+159 passing
 0 failing
 ```
 
@@ -538,7 +560,7 @@ Repository State:
 
 ```text
 Healthy
-Part 4 Step 2 complete
+Part 4 Step 3 complete
 ```
 
 ---
@@ -615,7 +637,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 4 Step 3: Pending
+Part 4 Step 4: Pending
 ```
 
 ---
@@ -663,7 +685,7 @@ Completed Foundation Steps:
 Test Status:
 
 ```text
-156 passing
+159 passing
 0 failing
 ```
 
@@ -671,5 +693,5 @@ Repository State:
 
 ```text
 Healthy
-Part 4 Step 2 complete
+Part 4 Step 3 complete
 ```

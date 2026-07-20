@@ -13,7 +13,7 @@
 <br/>
 
 [![Status](https://img.shields.io/badge/status-early%20development-yellow?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next)
-[![Tests](https://img.shields.io/badge/tests-151%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
+[![Tests](https://img.shields.io/badge/tests-159%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![uv](https://img.shields.io/badge/package%20manager-uv-purple?style=for-the-badge)](https://github.com/astral-sh/uv)
@@ -55,7 +55,7 @@ This project is under active development, built incrementally with a completed-l
 - Planning Layer
 
 **Current focus:**
-- Research Layer (Step 1 complete)
+- Research Layer (Step 3 complete)
 - Agent Core
 - Execution Layer
 
@@ -162,7 +162,7 @@ flowchart TD
 
 ### 🚧 Research Layer — In Progress
 
-- Step 2 complete: schemas, state, source policy, and request normalization implemented
+- Step 3 complete: schemas, state, source policy, request normalization, and local repository scanning implemented
 - Active development underway
 
 ### 🚧 Agent Core — In Progress
@@ -231,11 +231,11 @@ The fastest way to verify the foundation is solid while Agent Core is being buil
 uv run python -m unittest discover -s tests -v
 ```
 
-**156 tests. Zero failures.**
+**159 tests. Zero failures.**
 
 | Test Tier | Files | Coverage |
 |---|---|---|
-| `tests/smoke/` | 23 files | One per module — contracts, config, logging, state, model gateway, orchestrator, artifacts, all 10 local tooling submodules, memory, planning, prompts, runtime |
+| `tests/smoke/` | 24 files | One per module — contracts, config, logging, state, model gateway, orchestrator, artifacts, all 10 local tooling submodules, memory, planning, prompts, runtime, research |
 | `tests/unit/` | 8 files | Deep coverage on `local_tooling` — reads, mutations, diff, commands, audit, artifact registry, resolution, adapter |
 | `tests/integration/` | 1 file | Local tooling adapter end-to-end |
 

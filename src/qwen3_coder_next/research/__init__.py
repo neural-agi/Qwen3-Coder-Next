@@ -23,6 +23,13 @@ from qwen3_coder_next.research.normalization import (
     ResearchRequestNormalizer,
     normalize_research_request,
 )
+from qwen3_coder_next.research.scanner import (
+    LocalRepositoryScanner,
+    MalformedRepositoryScanRequestError,
+    RepositoryScanError,
+    RepositoryScanResult,
+    scan_local_repository,
+)
 from qwen3_coder_next.research.state import ResearchRevision, ResearchState
 
 __all__ = [
@@ -41,10 +48,15 @@ __all__ = [
     "ResearchNormalizationResult",
     "ResearchRequestNormalizer",
     "ResearchTaskType",
+    "LocalRepositoryScanner",
+    "MalformedRepositoryScanRequestError",
+    "RepositoryScanError",
+    "RepositoryScanResult",
     "SourceHandle",
     "SourcePolicy",
     "SourceType",
     "MalformedResearchRequestError",
     "MalformedSourcePolicyError",
+    "scan_local_repository",
     "normalize_research_request",
 ]

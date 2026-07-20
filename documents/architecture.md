@@ -340,11 +340,14 @@ Current Implementation:
 * ResearchState
 * ResearchRequestNormalizer
 * ResearchNormalizationResult
+* LocalRepositoryScanner
+* RepositoryScanResult
 
 Current Limitations:
 
-* No source scanning
 * No document fetching
+* No log fetching
+* No error fetching
 * No evidence ranking
 * No synthesis / packet building logic
 * No cache lookup or persistence

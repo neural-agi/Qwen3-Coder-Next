@@ -16,11 +16,11 @@ Part 4 Research Layer
 
 Current Step:
 
-Part 4 Step 2 Complete
+Part 4 Step 3 Complete
 
 Next Step:
 
-Part 4 Step 3 Pending
+Part 4 Step 4 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-156 Passing
+159 Passing
 
 ---
 
@@ -266,6 +266,36 @@ Verification:
 * Source policy normalization
 * Malformed request handling
 * Serialization compatibility
+
+All verified.
+
+---
+
+## Part 4 Step 3 - Local Repository Scanning
+
+Status: Complete
+
+Summary:
+
+Added deterministic read-only repository scanning for local evidence discovery.
+
+Implemented:
+
+* LocalRepositoryScanner
+* RepositoryScanResult
+* RepositoryScanError
+* MalformedRepositoryScanRequestError
+* scan_local_repository
+
+Verification:
+
+* Repository walking
+* Path filtering
+* Snippet extraction
+* File sampling
+* Read-only behavior
+* Deterministic scan output
+* Malformed input handling
 
 All verified.
 
