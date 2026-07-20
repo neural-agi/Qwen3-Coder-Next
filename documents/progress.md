@@ -16,11 +16,11 @@ Part 4 Research Layer
 
 Current Step:
 
-Part 4 Step 6 Complete
+Part 4 Step 7 Complete
 
 Next Step:
 
-Part 4 Step 7 Pending
+Part 4 Step 8 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-172 Passing
+176 Passing
 
 ---
 
@@ -357,6 +357,39 @@ Verification:
 * Source policy preservation
 * Provenance preservation
 * Stable ordering
+* Malformed input handling
+* Read-only behavior
+
+All verified.
+
+---
+
+## Part 4 Step 7 - Research Pipeline Integration
+
+Status: Complete
+
+Summary:
+
+Integrated the existing research stages into a deterministic pipeline boundary.
+
+Implemented:
+
+* ResearchPipeline
+* ResearchPipelineResult
+* ResearchPipelineError
+* MalformedResearchPipelineInputError
+* Deterministic stage orchestration
+
+Verification:
+
+* Complete research pipeline execution
+* Deterministic pipeline output
+* Correct stage ordering
+* Proper reuse of existing components
+* Request propagation
+* Source policy propagation
+* Evidence propagation
+* Packet propagation
 * Malformed input handling
 * Read-only behavior
 

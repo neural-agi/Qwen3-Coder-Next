@@ -349,6 +349,8 @@ Current Implementation:
 * ResearchEvidenceNormalizer
 * ResearchEvidenceNormalizationResult
 * ResearchPacketAssembler
+* ResearchPipeline
+* ResearchPipelineResult
 
 Current Limitations:
 
