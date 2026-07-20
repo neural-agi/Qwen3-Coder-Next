@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 4: Research Layer
 
-Status: Step 4 complete; Step 5 pending
+Status: Step 5 complete; Step 6 pending
 
 ---
 
@@ -126,6 +126,28 @@ Verification:
 * Read-only behavior
 * Deterministic scan output
 * Malformed input handling
+
+---
+
+## Part 4 Step 5
+
+Implemented:
+
+* ResearchEvidenceNormalizer
+* ResearchEvidenceNormalizationResult
+* ResearchEvidenceNormalizationError
+* MalformedResearchEvidenceError
+
+Verification:
+
+* Evidence normalization
+* Ranking order
+* Deduplication behavior
+* Freshness handling
+* Provenance preservation
+* Deterministic output
+* Malformed input handling
+* Read-only behavior
 
 ---
 
@@ -552,7 +574,7 @@ uv run python -m unittest discover -s tests -v
 Result:
 
 ```text
-164 passing
+168 passing
 0 failing
 ```
 
@@ -560,7 +582,7 @@ Repository State:
 
 ```text
 Healthy
-Part 4 Step 4 complete
+Part 4 Step 5 complete
 ```
 
 ---
@@ -685,7 +707,7 @@ Completed Foundation Steps:
 Test Status:
 
 ```text
-164 passing
+168 passing
 0 failing
 ```
 
@@ -693,5 +715,5 @@ Repository State:
 
 ```text
 Healthy
-Part 4 Step 4 complete
+Part 4 Step 5 complete
 ```

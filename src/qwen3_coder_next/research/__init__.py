@@ -38,6 +38,13 @@ from qwen3_coder_next.research.fetchers import (
     ResearchFetchError,
     ResearchFetchResult,
 )
+from qwen3_coder_next.research.evidence import (
+    MalformedResearchEvidenceError,
+    ResearchEvidenceNormalizationError,
+    ResearchEvidenceNormalizationResult,
+    ResearchEvidenceNormalizer,
+    normalize_research_evidence,
+)
 from qwen3_coder_next.research.state import ResearchRevision, ResearchState
 
 __all__ = [
@@ -62,6 +69,10 @@ __all__ = [
     "ErrorFetcher",
     "ResearchFetchError",
     "ResearchFetchResult",
+    "ResearchEvidenceNormalizationError",
+    "ResearchEvidenceNormalizationResult",
+    "ResearchEvidenceNormalizer",
+    "MalformedResearchEvidenceError",
     "MalformedRepositoryScanRequestError",
     "RepositoryScanError",
     "RepositoryScanResult",
@@ -73,4 +84,5 @@ __all__ = [
     "MalformedSourcePolicyError",
     "scan_local_repository",
     "normalize_research_request",
+    "normalize_research_evidence",
 ]

@@ -55,7 +55,7 @@ This project is under active development, built incrementally with a completed-l
 - Planning Layer
 
 **Current focus:**
-- Research Layer (Step 4 complete)
+- Research Layer (Step 5 complete)
 - Agent Core
 - Execution Layer
 
@@ -162,7 +162,7 @@ flowchart TD
 
 ### 🚧 Research Layer — In Progress
 
-- Step 4 complete: schemas, state, source policy, request normalization, local repository scanning, and document/log/error fetchers implemented
+- Step 5 complete: schemas, state, source policy, request normalization, local repository scanning, document/log/error fetchers, and evidence normalization/ranking implemented
 - Active development underway
 
 ### 🚧 Agent Core — In Progress
@@ -231,7 +231,7 @@ The fastest way to verify the foundation is solid while Agent Core is being buil
 uv run python -m unittest discover -s tests -v
 ```
 
-**164 tests. Zero failures.**
+**168 tests. Zero failures.**
 
 | Test Tier | Files | Coverage |
 |---|---|---|
@@ -364,7 +364,7 @@ Qwen3CoderNext takes the opposite path: **deterministic, testable infrastructure
 
 The long-term target is a fully autonomous, multi-agent development platform — repository understanding, persistent memory, multi-model collaboration, human approval gates — that never asks you to give up visibility into what it's doing or where your code lives.
 
-**164 automated tests. Deterministic infrastructure. Layered architecture. Research Layer underway.**
+**168 automated tests. Deterministic infrastructure. Layered architecture. Research Layer underway.**
 
 ---
 

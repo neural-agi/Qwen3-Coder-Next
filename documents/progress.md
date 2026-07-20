@@ -16,11 +16,11 @@ Part 4 Research Layer
 
 Current Step:
 
-Part 4 Step 4 Complete
+Part 4 Step 5 Complete
 
 Next Step:
 
-Part 4 Step 5 Pending
+Part 4 Step 6 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-164 Passing
+168 Passing
 
 ---
 
@@ -296,6 +296,36 @@ Verification:
 * Provenance attachment
 * Stable output ordering
 * Deterministic fetch output
+* Malformed input handling
+* Read-only behavior
+
+All verified.
+
+---
+
+## Part 4 Step 5 - Evidence Normalization and Ranking
+
+Status: Complete
+
+Summary:
+
+Added deterministic evidence normalization, deduplication, and ranking for research outputs.
+
+Implemented:
+
+* ResearchEvidenceNormalizer
+* ResearchEvidenceNormalizationResult
+* ResearchEvidenceNormalizationError
+* MalformedResearchEvidenceError
+
+Verification:
+
+* Evidence normalization
+* Ranking order
+* Deduplication behavior
+* Freshness handling
+* Provenance preservation
+* Deterministic output
 * Malformed input handling
 * Read-only behavior
 

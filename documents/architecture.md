@@ -346,10 +346,11 @@ Current Implementation:
 * LogFetcher
 * ErrorFetcher
 * ResearchFetchResult
+* ResearchEvidenceNormalizer
+* ResearchEvidenceNormalizationResult
 
 Current Limitations:
 
-* No evidence ranking
 * No synthesis / packet building logic
 * No cache lookup or persistence
 * No observability plumbing
