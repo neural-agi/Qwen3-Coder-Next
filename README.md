@@ -13,7 +13,7 @@
 <br/>
 
 [![Status](https://img.shields.io/badge/status-early%20development-yellow?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next)
-[![Tests](https://img.shields.io/badge/tests-148%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
+[![Tests](https://img.shields.io/badge/tests-151%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![uv](https://img.shields.io/badge/package%20manager-uv-purple?style=for-the-badge)](https://github.com/astral-sh/uv)
@@ -231,7 +231,7 @@ The fastest way to verify the foundation is solid while Agent Core is being buil
 uv run python -m unittest discover -s tests -v
 ```
 
-**148 tests. Zero failures.**
+**151 tests. Zero failures.**
 
 | Test Tier | Files | Coverage |
 |---|---|---|
@@ -364,7 +364,7 @@ Qwen3CoderNext takes the opposite path: **deterministic, testable infrastructure
 
 The long-term target is a fully autonomous, multi-agent development platform — repository understanding, persistent memory, multi-model collaboration, human approval gates — that never asks you to give up visibility into what it's doing or where your code lives.
 
-**148 automated tests. Deterministic infrastructure. Layered architecture. Research Layer underway.**
+**151 automated tests. Deterministic infrastructure. Layered architecture. Research Layer underway.**
 
 ---
 
