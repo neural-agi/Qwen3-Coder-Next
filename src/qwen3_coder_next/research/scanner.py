@@ -312,6 +312,16 @@ class LocalRepositoryScanner:
             if warning is not None:
                 warnings.append(warning)
             if score > 0:
+                if relative_path not in content_cache:
+                    try:
+                        content_cache[relative_path] = (
+                            repository_root / relative_path
+                        ).read_text(encoding="utf-8", errors="replace")
+                    except OSError as exc:
+                        warnings.append(
+                            f"Skipped unreadable file: {relative_path} ({exc.__class__.__name__})"
+                        )
+                        continue
                 scored.append((score, relative_path))
         if scored:
             ordered = [path for _, path in sorted(scored, key=lambda item: (-item[0], item[1]))]
