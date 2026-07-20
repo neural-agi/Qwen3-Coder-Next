@@ -45,6 +45,12 @@ from qwen3_coder_next.research.evidence import (
     ResearchEvidenceNormalizer,
     normalize_research_evidence,
 )
+from qwen3_coder_next.research.packet_assembly import (
+    MalformedResearchPacketInputError,
+    ResearchPacketAssemblyError,
+    ResearchPacketAssembler,
+    assemble_research_packet,
+)
 from qwen3_coder_next.research.state import ResearchRevision, ResearchState
 
 __all__ = [
@@ -73,6 +79,10 @@ __all__ = [
     "ResearchEvidenceNormalizationResult",
     "ResearchEvidenceNormalizer",
     "MalformedResearchEvidenceError",
+    "ResearchPacketAssemblyError",
+    "MalformedResearchPacketInputError",
+    "ResearchPacketAssembler",
+    "assemble_research_packet",
     "MalformedRepositoryScanRequestError",
     "RepositoryScanError",
     "RepositoryScanResult",

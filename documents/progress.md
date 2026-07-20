@@ -16,11 +16,11 @@ Part 4 Research Layer
 
 Current Step:
 
-Part 4 Step 5 Complete
+Part 4 Step 6 Complete
 
 Next Step:
 
-Part 4 Step 6 Pending
+Part 4 Step 7 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-168 Passing
+172 Passing
 
 ---
 
@@ -326,6 +326,37 @@ Verification:
 * Freshness handling
 * Provenance preservation
 * Deterministic output
+* Malformed input handling
+* Read-only behavior
+
+All verified.
+
+---
+
+## Part 4 Step 6 - Research Packet Assembly
+
+Status: Complete
+
+Summary:
+
+Defined deterministic research packet assembly from normalized evidence.
+
+Implemented:
+
+* ResearchPacketAssembler
+* ResearchPacketAssemblyError
+* MalformedResearchPacketInputError
+* Deterministic packet construction
+
+Verification:
+
+* Packet assembly
+* Deterministic packet output
+* Evidence selection behavior
+* Request context preservation
+* Source policy preservation
+* Provenance preservation
+* Stable ordering
 * Malformed input handling
 * Read-only behavior
 

@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 4: Research Layer
 
-Status: Step 5 complete; Step 6 pending
+Status: Step 6 complete; Step 7 pending
 
 ---
 
@@ -146,6 +146,28 @@ Verification:
 * Freshness handling
 * Provenance preservation
 * Deterministic output
+* Malformed input handling
+* Read-only behavior
+
+---
+
+## Part 4 Step 6
+
+Implemented:
+
+* ResearchPacketAssembler
+* ResearchPacketAssemblyError
+* MalformedResearchPacketInputError
+
+Verification:
+
+* Packet assembly
+* Deterministic packet output
+* Evidence selection behavior
+* Request context preservation
+* Source policy preservation
+* Provenance preservation
+* Stable ordering
 * Malformed input handling
 * Read-only behavior
 
@@ -574,7 +596,7 @@ uv run python -m unittest discover -s tests -v
 Result:
 
 ```text
-168 passing
+172 passing
 0 failing
 ```
 
@@ -582,7 +604,7 @@ Repository State:
 
 ```text
 Healthy
-Part 4 Step 5 complete
+Part 4 Step 6 complete
 ```
 
 ---
@@ -659,7 +681,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 4 Step 5: Pending
+Part 4 Step 7: Pending
 ```
 
 ---
@@ -707,7 +729,7 @@ Completed Foundation Steps:
 Test Status:
 
 ```text
-168 passing
+172 passing
 0 failing
 ```
 
@@ -715,5 +737,5 @@ Repository State:
 
 ```text
 Healthy
-Part 4 Step 5 complete
+Part 4 Step 6 complete
 ```

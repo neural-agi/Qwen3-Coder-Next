@@ -348,10 +348,11 @@ Current Implementation:
 * ResearchFetchResult
 * ResearchEvidenceNormalizer
 * ResearchEvidenceNormalizationResult
+* ResearchPacketAssembler
 
 Current Limitations:
 
-* No synthesis / packet building logic
+* No synthesis narrative generation
 * No cache lookup or persistence
 * No observability plumbing
 * No source policy execution
