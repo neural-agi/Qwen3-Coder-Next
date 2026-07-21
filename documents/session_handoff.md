@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 4: Research Layer
 
-Status: Step 8 complete; Step 9 pending
+Status: Step 9 complete; Part 5 pending
 
 ---
 
@@ -219,6 +219,33 @@ Verification:
 * Deterministic observability output
 * Malformed input handling
 * Read-only behavior
+
+All verified.
+
+---
+
+## Part 4 Step 9
+
+Implemented:
+
+* Planner-to-research handoff tests
+* Complete research pipeline regression tests
+* Clarification-path tests
+* Read-only behavior tests
+* Provenance and citation verification
+
+Verification:
+
+* Planner -> research -> coding handoff
+* Complete research pipeline execution
+* Deterministic replay on the same inputs
+* Provenance preservation end to end
+* Packet size and structure validity
+* Clarification / underspecified request handling
+* Unsafe-source rejection where applicable
+* No filesystem mutation during research
+* Stable observability / trace output
+* Regression coverage for representative research tasks
 
 All verified.
 
@@ -647,7 +674,7 @@ uv run python -m unittest discover -s tests -v
 Result:
 
 ```text
-180 passing
+183 passing
 0 failing
 ```
 
@@ -655,7 +682,7 @@ Repository State:
 
 ```text
 Healthy
-Part 4 Step 8 complete
+Part 4 Step 9 complete
 ```
 
 ---
@@ -732,7 +759,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 4 Step 9: Pending
+Part 5: Pending
 ```
 
 ---
@@ -780,7 +807,7 @@ Completed Foundation Steps:
 Test Status:
 
 ```text
-180 passing
+183 passing
 0 failing
 ```
 
@@ -788,5 +815,5 @@ Repository State:
 
 ```text
 Healthy
-Part 4 Step 8 complete
+Part 4 Step 9 complete
 ```

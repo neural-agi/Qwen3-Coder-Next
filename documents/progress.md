@@ -16,11 +16,11 @@ Part 4 Research Layer
 
 Current Step:
 
-Part 4 Step 8 Complete
+Part 4 Step 9 Complete
 
 Next Step:
 
-Part 4 Step 9 Pending
+Part 5 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-180 Passing
+183 Passing
 
 ---
 
@@ -423,6 +423,39 @@ Verification:
 * Deterministic observability output
 * Malformed input handling
 * Read-only behavior
+
+All verified.
+
+---
+
+## Part 4 Step 9 - Close the Loop with Integration Tests
+
+Status: Complete
+
+Summary:
+
+Added end-to-end research integration tests that verify planner-to-research-to-execution handoff behavior and deterministic replay of the completed research layer.
+
+Implemented:
+
+* Planner-to-research handoff tests
+* Complete research pipeline regression tests
+* Clarification-path tests
+* Read-only behavior tests
+* Provenance and citation verification
+
+Verification:
+
+* Planner -> research -> coding handoff
+* Complete research pipeline execution
+* Deterministic replay on the same inputs
+* Provenance preservation end to end
+* Packet size and structure validity
+* Clarification / underspecified request handling
+* Unsafe-source rejection where applicable
+* No filesystem mutation during research
+* Stable observability / trace output
+* Regression coverage for representative research tasks
 
 All verified.
 
