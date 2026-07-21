@@ -13,7 +13,7 @@
 <br/>
 
 [![Status](https://img.shields.io/badge/status-early%20development-yellow?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next)
-[![Tests](https://img.shields.io/badge/tests-183%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
+[![Tests](https://img.shields.io/badge/tests-187%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![uv](https://img.shields.io/badge/package%20manager-uv-purple?style=for-the-badge)](https://github.com/astral-sh/uv)
@@ -56,6 +56,7 @@ This project is under active development, built incrementally with a completed-l
 
 **Current focus:**
 - Research Layer (Step 9 complete)
+- Memory System (Step 1 complete)
 - Agent Core
 - Execution Layer
 
@@ -231,11 +232,11 @@ The fastest way to verify the foundation is solid while Agent Core is being buil
 uv run python -m unittest discover -s tests -v
 ```
 
-**183 tests. Zero failures.**
+**187 tests. Zero failures.**
 
 | Test Tier | Files | Coverage |
 |---|---|---|
-| `tests/smoke/` | 26 files | One per module — contracts, config, logging, state, model gateway, orchestrator, artifacts, all 10 local tooling submodules, memory, planning, prompts, runtime, research |
+| `tests/smoke/` | 27 files | One per module — contracts, config, logging, state, model gateway, orchestrator, artifacts, all 10 local tooling submodules, memory, planning, prompts, runtime, research |
 | `tests/unit/` | 8 files | Deep coverage on `local_tooling` — reads, mutations, diff, commands, audit, artifact registry, resolution, adapter |
 | `tests/integration/` | 1 file | Local tooling adapter end-to-end |
 
@@ -258,7 +259,7 @@ Qwen-3-Coder-Next/
 │   │                            # filesystem, reads, operations, diff, commands,
 │   │                            # artifact_registry, audit, resolution, adapter, contracts
 │   ├── logging/                 # formatter, logger, setup
-│   ├── memory/                  # contracts, manager, store — tested, not yet wired into runtime
+│   ├── memory/                  # schemas, state, contracts, manager, store — tested, not yet wired into runtime
 │   ├── planning/                # contracts, planner, decomposition, validation — complete
 │   ├── research/                # schemas and state foundation — Step 1 complete
 │   ├── prompts/                 # contracts, loader, registry

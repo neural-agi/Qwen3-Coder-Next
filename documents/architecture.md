@@ -397,10 +397,22 @@ src/qwen3_coder_next/memory
 
 Purpose:
 
-Provide immutable memory contracts and a deterministic filesystem-backed store for basic lifecycle operations.
+Provide immutable memory contracts, append-first memory state, and a deterministic filesystem-backed store for basic lifecycle operations.
 
 Current Implementation:
 
+* MemoryTier
+* MemoryItem
+* MemoryQuery
+* MemoryResult
+* SessionSummary
+* ProjectDecision
+* GlobalPattern
+* MemoryEvent
+* RetentionPolicy
+* MemoryRevision
+* MemoryState
+* MemorySerializer
 * MemoryKind
 * MemoryEntry
 * MemoryStore

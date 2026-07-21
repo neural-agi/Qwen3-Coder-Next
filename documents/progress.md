@@ -16,11 +16,11 @@ Part 4 Research Layer
 
 Current Step:
 
-Part 4 Step 9 Complete
+Part 5 Step 1 Complete
 
 Next Step:
 
-Part 5 Pending
+Part 5 Step 2 Pending
 
 Repository State:
 
@@ -32,7 +32,46 @@ All tests passing
 
 Current Test Count:
 
-183 Passing
+187 Passing
+
+---
+
+## Part 5 Step 1 - Memory Schemas and State
+
+Status: Complete
+
+Summary:
+
+Defined the foundational memory-layer schemas and append-first state container.
+
+Implemented:
+
+* MemoryTier
+* MemoryItem
+* MemoryQuery
+* MemoryResult
+* SessionSummary
+* ProjectDecision
+* GlobalPattern
+* MemoryEvent
+* RetentionPolicy
+* MemoryRevision
+* MemoryState
+* MemorySerializer
+
+Verification:
+
+* Schema validation
+* Deterministic serialization
+* Round-trip serialization
+* Immutable state behavior
+* Append-first state evolution
+* Malformed payload handling
+* Identifier stability
+* Version preservation
+* Backward-compatible deserialization
+
+All verified.
 
 ---
 

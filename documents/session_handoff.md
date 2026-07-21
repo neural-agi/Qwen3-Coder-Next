@@ -59,9 +59,9 @@ Rules that must be followed:
 
 ## Current Phase
 
-Part 4: Research Layer
+Part 5: Memory System
 
-Status: Step 9 complete; Part 5 pending
+Status: Step 1 complete; Step 2 pending
 
 ---
 
@@ -246,6 +246,39 @@ Verification:
 * No filesystem mutation during research
 * Stable observability / trace output
 * Regression coverage for representative research tasks
+
+All verified.
+
+---
+
+## Part 5 Step 1
+
+Implemented:
+
+* MemoryTier
+* MemoryItem
+* MemoryQuery
+* MemoryResult
+* SessionSummary
+* ProjectDecision
+* GlobalPattern
+* MemoryEvent
+* RetentionPolicy
+* MemoryRevision
+* MemoryState
+* MemorySerializer
+
+Verification:
+
+* Schema validation
+* Deterministic serialization
+* Round-trip serialization
+* Immutable state behavior
+* Append-first state evolution
+* Malformed payload handling
+* Identifier stability
+* Version preservation
+* Backward-compatible deserialization
 
 All verified.
 
