@@ -51,6 +51,12 @@ from qwen3_coder_next.research.packet_assembly import (
     ResearchPacketAssembler,
     assemble_research_packet,
 )
+from qwen3_coder_next.research.observability import (
+    ResearchFailureRecord,
+    ResearchFlowMetrics,
+    ResearchPipelineObservability,
+    ResearchStageTrace,
+)
 from qwen3_coder_next.research.pipeline import (
     MalformedResearchPipelineInputError,
     ResearchPipeline,
@@ -90,6 +96,10 @@ __all__ = [
     "MalformedResearchPacketInputError",
     "ResearchPacketAssembler",
     "assemble_research_packet",
+    "ResearchFailureRecord",
+    "ResearchFlowMetrics",
+    "ResearchPipelineObservability",
+    "ResearchStageTrace",
     "ResearchPipelineError",
     "MalformedResearchPipelineInputError",
     "ResearchPipeline",

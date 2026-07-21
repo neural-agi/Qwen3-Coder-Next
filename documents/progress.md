@@ -16,11 +16,11 @@ Part 4 Research Layer
 
 Current Step:
 
-Part 4 Step 7 Complete
+Part 4 Step 8 Complete
 
 Next Step:
 
-Part 4 Step 8 Pending
+Part 4 Step 9 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-176 Passing
+180 Passing
 
 ---
 
@@ -390,6 +390,37 @@ Verification:
 * Source policy propagation
 * Evidence propagation
 * Packet propagation
+* Malformed input handling
+* Read-only behavior
+
+All verified.
+
+---
+
+## Part 4 Step 8 - Observability and Failure Paths
+
+Status: Complete
+
+Summary:
+
+Added deterministic observability and clarification-path signaling to the research pipeline without changing the packet contract.
+
+Implemented:
+
+* ResearchPipelineObservability
+* ResearchStageTrace
+* ResearchFlowMetrics
+* ResearchFailureRecord
+* Structured stage logging
+* Failure and clarification recording
+
+Verification:
+
+* Structured logging and trace records
+* Stage transition visibility
+* Clarification-path signaling
+* Failure-state recording
+* Deterministic observability output
 * Malformed input handling
 * Read-only behavior
 

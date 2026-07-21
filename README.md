@@ -13,7 +13,7 @@
 <br/>
 
 [![Status](https://img.shields.io/badge/status-early%20development-yellow?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next)
-[![Tests](https://img.shields.io/badge/tests-176%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
+[![Tests](https://img.shields.io/badge/tests-180%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![uv](https://img.shields.io/badge/package%20manager-uv-purple?style=for-the-badge)](https://github.com/astral-sh/uv)
@@ -55,7 +55,7 @@ This project is under active development, built incrementally with a completed-l
 - Planning Layer
 
 **Current focus:**
-- Research Layer (Step 7 complete)
+- Research Layer (Step 8 complete)
 - Agent Core
 - Execution Layer
 
@@ -162,7 +162,7 @@ flowchart TD
 
 ### 🚧 Research Layer — In Progress
 
-- Step 7 complete: schemas, state, source policy, request normalization, local repository scanning, document/log/error fetchers, evidence normalization/ranking, packet assembly, and pipeline integration implemented
+- Step 8 complete: schemas, state, source policy, request normalization, local repository scanning, document/log/error fetchers, evidence normalization/ranking, packet assembly, pipeline integration, and observability/failure paths implemented
 - Active development underway
 
 ### 🚧 Agent Core — In Progress
@@ -231,11 +231,11 @@ The fastest way to verify the foundation is solid while Agent Core is being buil
 uv run python -m unittest discover -s tests -v
 ```
 
-**176 tests. Zero failures.**
+**180 tests. Zero failures.**
 
 | Test Tier | Files | Coverage |
 |---|---|---|
-| `tests/smoke/` | 24 files | One per module — contracts, config, logging, state, model gateway, orchestrator, artifacts, all 10 local tooling submodules, memory, planning, prompts, runtime, research |
+| `tests/smoke/` | 25 files | One per module — contracts, config, logging, state, model gateway, orchestrator, artifacts, all 10 local tooling submodules, memory, planning, prompts, runtime, research |
 | `tests/unit/` | 8 files | Deep coverage on `local_tooling` — reads, mutations, diff, commands, audit, artifact registry, resolution, adapter |
 | `tests/integration/` | 1 file | Local tooling adapter end-to-end |
 
@@ -364,7 +364,7 @@ Qwen3CoderNext takes the opposite path: **deterministic, testable infrastructure
 
 The long-term target is a fully autonomous, multi-agent development platform — repository understanding, persistent memory, multi-model collaboration, human approval gates — that never asks you to give up visibility into what it's doing or where your code lives.
 
-**176 automated tests. Deterministic infrastructure. Layered architecture. Research Layer underway.**
+**180 automated tests. Deterministic infrastructure. Layered architecture. Research Layer underway.**
 
 ---
 

@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 4: Research Layer
 
-Status: Step 7 complete; Step 8 pending
+Status: Step 8 complete; Step 9 pending
 
 ---
 
@@ -192,6 +192,31 @@ Verification:
 * Source policy propagation
 * Evidence propagation
 * Packet propagation
+* Malformed input handling
+* Read-only behavior
+
+All verified.
+
+---
+
+## Part 4 Step 8
+
+Implemented:
+
+* ResearchPipelineObservability
+* ResearchStageTrace
+* ResearchFlowMetrics
+* ResearchFailureRecord
+* Structured stage logging
+* Clarification-path signaling
+
+Verification:
+
+* Structured logging and trace records
+* Stage transition visibility
+* Clarification-path signaling
+* Failure-state recording
+* Deterministic observability output
 * Malformed input handling
 * Read-only behavior
 
@@ -622,7 +647,7 @@ uv run python -m unittest discover -s tests -v
 Result:
 
 ```text
-176 passing
+180 passing
 0 failing
 ```
 
@@ -630,7 +655,7 @@ Repository State:
 
 ```text
 Healthy
-Part 4 Step 7 complete
+Part 4 Step 8 complete
 ```
 
 ---
@@ -707,7 +732,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 4 Step 8: Pending
+Part 4 Step 9: Pending
 ```
 
 ---
@@ -755,7 +780,7 @@ Completed Foundation Steps:
 Test Status:
 
 ```text
-176 passing
+180 passing
 0 failing
 ```
 
@@ -763,5 +788,5 @@ Repository State:
 
 ```text
 Healthy
-Part 4 Step 7 complete
+Part 4 Step 8 complete
 ```

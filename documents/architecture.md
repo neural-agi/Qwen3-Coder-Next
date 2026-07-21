@@ -351,12 +351,15 @@ Current Implementation:
 * ResearchPacketAssembler
 * ResearchPipeline
 * ResearchPipelineResult
+* ResearchPipelineObservability
+* ResearchStageTrace
+* ResearchFlowMetrics
+* ResearchFailureRecord
 
 Current Limitations:
 
 * No synthesis narrative generation
 * No cache lookup or persistence
-* No observability plumbing
 * No source policy execution
 
 ---
