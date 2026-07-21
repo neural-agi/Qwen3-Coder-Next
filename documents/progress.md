@@ -16,11 +16,11 @@ Part 4 Research Layer
 
 Current Step:
 
-Part 5 Step 2 Complete
+Part 5 Step 3 Complete
 
 Next Step:
 
-Part 5 Step 3 Pending
+Part 5 Step 4 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-193 Passing
+200 Passing
 
 ---
 
@@ -100,6 +100,38 @@ Verification:
 * State behavior is deterministic and immutable where expected
 * Malformed payload handling
 * Execution path reuses the active task context
+
+All verified.
+
+---
+## Part 5 Step 3 - Session Memory Store
+
+Status: Complete
+
+Summary:
+
+Added a deterministic append-only session memory store built on immutable MemoryState snapshots.
+
+Implemented:
+
+* SESSION_MEMORY_STORE_SCHEMA_VERSION
+* SessionMemoryStore
+* Session summary append helpers
+* Session memory item append helpers
+* Canonical serialization and deserialization
+* Deterministic load and save behavior
+
+Verification:
+
+* Deterministic session persistence
+* Append-only session evolution
+* Serialization round-trip
+* Identifier stability
+* Version preservation
+* Malformed payload handling
+* Immutable behavior
+* Compatibility with MemoryState
+* Compatibility with runtime working memory
 
 All verified.
 

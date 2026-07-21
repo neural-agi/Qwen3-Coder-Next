@@ -40,6 +40,10 @@ from qwen3_coder_next.memory.serialization import (
     serialize_retention_policy,
     serialize_session_summary,
 )
+from qwen3_coder_next.memory.session_store import (
+    SESSION_MEMORY_STORE_SCHEMA_VERSION,
+    SessionMemoryStore,
+)
 from qwen3_coder_next.memory.state import MemoryRevision, MemoryState
 from qwen3_coder_next.memory.store import MemoryStore
 
@@ -61,6 +65,8 @@ __all__ = [
     "MemoryStore",
     "MemoryTier",
     "GlobalPattern",
+    "SESSION_MEMORY_STORE_SCHEMA_VERSION",
+    "SessionMemoryStore",
     "ProjectDecision",
     "RetentionPolicy",
     "SessionSummary",

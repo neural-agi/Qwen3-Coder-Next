@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 5: Memory System
 
-Status: Step 2 complete; Step 3 pending
+Status: Step 3 complete; Step 4 pending
 
 ---
 
@@ -303,6 +303,32 @@ Verification:
 * State behavior is deterministic and immutable where expected
 * Malformed payload handling
 * Backward-compatible serialization unchanged because runtime state serialization was not modified
+
+All verified.
+
+---
+## Part 5 Step 3
+
+Implemented:
+
+* SESSION_MEMORY_STORE_SCHEMA_VERSION
+* SessionMemoryStore
+* Session summary append helpers
+* Session memory item append helpers
+* Canonical serialization and deserialization
+* Deterministic load and save behavior
+
+Verification:
+
+* Deterministic session persistence
+* Append-only session evolution
+* Serialization round-trip
+* Identifier stability
+* Version preservation
+* Malformed payload handling
+* Immutable behavior
+* Compatibility with MemoryState
+* Compatibility with runtime working memory
 
 All verified.
 
@@ -816,7 +842,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 5 Step 3 Pending
+Part 5 Step 4 Pending
 ```
 
 ---

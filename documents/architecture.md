@@ -397,7 +397,7 @@ src/qwen3_coder_next/memory
 
 Purpose:
 
-Provide immutable memory contracts, append-first memory state, a deterministic filesystem-backed store for basic lifecycle operations, and transient runtime-owned working memory snapshots.
+Provide immutable memory contracts, append-first memory state, a deterministic filesystem-backed store for basic lifecycle operations, transient runtime-owned working memory snapshots, and an append-only session memory store.
 
 Current Implementation:
 
@@ -417,6 +417,7 @@ Current Implementation:
 * MemoryEntry
 * MemoryStore
 * MemoryManager
+* SessionMemoryStore
 * Runtime-owned working memory snapshot in RuntimeContext and Orchestrator
 * Filesystem-backed store
 * JSON persistence
@@ -825,6 +826,7 @@ Responsibilities:
 
 * Long-term memory
 * Short-term runtime working memory
+* Session persistence
 * Retrieval mechanisms
 
 ---
