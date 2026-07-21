@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 5: Memory System
 
-Status: Step 1 complete; Step 2 pending
+Status: Step 2 complete; Step 3 pending
 
 ---
 
@@ -279,6 +279,30 @@ Verification:
 * Identifier stability
 * Version preservation
 * Backward-compatible deserialization
+
+All verified.
+
+---
+
+## Part 5 Step 2
+
+Implemented:
+
+* RuntimeContext working_memory snapshot
+* RuntimeContext active_task_id
+* RuntimeContext working-memory helpers
+* Orchestrator task activation for working-memory reset
+* Executor integration with transient runtime working memory
+
+Verification:
+
+* Working memory exists in runtime state
+* Working memory is task-scoped and transient
+* Working memory can be reused within a single active task
+* Working memory resets cleanly when task context is replaced
+* State behavior is deterministic and immutable where expected
+* Malformed payload handling
+* Backward-compatible serialization unchanged because runtime state serialization was not modified
 
 All verified.
 
@@ -792,7 +816,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 5: Pending
+Part 5 Step 3 Pending
 ```
 
 ---

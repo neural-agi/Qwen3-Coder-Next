@@ -3,6 +3,9 @@
 from dataclasses import dataclass
 
 from qwen3_coder_next.config import AppSettings
+from qwen3_coder_next.memory import MemoryState
+from qwen3_coder_next.contracts import TaskRequest
+from qwen3_coder_next.memory import MemoryItem
 from qwen3_coder_next.planning import PlannerRequest
 from qwen3_coder_next.runtime.context import PlanningPipelineResult, RuntimeContext, create_runtime_context
 
@@ -42,6 +45,18 @@ class Orchestrator:
         return self._context
 
     @property
+    def active_task_id(self) -> str | None:
+        """Return the currently active task identifier, if any."""
+
+        return self._context.active_task_id
+
+    @property
+    def working_memory(self) -> MemoryState:
+        """Return the current transient working-memory snapshot."""
+
+        return self._context.get_working_memory_snapshot()
+
+    @property
     def last_planning_result(self) -> PlanningRuntimeResult | None:
         """Return the most recent runtime planning result, if any."""
 
@@ -55,6 +70,17 @@ class Orchestrator:
             pipeline=pipeline,
         )
         return self._last_planning_result
+
+    def activate_task(self, task_request: TaskRequest) -> None:
+        """Reset the transient working memory for a new task."""
+
+        self._context = self._context.activate_task(task_request)
+
+    def append_working_memory_item(self, memory_item: MemoryItem) -> MemoryState:
+        """Append an item to the transient working-memory snapshot."""
+
+        self._context = self._context.append_working_memory_item(memory_item)
+        return self._context.get_working_memory_snapshot()
 
     def execute(self, task_name: str) -> str:
         """Run the placeholder orchestration shell for a task name."""

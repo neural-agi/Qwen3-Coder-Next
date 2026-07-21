@@ -9,7 +9,8 @@ from qwen3_coder_next.adapters import ModelGateway, StubModelAdapter
 from qwen3_coder_next.artifacts import ArtifactManager, ArtifactStore
 from qwen3_coder_next.config import AppSettings, get_settings
 from qwen3_coder_next.logging import ApplicationLogger
-from qwen3_coder_next.memory import MemoryManager, MemoryStore
+from qwen3_coder_next.memory import MemoryItem, MemoryManager, MemoryState, MemoryStore
+from qwen3_coder_next.contracts import TaskRequest
 
 from qwen3_coder_next.planning import (
     PlanArtifact,
@@ -46,6 +47,10 @@ class RuntimeContext:
     memory_manager: MemoryManager
     model_gateway: ModelGateway
     logger: logging.Logger
+    active_task_id: str | None = None
+    working_memory: MemoryState = field(
+        default_factory=lambda: MemoryState(state_id="runtime-working-memory")
+    )
     planner_request_normalizer: PlannerRequestNormalizer = field(
         default_factory=PlannerRequestNormalizer
     )
@@ -114,6 +119,36 @@ class RuntimeContext:
             serialized_artifact=serialized_artifact,
             serialized_state=serialize_planner_state(planner_state),
         )
+
+    def get_working_memory_snapshot(self) -> MemoryState:
+        """Return the current transient working-memory snapshot."""
+
+        return self.working_memory
+
+    def with_working_memory_snapshot(self, working_memory: MemoryState) -> "RuntimeContext":
+        """Return a context with a replacement working-memory snapshot."""
+
+        if not isinstance(working_memory, MemoryState):
+            raise ValueError("working_memory must be a MemoryState instance.")
+        return replace(self, working_memory=working_memory)
+
+    def activate_task(self, task_request: TaskRequest) -> "RuntimeContext":
+        """Reset working memory for a new task-scoped execution context."""
+
+        if not isinstance(task_request, TaskRequest):
+            raise ValueError("task_request must be a TaskRequest instance.")
+        return replace(
+            self,
+            active_task_id=task_request.task_id,
+            working_memory=MemoryState(state_id=f"{task_request.task_id}-working-memory"),
+        )
+
+    def append_working_memory_item(self, memory_item: MemoryItem) -> "RuntimeContext":
+        """Append a working-memory item to the current transient snapshot."""
+
+        if not isinstance(memory_item, MemoryItem):
+            raise ValueError("memory_item must be a MemoryItem instance.")
+        return replace(self, working_memory=self.working_memory.append_memory_item(memory_item))
 
 
 @dataclass(frozen=True, slots=True)

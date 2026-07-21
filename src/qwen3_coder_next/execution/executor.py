@@ -37,6 +37,7 @@ class Executor:
 
         request = self._normalize_request(task)
         self._logger.info("Task execution started: task_id=%s", request.task_id)
+        self._orchestrator.activate_task(request)
 
         current_time = datetime.now(UTC)
         current_state = self._state_manager.create_state(

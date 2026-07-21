@@ -13,7 +13,7 @@
 <br/>
 
 [![Status](https://img.shields.io/badge/status-early%20development-yellow?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next)
-[![Tests](https://img.shields.io/badge/tests-187%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
+[![Tests](https://img.shields.io/badge/tests-193%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![uv](https://img.shields.io/badge/package%20manager-uv-purple?style=for-the-badge)](https://github.com/astral-sh/uv)
@@ -56,7 +56,7 @@ This project is under active development, built incrementally with a completed-l
 
 **Current focus:**
 - Research Layer (Step 9 complete)
-- Memory System (Step 1 complete)
+- Memory System (Step 3 pending)
 - Agent Core
 - Execution Layer
 
@@ -115,13 +115,13 @@ flowchart TD
 |---|---|---|
 | **Orchestrator** | Coordinates tool execution and routes through planning | ✅ |
 | **Planning Layer** | Request normalization, task decomposition, dependency resolution, artifact generation | ✅ |
-| **Research Layer** | Schemas and state foundation — Step 1 complete | 🚧 |
+| **Research Layer** | Complete through Step 9 | ✅ |
 | **Model Gateway** | Routes requests to any supported provider; swap models without touching workflow | ✅ |
 | **Tool Framework** | Contract layer every tool implements; includes `echo_tool` + full registry/manager | ✅ |
 | **Filesystem Service** | Enforces workspace boundaries; safe reads, controlled writes, diffs | ✅ |
 | **Artifact Registry** | Tracks every generated file with checksums, provenance, supersede history | ✅ |
 | **Audit Log** | Append-only, sequence-numbered record of every agent action | ✅ |
-| **Memory** | `manager.py` + `store.py` — implemented and tested; not yet wired into runtime | 🔜 |
+| **Memory** | `manager.py` + `store.py` + runtime-owned working memory snapshot | 🚧 Active |
 
 ---
 
@@ -232,7 +232,7 @@ The fastest way to verify the foundation is solid while Agent Core is being buil
 uv run python -m unittest discover -s tests -v
 ```
 
-**187 tests. Zero failures.**
+**193 tests. Zero failures.**
 
 | Test Tier | Files | Coverage |
 |---|---|---|
@@ -309,7 +309,7 @@ Qwen-3-Coder-Next/
 | Foundation | Contracts, config, logging, state, model gateway, orchestrator, artifacts | ✅ Complete |
 | Local Tooling | Filesystem, reads/writes, commands, audit, artifact registry | ✅ Complete |
 | Planning Layer | Request normalization, task decomposition, dependency resolution, runtime integration | ✅ Complete |
-| **Research Layer** | **Codebase understanding, context gathering, symbol resolution** | **🚧 Active** |
+| **Research Layer** | **Complete through Step 9** | **✅ Complete** |
 | **Agent Core** | **Orchestrator integration, real task execution, CLI** | **🚧 Active** |
 | Execution Layer | Controlled execution pipeline, failure recovery, replanning | 🚧 Planned |
 | Memory Layer | Persistent context, session memory, cross-task recall | 📋 Planned |
@@ -350,7 +350,7 @@ Read **[CONTRIBUTING.md](CONTRIBUTING.md)** for full setup instructions, coding 
 
 | Area | What's Needed |
 |---|---|
-| 🚧 **Research Layer** | Step 2 is done — subsequent steps are the active focus |
+| **Memory System** | Step 3 is the active focus |
 | 🚧 **Agent Core** | Planner integration, memory wiring, orchestrator task loop, CLI entrypoint |
 | 🧪 **Test coverage** | Additional unit and integration tests across all subsystems |
 | 📚 **Documentation** | Architecture docs, setup guides, inline docstrings |
@@ -365,7 +365,7 @@ Qwen3CoderNext takes the opposite path: **deterministic, testable infrastructure
 
 The long-term target is a fully autonomous, multi-agent development platform — repository understanding, persistent memory, multi-model collaboration, human approval gates — that never asks you to give up visibility into what it's doing or where your code lives.
 
-**183 automated tests. Deterministic infrastructure. Layered architecture. Research Layer underway.**
+**193 automated tests. Deterministic infrastructure. Layered architecture. Memory System underway.**
 
 ---
 

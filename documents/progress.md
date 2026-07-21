@@ -16,11 +16,11 @@ Part 4 Research Layer
 
 Current Step:
 
-Part 5 Step 1 Complete
+Part 5 Step 2 Complete
 
 Next Step:
 
-Part 5 Step 2 Pending
+Part 5 Step 3 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-187 Passing
+193 Passing
 
 ---
 
@@ -70,6 +70,36 @@ Verification:
 * Identifier stability
 * Version preservation
 * Backward-compatible deserialization
+
+All verified.
+
+---
+
+## Part 5 Step 2 - Working Memory in Runtime State
+
+Status: Complete
+
+Summary:
+
+Added task-scoped transient working-memory snapshots to the runtime context and orchestrator.
+
+Implemented:
+
+* RuntimeContext working_memory snapshot
+* RuntimeContext active_task_id
+* RuntimeContext working-memory helpers
+* Orchestrator task activation for working-memory reset
+* Executor integration with transient runtime working memory
+
+Verification:
+
+* Working memory exists in runtime state
+* Working memory is task-scoped and transient
+* Working memory can be reused within a single active task
+* Working memory resets cleanly when task context is replaced
+* State behavior is deterministic and immutable where expected
+* Malformed payload handling
+* Execution path reuses the active task context
 
 All verified.
 
