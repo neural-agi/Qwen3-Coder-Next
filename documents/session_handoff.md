@@ -59,9 +59,18 @@ Rules that must be followed:
 
 ## Current Phase
 
-Part 5: Memory System
+Part 7: Evaluation Layer
 
-Status: Step 5 complete; Step 6 pending
+Status: Steps 1-7 complete; Step 8 LangGraph integration not started
+
+Current validation: 229 tests passing
+
+Part 6 provides typed test/review reports, deterministic command execution and normalization,
+review findings, gate decisions, feedback bundles, and immutable quality artifacts.
+
+Part 7 currently provides deterministic evaluation schemas, evidence normalization, rubric and
+score computation, decision policy, structured feedback, audit persistence, golden scenarios,
+and benchmark metrics without repository mutation or model execution.
 
 ---
 

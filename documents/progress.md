@@ -12,15 +12,15 @@ It serves as the primary reference for determining the current state of developm
 
 Phase:
 
-Part 4 Research Layer
+Part 7 Evaluation Layer
 
 Current Step:
 
-Part 5 Step 5 Complete
+Part 7 Steps 1-7 complete; LangGraph integration not started
 
 Next Step:
 
-Part 5 Step 6 Pending
+Part 7 Step 8 LangGraph Integration (requires an approved graph runtime boundary)
 
 Repository State:
 
@@ -32,7 +32,41 @@ All tests passing
 
 Current Test Count:
 
-208 Passing
+229 Passing
+
+## Part 7 - Evaluation Layer
+
+Status: Steps 1-7 complete; Step 8 intentionally not started
+
+Implemented deterministic evaluation schemas, evidence normalization, rubric construction,
+scoring, decision policy, structured feedback, audit persistence, golden scenarios, and a
+benchmark metrics hook. The implementation remains read-only with respect to source code and
+does not execute or mutate repositories.
+
+## Part 6 - Testing & Review
+
+Status: Complete
+
+Implemented:
+
+* Typed test invocation and normalized report contracts
+* Standard-library test command orchestrator with timeout handling
+* Deterministic result normalization
+* Deterministic review rubric and finding extraction
+* Test/review gate coordinator and feedback bundle
+* Immutable versioned quality artifact publishing
+* Golden fixture and end-to-end quality gate coverage
+
+Verification:
+
+* Passing and failing command execution
+* Timeout and malformed-input paths
+* Review rejection findings
+* Deterministic gate decisions
+* Stable artifact output paths and serialization
+* Focused integration coverage
+
+All verified.
 
 ---
 

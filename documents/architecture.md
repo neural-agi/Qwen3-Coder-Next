@@ -885,3 +885,18 @@ Every layer should remain:
 Complexity should be added only when required and only after the supporting infrastructure is stable.
 
 The goal is to create a system that can evolve into a highly capable autonomous software engineering platform without sacrificing maintainability or architectural clarity.
+# Part 6 Quality Gate
+
+The quality layer is exposed through `qwen3_coder_next.quality`. It keeps test execution,
+result normalization, review findings, gate decisions, feedback, and artifact publication as
+separate deterministic boundaries. The gate combines independent `TestReport` and
+`ReviewReport` objects and rejects when either signal fails. Quality artifacts are written as
+versioned canonical JSON without overwriting earlier evidence.
+
+# Part 7 Evaluation Layer
+
+The evaluation layer exposes a deterministic, read-only decision path through
+`qwen3_coder_next.evaluation`. It separates evidence collection, rubric construction, scoring,
+decision policy, structured feedback, and audit persistence. Evaluation records retain task and
+policy identity and are serialized canonically. LangGraph integration remains a later boundary
+because no graph runtime is part of the current dependency set.
