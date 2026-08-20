@@ -1,6 +1,7 @@
 """Memory foundation for the runtime."""
 
 from qwen3_coder_next.memory.contracts import MemoryEntry, MemoryKind
+from qwen3_coder_next.memory.audit import MemoryAuditRecorder
 from qwen3_coder_next.memory.exceptions import DuplicateMemoryError, MemoryNotFoundError
 from qwen3_coder_next.memory.manager import MemoryManager
 from qwen3_coder_next.memory.schemas import (
@@ -44,6 +45,16 @@ from qwen3_coder_next.memory.project_store import (
     PROJECT_MEMORY_STORE_SCHEMA_VERSION,
     ProjectMemoryStore,
 )
+from qwen3_coder_next.memory.global_store import (
+    GLOBAL_MEMORY_STORE_SCHEMA_VERSION,
+    GlobalMemoryStore,
+)
+from qwen3_coder_next.memory.policies import (
+    MemoryLifecycleAction,
+    MemoryLifecycleActionType,
+    MemoryLifecyclePlan,
+    MemoryPolicyEngine,
+)
 from qwen3_coder_next.memory.retrieval import MemoryRetriever, retrieve_memory
 from qwen3_coder_next.memory.session_store import (
     SESSION_MEMORY_STORE_SCHEMA_VERSION,
@@ -54,6 +65,7 @@ from qwen3_coder_next.memory.store import MemoryStore
 
 __all__ = [
     "DuplicateMemoryError",
+    "MemoryAuditRecorder",
     "MemoryEntry",
     "MemoryKind",
     "MEMORY_SCHEMA_VERSION",
@@ -73,6 +85,12 @@ __all__ = [
     "PROJECT_MEMORY_STORE_SCHEMA_VERSION",
     "ProjectDecision",
     "ProjectMemoryStore",
+    "GLOBAL_MEMORY_STORE_SCHEMA_VERSION",
+    "GlobalMemoryStore",
+    "MemoryLifecycleAction",
+    "MemoryLifecycleActionType",
+    "MemoryLifecyclePlan",
+    "MemoryPolicyEngine",
     "MemoryRetriever",
     "SESSION_MEMORY_STORE_SCHEMA_VERSION",
     "SessionMemoryStore",
