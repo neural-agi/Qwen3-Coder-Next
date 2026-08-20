@@ -16,11 +16,11 @@ Part 4 Research Layer
 
 Current Step:
 
-Part 5 Step 3 Complete
+Part 5 Step 4 Complete
 
 Next Step:
 
-Part 5 Step 4 Pending
+Part 5 Step 5 Pending
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-200 Passing
+205 Passing
 
 ---
 
@@ -104,27 +104,27 @@ Verification:
 All verified.
 
 ---
-## Part 5 Step 3 - Session Memory Store
+## Part 5 Step 4 - Project Memory Persistence
 
 Status: Complete
 
 Summary:
 
-Added a deterministic append-only session memory store built on immutable MemoryState snapshots.
+Added a deterministic project memory persistence layer built on immutable MemoryState snapshots.
 
 Implemented:
 
 * SESSION_MEMORY_STORE_SCHEMA_VERSION
-* SessionMemoryStore
-* Session summary append helpers
-* Session memory item append helpers
+* ProjectMemoryStore
+* Project decision append helpers
+* Project metadata persistence
 * Canonical serialization and deserialization
 * Deterministic load and save behavior
 
 Verification:
 
-* Deterministic session persistence
-* Append-only session evolution
+* Deterministic project persistence
+* Append-only project evolution
 * Serialization round-trip
 * Identifier stability
 * Version preservation

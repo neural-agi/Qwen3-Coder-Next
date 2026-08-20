@@ -13,7 +13,7 @@
 <br/>
 
 [![Status](https://img.shields.io/badge/status-early%20development-yellow?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next)
-[![Tests](https://img.shields.io/badge/tests-200%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
+[![Tests](https://img.shields.io/badge/tests-205%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![uv](https://img.shields.io/badge/package%20manager-uv-purple?style=for-the-badge)](https://github.com/astral-sh/uv)
@@ -56,7 +56,7 @@ This project is under active development, built incrementally with a completed-l
 
 **Current focus:**
 - Research Layer (Step 9 complete)
-- Memory System (Step 3 complete)
+- Memory System (Step 4 complete)
 - Agent Core
 - Execution Layer
 
@@ -232,7 +232,7 @@ The fastest way to verify the foundation is solid while Agent Core is being buil
 uv run python -m unittest discover -s tests -v
 ```
 
-**200 tests. Zero failures.**
+**205 tests. Zero failures.**
 
 | Test Tier | Files | Coverage |
 |---|---|---|
@@ -350,7 +350,7 @@ Read **[CONTRIBUTING.md](CONTRIBUTING.md)** for full setup instructions, coding 
 
 | Area | What's Needed |
 |---|---|
-| **Memory System** | Step 4 is the active focus |
+| **Memory System** | Step 5 is the active focus |
 | 🚧 **Agent Core** | Planner integration, memory wiring, orchestrator task loop, CLI entrypoint |
 | 🧪 **Test coverage** | Additional unit and integration tests across all subsystems |
 | 📚 **Documentation** | Architecture docs, setup guides, inline docstrings |
@@ -365,7 +365,7 @@ Qwen3CoderNext takes the opposite path: **deterministic, testable infrastructure
 
 The long-term target is a fully autonomous, multi-agent development platform — repository understanding, persistent memory, multi-model collaboration, human approval gates — that never asks you to give up visibility into what it's doing or where your code lives.
 
-**200 automated tests. Deterministic infrastructure. Layered architecture. Memory System underway.**
+**205 automated tests. Deterministic infrastructure. Layered architecture. Memory System underway.**
 
 ---
 

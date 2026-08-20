@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 5: Memory System
 
-Status: Step 3 complete; Step 4 pending
+Status: Step 4 complete; Step 5 pending
 
 ---
 
@@ -307,21 +307,21 @@ Verification:
 All verified.
 
 ---
-## Part 5 Step 3
+## Part 5 Step 4
 
 Implemented:
 
 * SESSION_MEMORY_STORE_SCHEMA_VERSION
-* SessionMemoryStore
-* Session summary append helpers
-* Session memory item append helpers
+* ProjectMemoryStore
+* Project decision append helpers
+* Project metadata persistence
 * Canonical serialization and deserialization
 * Deterministic load and save behavior
 
 Verification:
 
-* Deterministic session persistence
-* Append-only session evolution
+* Deterministic project persistence
+* Append-only project evolution
 * Serialization round-trip
 * Identifier stability
 * Version preservation
@@ -757,7 +757,7 @@ uv run python -m unittest discover -s tests -v
 Result:
 
 ```text
-183 passing
+205 passing
 0 failing
 ```
 
@@ -842,7 +842,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 5 Step 4 Pending
+Part 5 Step 4 Complete
 ```
 
 ---
@@ -890,7 +890,7 @@ Completed Foundation Steps:
 Test Status:
 
 ```text
-183 passing
+205 passing
 0 failing
 ```
 

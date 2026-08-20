@@ -40,6 +40,10 @@ from qwen3_coder_next.memory.serialization import (
     serialize_retention_policy,
     serialize_session_summary,
 )
+from qwen3_coder_next.memory.project_store import (
+    PROJECT_MEMORY_STORE_SCHEMA_VERSION,
+    ProjectMemoryStore,
+)
 from qwen3_coder_next.memory.session_store import (
     SESSION_MEMORY_STORE_SCHEMA_VERSION,
     SessionMemoryStore,
@@ -65,9 +69,11 @@ __all__ = [
     "MemoryStore",
     "MemoryTier",
     "GlobalPattern",
+    "PROJECT_MEMORY_STORE_SCHEMA_VERSION",
+    "ProjectDecision",
+    "ProjectMemoryStore",
     "SESSION_MEMORY_STORE_SCHEMA_VERSION",
     "SessionMemoryStore",
-    "ProjectDecision",
     "RetentionPolicy",
     "SessionSummary",
     "MemoryNotFoundError",
