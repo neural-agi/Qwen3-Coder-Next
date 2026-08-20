@@ -61,7 +61,7 @@ Rules that must be followed:
 
 Part 5: Memory System
 
-Status: Step 4 complete; Step 5 pending
+Status: Step 5 complete; Step 6 pending
 
 ---
 
@@ -307,28 +307,24 @@ Verification:
 All verified.
 
 ---
-## Part 5 Step 4
+## Part 5 Step 5
 
 Implemented:
 
-* SESSION_MEMORY_STORE_SCHEMA_VERSION
-* ProjectMemoryStore
-* Project decision append helpers
-* Project metadata persistence
-* Canonical serialization and deserialization
-* Deterministic load and save behavior
+* MemoryRetriever
+* retrieve_memory helper
+* Tiered retrieval across working, session, and project memory
+* Deterministic ranking and deduplication
+* Canonical result serialization
 
 Verification:
 
-* Deterministic project persistence
-* Append-only project evolution
-* Serialization round-trip
-* Identifier stability
-* Version preservation
-* Malformed payload handling
-* Immutable behavior
-* Compatibility with MemoryState
-* Compatibility with runtime working memory
+* Deterministic retrieval ordering
+* Ranking order
+* Deduplication behavior
+* Provenance preservation
+* Read-only behavior
+* Malformed input handling
 
 All verified.
 

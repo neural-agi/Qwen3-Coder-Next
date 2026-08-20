@@ -44,6 +44,7 @@ from qwen3_coder_next.memory.project_store import (
     PROJECT_MEMORY_STORE_SCHEMA_VERSION,
     ProjectMemoryStore,
 )
+from qwen3_coder_next.memory.retrieval import MemoryRetriever, retrieve_memory
 from qwen3_coder_next.memory.session_store import (
     SESSION_MEMORY_STORE_SCHEMA_VERSION,
     SessionMemoryStore,
@@ -72,9 +73,11 @@ __all__ = [
     "PROJECT_MEMORY_STORE_SCHEMA_VERSION",
     "ProjectDecision",
     "ProjectMemoryStore",
+    "MemoryRetriever",
     "SESSION_MEMORY_STORE_SCHEMA_VERSION",
     "SessionMemoryStore",
     "RetentionPolicy",
+    "retrieve_memory",
     "SessionSummary",
     "MemoryNotFoundError",
     "deserialize_global_pattern",
