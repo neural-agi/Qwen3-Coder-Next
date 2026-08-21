@@ -13,7 +13,7 @@
 <br/>
 
 [![Status](https://img.shields.io/badge/status-early%20development-yellow?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next)
-[![Tests](https://img.shields.io/badge/tests-232%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
+[![Tests](https://img.shields.io/badge/tests-294%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![uv](https://img.shields.io/badge/package%20manager-uv-purple?style=for-the-badge)](https://github.com/astral-sh/uv)
@@ -59,7 +59,7 @@ This project is under active development, built incrementally with a completed-l
 - Memory System (Steps 1-9 complete)
 - Testing & Review quality gate (Part 6 complete)
 - Evaluation Layer Steps 1-7 complete; LangGraph integration pending
-- Failure Recovery Steps 1-2 complete
+- Failure Recovery Steps 1-9 complete
 - Agent Core
 - Execution Layer
 
@@ -235,7 +235,7 @@ The fastest way to verify the foundation is solid while Agent Core is being buil
 uv run python -m unittest discover -s tests -v
 ```
 
-**232 tests. Zero failures.**
+**294 tests. Zero failures.**
 
 | Test Tier | Files | Coverage |
 |---|---|---|
@@ -318,7 +318,7 @@ Qwen-3-Coder-Next/
 | Memory Layer | Persistent context, session memory, cross-task recall | 📋 Planned |
 | Advanced Planning | Multi-step decomposition, replanning, failure recovery | 📋 Planned |
 | Tool Ecosystem | File tools, search tools, shell tools, extensible registry | 📋 Planned |
-| Repository Intelligence | Codebase understanding, symbol graphs, dependency mapping | 📋 Planned |
+| Repository Intelligence | Step 1 immutable contracts and snapshot schema | In progress |
 | Autonomous Workflows | End-to-end task execution with human approval gates | 📋 Planned |
 | Multi-Agent Architecture | Coordination, specialization, parallel execution | 📋 Planned |
 
@@ -368,7 +368,7 @@ Qwen3CoderNext takes the opposite path: **deterministic, testable infrastructure
 
 The long-term target is a fully autonomous, multi-agent development platform — repository understanding, persistent memory, multi-model collaboration, human approval gates — that never asks you to give up visibility into what it's doing or where your code lives.
 
-**232 automated tests. Deterministic infrastructure. Failure Recovery Steps 1-2 complete.**
+**294 automated tests. Deterministic infrastructure. Failure Recovery Steps 1-9 complete; Repository Intelligence Steps 1-8 are implemented.**
 
 ---
 

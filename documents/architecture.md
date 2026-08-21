@@ -850,6 +850,21 @@ Responsibilities:
 * Dependency analysis
 * Project reasoning
 
+Current foundation: immutable versioned repository contracts and deterministic snapshot
+serialization are available through `qwen3_coder_next.repo_intelligence`. Query behavior remains
+a later Part 9 step. `RepositoryScanner` now provides deterministic, read-only
+path and file inventory discovery with explicit exclusion patterns; classification remains a
+later boundary. `FileClassifier` adds deterministic shallow type and language labels while
+preserving scanner metadata and immutable record semantics. `DependencyHintExtractor` adds
+evidence-backed first-order import/include hints without resolution or graph construction.
+`SummaryGenerator` adds bounded deterministic file and folder summaries with content-derived
+summary identifiers while keeping summary generation read-only and separate from persistence.
+`ManifestStore` persists complete `RepoSnapshot` values through the existing canonical JSON
+serializer with atomic local replacement and strict schema-version checks. `IncrementalRefresher`
+detects deterministic additions, modifications, and deletions, reuses unaffected records, and emits
+an immutable change journal. `RepositoryQueryService` provides deterministic read-only path-prefix,
+file-type, language, and summary-text queries over existing snapshots without rescanning.
+
 ---
 
 ### Evaluation System
@@ -905,5 +920,27 @@ because no graph runtime is part of the current dependency set.
 
 The recovery package begins with immutable versioned contracts and a narrow ingress boundary.
 `FailureIngress` accepts supported exception or structured-envelope inputs and produces a
-normalized `FailureEvent`; it does not diagnose, retry, mutate repositories, or select a recovery
-strategy. Later recovery stages consume these stable contracts.
+normalized `FailureEvent`; `EvidenceCapture` then creates an immutable evidence snapshot from
+explicit references and context. Neither boundary diagnoses, retries, mutates repositories, or
+selects a recovery strategy. Later recovery stages consume these stable contracts.
+
+`FailureClassifier` performs bounded keyword classification over a normalized event and evidence
+bundle. Ambiguous, contradictory, or insufficient signals produce `UNKNOWN` with zero confidence;
+the classifier never chooses a recovery strategy.
+
+`StrategyRegistry` maps diagnosis categories to bounded `RecoveryPlan` values and enforces
+retry-attempt limits at selection time. It never executes a plan or mutates task, repository, or
+worktree state.
+
+`RecoveryExecutor` consumes the already-selected `RecoveryPlan` and an injected
+`RecoveryExecutionAdapter`. It bounds attempts using the plan budget, returns immutable
+`RecoveryOutcome` values, and handles escalation/abort without invoking the adapter.
+`CheckpointManager` exposes the Step 7 snapshot boundary through `CheckpointRollbackAdapter`.
+It validates immutable checkpoint handles and reports explicit creation/rollback results without
+persisting snapshots or coupling recovery to shell/git operations. Ledger and metrics behavior
+remain separate from execution and checkpointing through injected `RecoveryLedger` and
+`RecoveryMetrics` boundaries. Terminal outcomes can be recorded as existing `RecoveryRecord`
+values with deterministic event timestamps, while metric counters and elapsed durations are
+supplied explicitly by the caller.
+The Step 9 recovery scenario suite exercises the complete deterministic path across the defined
+failure corpus, bounded chaos inputs, safety boundaries, terminal ledger recording, and replay.

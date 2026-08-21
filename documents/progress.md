@@ -16,11 +16,11 @@ Part 8 Failure Recovery
 
 Current Step:
 
-Part 8 Steps 1-2 complete
+Part 9 Step 8 Query Service
 
 Next Step:
 
-Part 8 Step 3 Evidence Capture
+Part 9 Repository Intelligence
 
 Repository State:
 
@@ -32,15 +32,50 @@ All tests passing
 
 Current Test Count:
 
-232 Passing
+294 Passing
 
 ## Part 8 - Failure Recovery
 
-Status: Steps 1-2 complete
+Status: Steps 1-9 complete
 
-Implemented versioned recovery taxonomy/contracts and deterministic failure ingress normalization.
-Diagnosis, evidence capture, strategy selection, execution, rollback, persistence, and metrics
-remain subsequent steps.
+Implemented versioned recovery taxonomy/contracts, deterministic failure ingress normalization,
+and read-only evidence capture. Deterministic rule-based classification now produces bounded
+diagnosis reports, and the strategy registry applies explicit bounded policy rules. The recovery
+executor now runs injected bounded attempts and returns terminal outcomes. Checkpoint and rollback
+are exposed through an injected snapshot adapter. Terminal recovery records and deterministic
+counter/timer metrics are emitted through injected ledger and metrics boundaries. Deterministic
+scenario, chaos, safety, and replay coverage now verifies the complete recovery pipeline without
+adding production mutation paths.
+
+## Part 9 - Repository Intelligence
+
+Status: Steps 1-8 complete
+
+Added immutable, versioned contracts for repository snapshots, files, folders, dependency hints,
+summaries, and change events, with deterministic snapshot serialization. Scanning, classification,
+dependency extraction, summaries, persistence, and incremental refresh are implemented; query services
+remain future Part 9 work.
+
+Step 2 adds deterministic, read-only repository walking with normalized relative paths, SHA-256
+file metadata, folder inventories, and explicit default/custom exclusion handling.
+
+Step 3 adds deterministic shallow file classification and language labels with explicit precedence
+for generated, test, build, configuration, documentation, data, source, and unknown files.
+
+Step 4 adds deterministic, evidence-backed shallow import/include hints for the classified language
+set without resolving references or constructing a dependency graph.
+
+Step 5 adds bounded deterministic file and folder summaries with stable content-derived summary
+identifiers and existing immutable SummaryRecord serialization.
+
+Step 6 adds deterministic local ManifestStore save/load with atomic replacement, complete snapshot
+round-trips, and strict schema-version and corruption handling.
+
+Step 7 adds deterministic incremental refresh with immutable addition/modification/deletion change
+journals and reuse of unaffected file, dependency, and summary records.
+
+Step 8 adds a deterministic read-only query service over existing snapshots for path prefixes, file
+types, languages, and summary text without rescanning or mutating repository state.
 
 ## Part 6 - Testing & Review
 
@@ -1380,7 +1415,7 @@ Pending Systems:
 
 □ Local Tooling Implementation
 
-□ Repository Intelligence
+□ Repository Intelligence (Steps 2-9 pending; Step 1 contracts complete)
 
 □ Multi-Agent Systems
 

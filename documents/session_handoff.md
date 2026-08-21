@@ -61,9 +61,9 @@ Rules that must be followed:
 
 Part 8: Failure Recovery
 
-Status: Steps 1-2 complete
+Status: Steps 1-9 complete
 
-Current validation: 232 tests passing
+Current validation: 294 tests passing
 
 Part 6 provides typed test/review reports, deterministic command execution and normalization,
 review findings, gate decisions, feedback bundles, and immutable quality artifacts.
@@ -72,8 +72,11 @@ Part 7 currently provides deterministic evaluation schemas, evidence normalizati
 score computation, decision policy, structured feedback, audit persistence, golden scenarios,
 and benchmark metrics without repository mutation or model execution.
 
-Part 8 currently provides the versioned failure taxonomy/contracts and normalized failure ingress.
-Evidence capture and later diagnosis/recovery execution steps are not started.
+Part 8 currently provides the versioned failure taxonomy/contracts, normalized failure ingress,
+and read-only evidence capture. Deterministic rule-based classification and bounded strategy
+selection, bounded recovery execution, the injected checkpoint/rollback boundary, terminal
+ledger/metrics recording, and scenario/chaos/replay coverage are now complete; later roadmap
+parts are not started.
 
 ---
 
@@ -850,7 +853,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 5 Step 4 Complete
+Part 9 Step 9 Fixture-Driven Integration Tests
 ```
 
 ---
