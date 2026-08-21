@@ -53,15 +53,15 @@ This project is under active development, built incrementally with a completed-l
 - Foundation Layer
 - Local Tooling Layer
 - Planning Layer
+- Failure Recovery Layer — Steps 1-9 complete
+- Repository Intelligence — Part 9 Steps 1-9 complete
+- Code Knowledge Graph — Part 10 Steps 1-7 complete
 
 **Current focus:**
-- Research Layer (Step 9 complete)
-- Memory System (Steps 1-9 complete)
-- Testing & Review quality gate (Part 6 complete)
-- Evaluation Layer Steps 1-7 complete; LangGraph integration pending
-- Failure Recovery Steps 1-9 complete
 - Agent Core
 - Execution Layer
+- Repository Intelligence and Graph integration into runtime workflows
+- Evaluation Layer integration
 
 ---
 
@@ -95,36 +95,52 @@ This project is under active development, built incrementally with a completed-l
 ```mermaid
 flowchart TD
     U[User / CLI] --> O[Orchestrator]
+
     O --> PL[Planning Layer]
-    PL --> RS[Research Layer]
-    RS -.->|in progress| EX[Execution]
     O --> MG[Model Gateway]
     O --> TF[Tool Framework]
+
+    PL --> RI[Repository Intelligence]
+    RI --> KG[Code Knowledge Graph]
+
     TF --> FS[Filesystem Service]
     TF --> CMD[Command Execution]
     TF --> AR[Artifact Registry]
+
     FS --> AL[Audit Log]
     CMD --> AL
     AR --> AL
-    O -.->|not yet wired into runtime| MEM[Memory]
+
+    O --> FR[Failure Recovery]
+    FR --> CP[Checkpoint / Rollback]
+    FR --> LED[Recovery Ledger / Metrics]
+
+    RI -.->|repository facts| PL
+    KG -.->|code structure / traversal| PL
+
+    O -.->|integration in progress| EX[Execution]
+    O -.->|not yet fully wired| MEM[Memory]
 ```
 
-> **Solid lines** = built, integrated, and tested today.
-> **Dashed lines** = implemented but not yet fully wired into runtime execution.
+> **Solid lines** = implemented, validated, and available as project components.
+> **Dashed lines** = implemented boundaries that are not yet fully wired into the runtime agent loop.
 
 **Component breakdown:**
 
 | Component | Role | Status |
 |---|---|---|
-| **Orchestrator** | Coordinates tool execution and routes through planning | ✅ |
+| **Orchestrator** | Coordinates planning, tools, recovery, and runtime execution boundaries | ✅ |
 | **Planning Layer** | Request normalization, task decomposition, dependency resolution, artifact generation | ✅ |
-| **Research Layer** | Complete through Step 9 | ✅ |
-| **Model Gateway** | Routes requests to any supported provider; swap models without touching workflow | ✅ |
-| **Tool Framework** | Contract layer every tool implements; includes `echo_tool` + full registry/manager | ✅ |
-| **Filesystem Service** | Enforces workspace boundaries; safe reads, controlled writes, diffs | ✅ |
-| **Artifact Registry** | Tracks every generated file with checksums, provenance, supersede history | ✅ |
-| **Audit Log** | Append-only, sequence-numbered record of every agent action | ✅ |
-| **Memory** | `manager.py` + `store.py` + runtime-owned working memory snapshot | 🚧 Active |
+| **Model Gateway** | Routes requests across supported model providers | ✅ |
+| **Tool Framework** | Contract, registry, manager, and tool adapter infrastructure | ✅ |
+| **Filesystem Service** | Workspace boundaries, safe reads/writes, patches, and diffs | ✅ |
+| **Artifact Registry** | Checksum, provenance, and supersede tracking for generated files | ✅ |
+| **Audit Log** | Append-only, sequence-numbered action history | ✅ |
+| **Failure Recovery** | Failure classification, strategy selection, bounded execution, checkpoint/rollback, ledger/metrics, scenario tests | ✅ |
+| **Repository Intelligence** | Scanning, classification, dependency hints, summaries, persistence, incremental refresh, queries, fixture integration | ✅ |
+| **Code Knowledge Graph** | Graph contracts, parser adapters, relation normalization, storage, traversal, invalidation, export | ✅ |
+| **Memory** | Runtime-owned persistent context and working-memory infrastructure | 🚧 Integration pending |
+| **Agent Core** | End-to-end task execution and runtime wiring across the completed layers | 🚧 Active |
 
 ---
 
@@ -164,16 +180,35 @@ flowchart TD
 - Deterministic serialization
 - Runtime integration
 
-### 🚧 Research Layer — In Progress
+### ✅ Repository Intelligence — Complete
 
-- Step 9 complete: schemas, state, source policy, request normalization, local repository scanning, document/log/error fetchers, evidence normalization/ranking, packet assembly, pipeline integration, observability/failure paths, and end-to-end integration tests implemented
-- Active development underway
+- Part 9 Steps 1-9 complete
+- Immutable repository contracts and snapshot schema
+- Deterministic repository scanning and ignore handling
+- File classification and language detection
+- Shallow dependency hint extraction
+- File and folder summary generation
+- Manifest persistence
+- Incremental refresh and change journaling
+- Snapshot-backed query service
+- Fixture-driven end-to-end integration tests
+
+### ✅ Code Knowledge Graph — Steps 1-7 Complete
+
+- Immutable graph schemas and canonical IDs
+- Parser adapter boundary with deterministic Python AST parsing
+- Relation normalization and symbol resolution
+- Persistent graph snapshot storage and publication
+- Bounded deterministic graph traversal
+- Invalidation and incremental reconciliation
+- JSON, CSV, and text graph export
 
 ### 🚧 Agent Core — In Progress
 
-- Wiring layers into the orchestrator
-- Building real task execution
-- First real CLI entrypoint
+- Wiring the completed layers into the orchestrator
+- Building real end-to-end task execution
+- Runtime integration of repository intelligence and graph services
+- First complete CLI workflow
 
 ---
 
@@ -237,11 +272,11 @@ uv run python -m unittest discover -s tests -v
 
 **329 tests. Zero failures.**
 
-| Test Tier | Files | Coverage |
-|---|---|---|
-| `tests/smoke/` | 27 files | One per module — contracts, config, logging, state, model gateway, orchestrator, artifacts, all 10 local tooling submodules, memory, planning, prompts, runtime, research |
-| `tests/unit/` | 8 files | Deep coverage on `local_tooling` — reads, mutations, diff, commands, audit, artifact registry, resolution, adapter |
-| `tests/integration/` | 1 file | Local tooling adapter end-to-end |
+| Test Tier | Coverage |
+|---|---|
+| `tests/smoke/` | Deterministic subsystem and contract smoke tests — contracts, configuration, logging, state, tooling, planning, recovery, repository intelligence, graph foundations, runtime, and subsystem boundaries |
+| `tests/unit/` | Deep subsystem-level tests — detailed coverage for local tooling and core infrastructure |
+| `tests/integration/` | End-to-end integration coverage — local tooling and repository-intelligence integration flows |
 
 ---
 
@@ -252,29 +287,33 @@ Qwen-3-Coder-Next/
 ├── src/qwen3_coder_next/
 │   ├── __main__.py              # CLI entry point
 │   ├── adapters/                # model gateway, base adapter, exceptions
-│   ├── artifacts/               # artifact manager and store
-│   ├── bootstrap/               # app bootstrap, runtime initialization
-│   ├── config/                  # settings, loader, defaults
-│   ├── contracts/               # core type contracts — artifact, model, runtime, state, task
-│   ├── evaluation/              # evaluation contracts, evaluator, simple_evaluator
-│   ├── execution/               # executor and result types
-│   ├── local_tooling/           # most complete module (10 files)
-│   │                            # filesystem, reads, operations, diff, commands,
-│   │                            # artifact_registry, audit, resolution, adapter, contracts
-│   ├── logging/                 # formatter, logger, setup
-│   ├── memory/                  # schemas, state, contracts, manager, store — tested, not yet wired into runtime
-│   ├── planning/                # contracts, planner, decomposition, validation — complete
-│   ├── research/                # schemas and state foundation — Step 1 complete
-│   ├── prompts/                 # contracts, loader, registry
-│   ├── runtime/                 # orchestrator, runtime context
-│   ├── state/                   # state manager and store
-│   ├── tools/                   # contracts, registry, manager, echo_tool
+│   ├── artifacts/                # artifact manager and store
+│   ├── bootstrap/                # app bootstrap, runtime initialization
+│   ├── config/                   # settings, loader, defaults
+│   ├── contracts/                # core type contracts — artifact, model, runtime, state, task
+│   ├── evaluation/                # evaluation contracts, evaluator, simple_evaluator
+│   ├── execution/                 # execution contracts and result types
+│   ├── extractors/                # graph relation normalization and symbol resolution
+│   ├── graph/                     # graph schemas, storage, traversal, invalidation, export
+│   ├── local_tooling/             # filesystem, reads, mutations, diff, commands,
+│   │                               # artifact registry, audit, resolution, adapter, contracts
+│   ├── logging/                    # formatter, logger, setup
+│   ├── memory/                     # schemas, state, contracts, manager, store
+│   ├── parsers/                    # parser contracts and language adapters
+│   ├── planning/                   # contracts, planner, decomposition, validation
+│   ├── repo_intelligence/          # repository contracts, scanner, classifier, dependencies,
+│   │                                # summaries, manifests, refresh, query services
+│   ├── research/                   # research schemas, state, source policy, pipeline
+│   ├── prompts/                    # contracts, loader, registry
+│   ├── runtime/                    # orchestrator, runtime context
+│   ├── state/                      # state manager and store
+│   ├── tools/                      # contracts, registry, manager, echo_tool
 │   └── utils/
 │
 ├── tests/
-│   ├── smoke/                   # 23 files — every module covered
-│   ├── unit/                    # 8 files — local_tooling deep coverage
-│   └── integration/             # local_tooling adapter integration
+│   ├── smoke/                   # Deterministic subsystem and contract smoke tests
+│   ├── unit/                    # Deep subsystem-level tests
+│   └── integration/             # End-to-end subsystem integration tests
 │
 ├── documents/                   # internal architecture docs
 │   ├── architecture.md
@@ -312,13 +351,12 @@ Qwen-3-Coder-Next/
 | Foundation | Contracts, config, logging, state, model gateway, orchestrator, artifacts | ✅ Complete |
 | Local Tooling | Filesystem, reads/writes, commands, audit, artifact registry | ✅ Complete |
 | Planning Layer | Request normalization, task decomposition, dependency resolution, runtime integration | ✅ Complete |
-| **Research Layer** | **Complete through Step 9** | **✅ Complete** |
-| **Agent Core** | **Orchestrator integration, real task execution, CLI** | **🚧 Active** |
-| Execution Layer | Controlled execution pipeline, failure recovery, replanning | 🚧 Planned |
-| Memory Layer | Persistent context, session memory, cross-task recall | 📋 Planned |
-| Advanced Planning | Multi-step decomposition, replanning, failure recovery | 📋 Planned |
-| Tool Ecosystem | File tools, search tools, shell tools, extensible registry | 📋 Planned |
-| Repository Intelligence | Step 1 immutable contracts and snapshot schema | In progress |
+| Failure Recovery | Failure classification, recovery strategy, execution, rollback, ledger/metrics, chaos validation | ✅ Complete |
+| Repository Intelligence | Contracts, scanning, classification, dependency hints, summaries, persistence, refresh, queries, integration tests | ✅ Complete |
+| Code Knowledge Graph | Graph contracts, parsing, normalization, storage, traversal, invalidation, export | ✅ Steps 1-7 |
+| **Agent Core** | **Runtime integration, real task execution, CLI** | **🚧 Active** |
+| Execution Layer | Controlled execution pipeline and autonomous task execution | 🚧 In Progress |
+| Memory Layer | Persistent context, session memory, cross-task recall | 🚧 Integration pending |
 | Autonomous Workflows | End-to-end task execution with human approval gates | 📋 Planned |
 | Multi-Agent Architecture | Coordination, specialization, parallel execution | 📋 Planned |
 
@@ -353,10 +391,10 @@ Read **[CONTRIBUTING.md](CONTRIBUTING.md)** for full setup instructions, coding 
 
 | Area | What's Needed |
 |---|---|
-| **Memory System** | Step 6 is the active focus |
-| 🚧 **Agent Core** | Planner integration, memory wiring, orchestrator task loop, CLI entrypoint |
-| 🧪 **Test coverage** | Additional unit and integration tests across all subsystems |
-| 📚 **Documentation** | Architecture docs, setup guides, inline docstrings |
+| 🚧 **Agent Core** | Orchestrator integration, end-to-end task execution, memory wiring, CLI entrypoint |
+| 🚧 **Repository / Graph Integration** | Connect repository intelligence and graph services to runtime workflows |
+| 🧪 **Test Coverage** | Additional integration, regression, and end-to-end tests across completed layers |
+| 📚 **Documentation** | Architecture docs, setup guides, examples, and subsystem documentation |
 
 ---
 
