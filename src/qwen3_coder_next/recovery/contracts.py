@@ -115,16 +115,18 @@ class EvidenceBundle:
     memory_refs: tuple[str, ...] = ()
     file_anchors: tuple[str, ...] = ()
     worktree_ref: str = ""
+    agent_status: str = ""
     schema_version: int = RECOVERY_SCHEMA_VERSION
 
     def __post_init__(self) -> None:
         for name in ("recent_actions", "log_refs", "command_output", "memory_refs", "file_anchors"):
             object.__setattr__(self, name, _texts(getattr(self, name), name))
-        if not isinstance(self.worktree_ref, str):
-            raise ValueError("worktree_ref must be text.")
+        for name in ("worktree_ref", "agent_status"):
+            if not isinstance(getattr(self, name), str):
+                raise ValueError(f"{name} must be text.")
 
     def to_dict(self) -> dict[str, Any]:
-        return {"recent_actions": list(self.recent_actions), "log_refs": list(self.log_refs), "command_output": list(self.command_output), "memory_refs": list(self.memory_refs), "file_anchors": list(self.file_anchors), "worktree_ref": self.worktree_ref, "schema_version": self.schema_version}
+        return {"recent_actions": list(self.recent_actions), "log_refs": list(self.log_refs), "command_output": list(self.command_output), "memory_refs": list(self.memory_refs), "file_anchors": list(self.file_anchors), "worktree_ref": self.worktree_ref, "agent_status": self.agent_status, "schema_version": self.schema_version}
 
 
 @dataclass(frozen=True, slots=True)
@@ -135,11 +137,11 @@ class DiagnosisReport:
     root_cause: str
     confidence: float
     evidence_summary: str
-    recommended_strategy: RecoveryStrategy
+    recommended_strategy: RecoveryStrategy | None = None
     schema_version: int = RECOVERY_SCHEMA_VERSION
 
     def to_dict(self) -> dict[str, Any]:
-        return {"category": self.category.value, "root_cause": self.root_cause, "confidence": self.confidence, "evidence_summary": self.evidence_summary, "recommended_strategy": self.recommended_strategy.value, "schema_version": self.schema_version}
+        return {"category": self.category.value, "root_cause": self.root_cause, "confidence": self.confidence, "evidence_summary": self.evidence_summary, "recommended_strategy": self.recommended_strategy.value if self.recommended_strategy else None, "schema_version": self.schema_version}
 
 
 @dataclass(frozen=True, slots=True)
