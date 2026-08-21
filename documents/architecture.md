@@ -864,6 +864,30 @@ serializer with atomic local replacement and strict schema-version checks. `Incr
 detects deterministic additions, modifications, and deletions, reuses unaffected records, and emits
 an immutable change journal. `RepositoryQueryService` provides deterministic read-only path-prefix,
 file-type, language, and summary-text queries over existing snapshots without rescanning.
+Fixture-driven integration tests cover the complete repository-intelligence flow through persistence,
+incremental refresh, query round-trips, and deterministic repeated runs.
+
+---
+
+### Code Knowledge Graph
+
+Part 10 Step 1 defines immutable graph foundation contracts in `qwen3_coder_next.graph`:
+`SourceUnit`, `GraphNode`, `GraphEdge`, `GraphSnapshot`, and `GraphQuery`. Canonical graph IDs
+derive from repository scope, language, and symbol path using deterministic SHA-256 JSON identity.
+Snapshots sort and validate graph records and support stable JSON serialization. Part 10 Step 2
+adds a deterministic Python AST parser adapter with immutable source-located syntax facts and
+explicit unsupported-language/syntax-warning behavior. Part 10 Step 3 adds deterministic relation
+normalization with symbol-table resolution, explicit unresolved references, deduplicated nodes and
+edges, and parser provenance preservation. Storage, traversal, invalidation, export, and agent
+integration remain later Part 10 boundaries. Part 10 Step 4 adds `GraphStore` for deterministic
+local snapshot persistence and publication of one current snapshot per repository, with atomic
+writes and typed reloads through the existing graph serializer. Part 10 Step 5 adds bounded,
+cycle-safe deterministic reachability traversal with direction, edge-kind, node-kind, depth, and
+result-limit filtering while leaving graph snapshots immutable. The current result contract is a
+bounded subgraph, not ordered path enumeration; the PDF does not define a separate path-result schema.
+Part 10 Step 6 adds immutable invalidation events and deterministic replacement snapshots for
+touched paths and renamed symbols. Part 10 Step 7 adds read-only deterministic JSON, CSV, and text
+inspection exports. Repository integration and agent wiring remain later boundaries.
 
 ---
 

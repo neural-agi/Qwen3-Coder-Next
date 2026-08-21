@@ -16,11 +16,11 @@ Part 8 Failure Recovery
 
 Current Step:
 
-Part 9 Step 8 Query Service
+Part 10 Steps 6-7 Invalidation and Export
 
 Next Step:
 
-Part 9 Repository Intelligence
+Part 10 Step 8 Repository Intelligence and Agent Integration
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-294 Passing
+329 Passing
 
 ## Part 8 - Failure Recovery
 
@@ -49,12 +49,12 @@ adding production mutation paths.
 
 ## Part 9 - Repository Intelligence
 
-Status: Steps 1-8 complete
+Status: Steps 1-9 complete
 
 Added immutable, versioned contracts for repository snapshots, files, folders, dependency hints,
 summaries, and change events, with deterministic snapshot serialization. Scanning, classification,
-dependency extraction, summaries, persistence, and incremental refresh are implemented; query services
-remain future Part 9 work.
+dependency extraction, summaries, persistence, incremental refresh, query services, and fixture-driven
+integration coverage are implemented.
 
 Step 2 adds deterministic, read-only repository walking with normalized relative paths, SHA-256
 file metadata, folder inventories, and explicit default/custom exclusion handling.
@@ -76,6 +76,9 @@ journals and reuse of unaffected file, dependency, and summary records.
 
 Step 8 adds a deterministic read-only query service over existing snapshots for path prefixes, file
 types, languages, and summary text without rescanning or mutating repository state.
+
+Step 9 adds deterministic fixture-driven integration coverage across scanning, classification,
+dependency hints, summaries, persistence, incremental refresh, and query behavior.
 
 ## Part 6 - Testing & Review
 
