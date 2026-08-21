@@ -12,15 +12,15 @@ It serves as the primary reference for determining the current state of developm
 
 Phase:
 
-Part 7 Evaluation Layer
+Part 8 Failure Recovery
 
 Current Step:
 
-Part 7 Steps 1-7 complete; LangGraph integration not started
+Part 8 Steps 1-2 complete
 
 Next Step:
 
-Part 7 Step 8 LangGraph Integration (requires an approved graph runtime boundary)
+Part 8 Step 3 Evidence Capture
 
 Repository State:
 
@@ -32,16 +32,15 @@ All tests passing
 
 Current Test Count:
 
-229 Passing
+232 Passing
 
-## Part 7 - Evaluation Layer
+## Part 8 - Failure Recovery
 
-Status: Steps 1-7 complete; Step 8 intentionally not started
+Status: Steps 1-2 complete
 
-Implemented deterministic evaluation schemas, evidence normalization, rubric construction,
-scoring, decision policy, structured feedback, audit persistence, golden scenarios, and a
-benchmark metrics hook. The implementation remains read-only with respect to source code and
-does not execute or mutate repositories.
+Implemented versioned recovery taxonomy/contracts and deterministic failure ingress normalization.
+Diagnosis, evidence capture, strategy selection, execution, rollback, persistence, and metrics
+remain subsequent steps.
 
 ## Part 6 - Testing & Review
 

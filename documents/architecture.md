@@ -900,3 +900,10 @@ The evaluation layer exposes a deterministic, read-only decision path through
 decision policy, structured feedback, and audit persistence. Evaluation records retain task and
 policy identity and are serialized canonically. LangGraph integration remains a later boundary
 because no graph runtime is part of the current dependency set.
+
+## Part 8 Failure Recovery
+
+The recovery package begins with immutable versioned contracts and a narrow ingress boundary.
+`FailureIngress` accepts supported exception or structured-envelope inputs and produces a
+normalized `FailureEvent`; it does not diagnose, retry, mutate repositories, or select a recovery
+strategy. Later recovery stages consume these stable contracts.

@@ -59,11 +59,11 @@ Rules that must be followed:
 
 ## Current Phase
 
-Part 7: Evaluation Layer
+Part 8: Failure Recovery
 
-Status: Steps 1-7 complete; Step 8 LangGraph integration not started
+Status: Steps 1-2 complete
 
-Current validation: 229 tests passing
+Current validation: 232 tests passing
 
 Part 6 provides typed test/review reports, deterministic command execution and normalization,
 review findings, gate decisions, feedback bundles, and immutable quality artifacts.
@@ -71,6 +71,9 @@ review findings, gate decisions, feedback bundles, and immutable quality artifac
 Part 7 currently provides deterministic evaluation schemas, evidence normalization, rubric and
 score computation, decision policy, structured feedback, audit persistence, golden scenarios,
 and benchmark metrics without repository mutation or model execution.
+
+Part 8 currently provides the versioned failure taxonomy/contracts and normalized failure ingress.
+Evidence capture and later diagnosis/recovery execution steps are not started.
 
 ---
 
