@@ -13,7 +13,7 @@
 <br/>
 
 [![Status](https://img.shields.io/badge/status-early%20development-yellow?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next)
-[![Tests](https://img.shields.io/badge/tests-329%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
+[![Tests](https://img.shields.io/badge/tests-371%20passing-brightgreen?style=for-the-badge)](https://github.com/neural-agi/Qwen3-coder-next/tree/main/tests)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![uv](https://img.shields.io/badge/package%20manager-uv-purple?style=for-the-badge)](https://github.com/astral-sh/uv)
@@ -55,7 +55,7 @@ This project is under active development, built incrementally with a completed-l
 - Planning Layer
 - Failure Recovery Layer — Steps 1-9 complete
 - Repository Intelligence — Part 9 Steps 1-9 complete
-- Code Knowledge Graph — Part 10 Steps 1-7 complete
+- Code Knowledge Graph — Part 10 Steps 1-8 complete
 
 **Current focus:**
 - Agent Core
@@ -193,7 +193,7 @@ flowchart TD
 - Snapshot-backed query service
 - Fixture-driven end-to-end integration tests
 
-### ✅ Code Knowledge Graph — Steps 1-7 Complete
+### ✅ Code Knowledge Graph — Steps 1-8 Complete
 
 - Immutable graph schemas and canonical IDs
 - Parser adapter boundary with deterministic Python AST parsing
@@ -270,7 +270,7 @@ The fastest way to verify the foundation is solid while Agent Core is being buil
 uv run python -m unittest discover -s tests -v
 ```
 
-**329 tests. Zero failures.**
+**371 tests. Zero failures.**
 
 | Test Tier | Coverage |
 |---|---|
@@ -353,7 +353,7 @@ Qwen-3-Coder-Next/
 | Planning Layer | Request normalization, task decomposition, dependency resolution, runtime integration | ✅ Complete |
 | Failure Recovery | Failure classification, recovery strategy, execution, rollback, ledger/metrics, chaos validation | ✅ Complete |
 | Repository Intelligence | Contracts, scanning, classification, dependency hints, summaries, persistence, refresh, queries, integration tests | ✅ Complete |
-| Code Knowledge Graph | Graph contracts, parsing, normalization, storage, traversal, invalidation, export | ✅ Steps 1-7 |
+| Code Knowledge Graph | Graph contracts, parsing, normalization, storage, traversal, invalidation, export, Repository Intelligence integration | ✅ Steps 1-8 |
 | **Agent Core** | **Runtime integration, real task execution, CLI** | **🚧 Active** |
 | Execution Layer | Controlled execution pipeline and autonomous task execution | 🚧 In Progress |
 | Memory Layer | Persistent context, session memory, cross-task recall | 🚧 Integration pending |
@@ -406,7 +406,7 @@ Qwen3CoderNext takes the opposite path: **deterministic, testable infrastructure
 
 The long-term target is a fully autonomous, multi-agent development platform — repository understanding, persistent memory, multi-model collaboration, human approval gates — that never asks you to give up visibility into what it's doing or where your code lives.
 
-**329 automated tests. Deterministic infrastructure. Failure Recovery Steps 1-9 complete; Repository Intelligence Steps 1-9 and Part 10 Steps 1-7 graph foundations are implemented.**
+**371 automated tests. Deterministic infrastructure. Failure Recovery Steps 1-9 complete; Repository Intelligence Steps 1-9, Part 10 Steps 1-8, and Part 11 Steps 1-8 context compression boundaries are implemented.**
 
 ---
 

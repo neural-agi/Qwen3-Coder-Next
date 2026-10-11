@@ -16,11 +16,11 @@ Part 8 Failure Recovery
 
 Current Step:
 
-Part 10 Steps 6-7 Invalidation and Export
+Part 11 Step 8 Telemetry, Regression Tests, and Fallback Behavior
 
 Next Step:
 
-Part 10 Step 8 Repository Intelligence and Agent Integration
+Part 12 Multi-Agent Coordination
 
 Repository State:
 
@@ -32,7 +32,7 @@ All tests passing
 
 Current Test Count:
 
-329 Passing
+371 Passing
 
 ## Part 8 - Failure Recovery
 
@@ -79,6 +79,68 @@ types, languages, and summary text without rescanning or mutating repository sta
 
 Step 9 adds deterministic fixture-driven integration coverage across scanning, classification,
 dependency hints, summaries, persistence, incremental refresh, and query behavior.
+
+Part 10 Step 8 adds a deterministic RepositoryGraphService bridge from immutable repository
+snapshots to parser/normalizer graph snapshots, with optional GraphStore publication and
+read-only published query/export access. Unsupported repository file languages are skipped;
+parser orchestration and agent/runtime integration remain outside this boundary.
+
+Part 10 acceptance coverage now includes golden fixture assertions, graph consistency validation,
+incremental edit/reconciliation coverage, snapshot recovery, deterministic query/export checks,
+and repository identity/provenance propagation.
+
+## Part 11 - Context Compression
+
+Status: Steps 1-8 complete
+
+Added immutable, versioned contracts for context requests, evidence chunks, context packages,
+budget reports, and compression configuration. Canonical JSON-based SHA-256 fingerprints are
+provided for requests and configurations, with a package identity helper that accepts task,
+request, source, and policy inputs. Retrieval, ranking, summarization, budget enforcement,
+provenance assembly, and caching remain future steps.
+
+Step 2 adds deterministic `ContextRequestNormalizer` support for canonical requests and existing
+`TaskRequest` values, plus metadata-only `SourceResolver` plans. `SourceSpec`, `SourcePlanEntry`,
+and `SourcePlan` represent explicit source availability, fingerprints, priorities, and stale or
+unavailable outcomes without accessing stores or retrieving evidence.
+
+Step 3 adds deterministic retrieval adapters for repository summaries and published graph queries,
+plus a memory adapter over the existing `MemoryRetriever`. Retrieval returns validated
+`EvidenceChunk` values with source fingerprints and provenance, while unavailable, stale,
+unsupported, and failed sources remain explicit. Qdrant has no configured connector and remains
+unsupported without fabricated retrieval.
+
+Step 4 adds deterministic evidence ranking over supported score, recency, source-priority, and
+intent-overlap signals. Exact location/excerpt duplicates are merged with stable provenance
+preservation; fuzzy deduplication is intentionally unresolved because the configured threshold
+has no specified similarity semantics.
+
+Step 5 adds deterministic extractive summarization through `EvidenceSummarizer`, with immutable
+role-policy, claim, and result contracts. Claims retain source IDs and locations; actionable
+commands, paths, identifiers, and error details are preserved. Step 6 adds `BudgetManager`,
+which uses a conservative UTF-8-byte/4 token estimate, protects reserved headroom, trims claims
+in deterministic order, and reports dropped sources and infeasible required-content budgets.
+Final package assembly and cache writes remain future steps.
+
+Step 7 adds deterministic `ContextPackager` and an in-process `ContextPackageCache`. Packaging
+validates budget compliance and claim rehydration against source IDs and locations, preserves
+selected evidence and omissions in `ContextPackage`, and derives identity from request, source,
+configuration, policy, and reserved-budget inputs. Cache results distinguish misses, hits, and
+invalid entries; no filesystem or external cache persistence is introduced.
+
+Step 8 adds deterministic metadata-only `CompressionTelemetry` recording and a narrow
+`ContextFallback`. Fallback activates only when retrieval returned valid candidates and ranking
+produced an empty result; the selected candidate still must pass summarization, budget, and
+packaging validation. No external telemetry backend or LangGraph integration is configured.
+
+The Part 11 pipeline now wires normalization, source resolution, retrieval, ranking/deduplication,
+summarization, budget enforcement, packaging, and cache validation through
+`ContextCompressionPipeline`. Evidence carries explicit retrieval timestamps and confidence when
+available; standard adapters never fabricate missing confidence. Package identity includes selected
+evidence content, package coverage notes distinguish included evidence from omissions, cache
+acceptance enforces `CompressionConfig.max_tokens`, and `ContextRehydrator` validates source
+fingerprints before restoring provenance references. Step 8 telemetry is emitted by the pipeline
+for retrieval, ranking, summary, budget, fallback, cache, package, and terminal-failure outcomes.
 
 ## Part 6 - Testing & Review
 

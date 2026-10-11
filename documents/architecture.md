@@ -888,6 +888,70 @@ bounded subgraph, not ordered path enumeration; the PDF does not define a separa
 Part 10 Step 6 adds immutable invalidation events and deterministic replacement snapshots for
 touched paths and renamed symbols. Part 10 Step 7 adds read-only deterministic JSON, CSV, and text
 inspection exports. Repository integration and agent wiring remain later boundaries.
+Part 10 Step 8 adds `RepositoryGraphService` as the narrow bridge from an existing immutable
+`RepoSnapshot` to parser adapters and relation normalization. It preserves repository and
+revision identity, can publish the resulting `GraphSnapshot` through `GraphStore`, and exposes
+read-only query/export access through the published snapshot. Unsupported file languages are
+skipped because no broader parser set is defined; runtime and agent orchestration remain outside
+this boundary. `GraphConsistencyValidator` provides the explicit no-dangling-edge consistency
+check required by the graph acceptance contract.
+
+### Context Compression
+
+Part 11 Step 1 adds `context_compression` immutable contracts for requests, evidence chunks,
+packages, budget reports, and compression configuration. Collections are canonicalized into
+deterministic tuples and serialized through stable dictionaries. Request/configuration fingerprints
+and package identity helpers use canonical JSON SHA-256 inputs; retrieval, ranking, summarization,
+budget decisions, provenance assembly, and caching remain outside this step.
+Part 11 Step 2 adds `ContextRequestNormalizer` and a metadata-only `SourceResolver`. The
+normalizer reuses `ContextRequest` validation and accepts existing `TaskRequest` values; the
+resolver consumes caller-supplied `SourceSpec` descriptors and returns deterministic plans with
+explicit available, unavailable, and stale statuses. It does not access stores or retrieve data.
+Part 11 Step 3 adds `ContextRetriever` with source-specific adapters for existing repository
+summaries, published graph traversal, and `MemoryRetriever` contracts. It returns immutable
+`EvidenceChunk` values and explicit retrieval issues; it performs no ranking, deduplication,
+summarization, budget enforcement, or cache access. Qdrant remains unsupported because no
+configured connector exists.
+
+Part 11 Step 4 adds deterministic `EvidenceRanker` and `EvidenceDeduplicator` boundaries.
+Ranking uses only supported chunk score, recency, source priority, and lexical intent overlap;
+agent-role and graph-proximity signals remain unavailable without corresponding evidence
+contracts. Deduplication merges exact location/excerpt matches and preserves all source
+provenance. The configured dedupe threshold is validated but has no defined fuzzy-similarity
+semantics, so near-similar evidence is retained.
+
+Part 11 Step 5 adds deterministic extractive `EvidenceSummarizer` policies and source-linked
+`SummaryClaim` values without semantic or model-backed summarization. Step 6 adds `BudgetManager`
+as a separate post-summary boundary. It estimates tokens conservatively from UTF-8 bytes, treats
+the requested budget as a hard ceiling, reserves explicit headroom, and returns immutable
+`BudgetResult`/`BudgetReport` values with deterministic omissions. It does not assemble packages,
+trim provenance, or write caches.
+
+Part 11 Step 7 adds `ContextPackager` and an ephemeral `ContextPackageCache`. The packager only
+assembles validated upstream outputs, requires accepted claims to resolve uniquely to supplied
+evidence, and preserves source/location provenance in the existing `ContextPackage` contract.
+Cache keys canonically include the request, source-plan fingerprints and statuses, configuration,
+policy version, and reserved budget. The cache stores canonical package dictionaries in process
+only and distinguishes misses from invalid entries; persistence and telemetry remain future steps.
+
+Part 11 Step 8 adds `CompressionTelemetry`, a metadata-only in-process event recorder, and
+`ContextFallback` for the single supported fallback trigger: successful nonempty retrieval
+followed by empty ranking. Fallback returns a candidate only; normal summarization, hard-budget,
+provenance, and package validation remain mandatory. No external telemetry backend or LangGraph
+orchestration is assumed.
+
+The Part 11 execution boundary is `ContextCompressionPipeline`, which composes the existing
+normalizer, resolver, retriever, ranker, deduplicator, summarizer, budget manager, packager, and
+cache without duplicating their decisions. `ContextRehydrator` resolves package source/location
+references through injected adapters and rejects stale or mismatched fingerprints. Evidence claims
+require explicit retrieval timestamp and confidence metadata; standard adapters preserve real
+retrieval timestamps and accept confidence only through explicit typed adapter inputs. They do not
+derive calibrated confidence from ranking scores, graph edge weights, or qualitative memory labels.
+Sources that cannot provide required metadata are rejected at summarization rather than repaired.
+The pipeline emits deterministic metadata-only telemetry for retrieval, ranking, summarization,
+budget, fallback, cache, packaging, and terminal failure outcomes. Configured maximums are enforced
+at budget, package, and cache acceptance boundaries, and packages carry deterministic coverage notes
+for included evidence and explicit omissions. The cache remains non-persistent and in-process.
 
 ---
 

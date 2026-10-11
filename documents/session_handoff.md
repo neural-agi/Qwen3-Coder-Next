@@ -63,7 +63,7 @@ Part 8: Failure Recovery
 
 Status: Steps 1-9 complete
 
-Current validation: 329 tests passing
+Current validation: 371 tests passing
 
 Part 6 provides typed test/review reports, deterministic command execution and normalization,
 review findings, gate decisions, feedback bundles, and immutable quality artifacts.
@@ -853,7 +853,7 @@ before making architectural changes.
 Current target:
 
 ```text
-Part 10 Step 8 Repository Intelligence and Agent Integration
+Part 12 Multi-Agent Coordination
 ```
 
 ---
