@@ -17,6 +17,7 @@ from qwen3_coder_next.repo_intelligence.summaries import MAX_SUMMARY_LENGTH, Sum
 from qwen3_coder_next.repo_intelligence.manifest import ManifestStore
 from qwen3_coder_next.repo_intelligence.refresh import IncrementalRefresher
 from qwen3_coder_next.repo_intelligence.query import RepositoryQueryResult, RepositoryQueryService
+from qwen3_coder_next.repo_intelligence.graph import RepositoryGraphService
 
 __all__ = [
     "ChangeEvent",
@@ -39,4 +40,5 @@ __all__ = [
     "IncrementalRefresher",
     "RepositoryQueryResult",
     "RepositoryQueryService",
+    "RepositoryGraphService",
 ]

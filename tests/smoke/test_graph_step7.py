@@ -1,6 +1,6 @@
 import unittest
 
-from qwen3_coder_next.graph import EdgeKind, GraphEdge, GraphExporter, GraphNode, GraphSnapshot, NodeKind
+from qwen3_coder_next.graph import EdgeKind, GraphEdge, GraphExporter, GraphNode, GraphQuery, GraphSnapshot, GraphTraversalService, NodeKind
 
 
 class GraphStep7Tests(unittest.TestCase):
@@ -20,6 +20,19 @@ class GraphStep7Tests(unittest.TestCase):
     def test_invalid_export_input_is_rejected(self):
         with self.assertRaises(ValueError):
             GraphExporter().to_json("bad")  # type: ignore[arg-type]
+
+    def test_export_matches_traversal_subgraph_identity(self):
+        first = GraphNode.create("repo", NodeKind.FUNCTION, "first", "first", "a.py", "python", "r")
+        second = GraphNode.create("repo", NodeKind.FUNCTION, "second", "second", "b.py", "python", "r")
+        edge = GraphEdge.create("repo", EdgeKind.CALLS, first.node_id, second.node_id, 1.0)
+        snapshot = GraphSnapshot("s", "repo", "r", (first, second), (edge,))
+        result = GraphTraversalService().execute(snapshot, first.node_id, GraphQuery("repo", "r", depth=1, direction="outgoing"))
+        subgraph = GraphSnapshot(snapshot.snapshot_id, snapshot.repo_id, snapshot.revision_id, result.nodes, result.edges)
+        exported = GraphExporter().to_json(subgraph)
+        for node in result.nodes:
+            self.assertIn(node.node_id, exported)
+        for relationship in result.edges:
+            self.assertIn(relationship.edge_id, exported)
 
 
 if __name__ == "__main__":

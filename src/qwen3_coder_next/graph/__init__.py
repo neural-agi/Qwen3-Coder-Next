@@ -18,6 +18,7 @@ from qwen3_coder_next.graph.storage import GraphStore
 from qwen3_coder_next.graph.traversal import GraphTraversalService, TraversalMetadata, TraversalResult
 from qwen3_coder_next.graph.invalidation import InvalidationEvent, InvalidationManager, InvalidationResult, RebuildInput
 from qwen3_coder_next.graph.export import GraphExporter
+from qwen3_coder_next.graph.validation import GraphConsistencyValidator
 
 __all__ = [
     "EdgeKind", "GRAPH_SCHEMA_VERSION", "GraphEdge", "GraphNode", "GraphQuery", "GraphSnapshot",
@@ -26,4 +27,5 @@ __all__ = [
     "GraphStore",
     "GraphTraversalService", "TraversalMetadata", "TraversalResult",
     "InvalidationEvent", "InvalidationManager", "InvalidationResult", "RebuildInput", "GraphExporter",
+    "GraphConsistencyValidator",
 ]

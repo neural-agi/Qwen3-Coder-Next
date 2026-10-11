@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from qwen3_coder_next.graph import EdgeKind, GraphEdge, GraphNode, GraphSnapshot, GraphStore, NodeKind, serialize_graph_snapshot
+from qwen3_coder_next.graph import EdgeKind, GraphConsistencyValidator, GraphEdge, GraphNode, GraphSnapshot, GraphStore, NodeKind, serialize_graph_snapshot
 
 
 class GraphStep4Tests(unittest.TestCase):
@@ -61,6 +61,13 @@ class GraphStep4Tests(unittest.TestCase):
             second_bytes = next((Path(directory) / "snapshots").glob("*.json")).read_bytes()
             self.assertEqual(first_bytes, second_bytes)
             self.assertEqual(serialize_graph_snapshot(snapshot), before)
+
+    def test_consistency_validator_rejects_missing_endpoints(self):
+        node = GraphNode.create("repo", NodeKind.FUNCTION, "run", "run", "main.py", "python", "r")
+        invalid = GraphSnapshot("invalid", "repo", "r", (node,), (GraphEdge.create("repo", EdgeKind.CALLS, node.node_id, "missing", 1.0),))
+        with self.assertRaises(ValueError):
+            GraphConsistencyValidator().validate(invalid)
+        GraphConsistencyValidator().validate(self._snapshot())
 
 
 if __name__ == "__main__":
